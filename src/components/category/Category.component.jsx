@@ -1,22 +1,37 @@
 import React from "react";
+import CategoryCard from "./sub-components/CategoryCard.component";
+import { categories } from "../../data/categories";
+// import kids from "../../assets/images/category/kids.jpg";
 
 const Category = () => {
   return (
-    <div className="category">
+    <div className="section category">
       <div className="container">
-        <div className="row">
-          <div className="col-md-2">
-            <div className="category-card">
-              <div className="image-cropper">
-                <img
-                  className="image"
-                  src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1652&q=80"
-                  alt=""
-                />
-              </div>
-              <h4>Women</h4>
-            </div>
-          </div>
+        <div className="row row-cols-1 row-cols-md-3 mb-4">
+          {categories
+            .slice(0, 3)
+            .map(({ title, id, startPrice, link, image }) => (
+              <CategoryCard
+                key={id}
+                name={title}
+                price={startPrice}
+                image={image}
+                link={link}
+              />
+            ))}
+        </div>
+        <div className="row row-cols-1 row-cols-md-2 mb-2">
+          {categories
+            .slice(3, 5)
+            .map(({ title, id, startPrice, link, image }) => (
+              <CategoryCard
+                key={id}
+                name={title}
+                price={startPrice}
+                image={image}
+                link={link}
+              />
+            ))}
         </div>
       </div>
     </div>
