@@ -7,7 +7,7 @@ import ServiceCard from "./sub-components/ServiceCard.component";
 
 const Services = () => {
   return (
-    <div className="section service">
+    <div className="section service mt-5">
       <div className="container">
         <div className="row">
           <ServiceCard
