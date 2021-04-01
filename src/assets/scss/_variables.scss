@@ -1,0 +1,26 @@
+// COLORS
+
+// COLORS TEXT
+$color-text-1: #0b0b0b; // black
+$color-text-2: #ffffff; // white
+$color-text-3: #8c979e;
+
+// COLORS BACKGROUND
+$color-bg-1: #ffffff; // white
+$color-bg-2: #0b0b0b; // black
+$color-bg-3: #2a2826;
+$color-bg-4: #e4e4e4;
+
+// FONTS
+$font-1: "Lato", sans-serif; // heading font
+$font-2: "Poppins", sans-serif; // para font
+$font-3: "Pacifico", cursive; // logo font
+
+// RESPONSIVE VARIABLES
+$xx-layout: "only screen and (min-width: 1366px) and (max-width: 1600px)";
+$xl-layout: "only screen and (min-width: 1200px) and (max-width: 1365px)";
+$lg-layout: "only screen and (min-width: 992px) and (max-width: 1199px)";
+$md-layout: "only screen and (min-width: 768px) and (max-width: 991px)";
+$xs-layout: "only screen and (max-width: 767px)";
+$sm-layout: "only screen and (min-width: 576px) and (max-width: 767px)";
+$xxs-layout: "only screen and (min-width: 320px) and (max-width: 479px)";
