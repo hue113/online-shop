@@ -7,11 +7,13 @@
 html,
 body {
   height: 100%;
+  font-size: 62.5%;
 }
 
 body {
   font-family: $font-1;
-  font-size: 15px;
+  // font-size: 15px;
+  font-size: 1.5rem;
   font-weight: 400;
   font-style: normal;
   line-height: 1.5;
@@ -29,9 +31,7 @@ h5,
 h6 {
   font-family: $font-1;
   font-weight: 400;
-
   margin-top: 0;
-
   // color: $color-text-1;
 }
 
@@ -125,14 +125,24 @@ ul {
   list-style: outside none none;
 }
 
-// a:hover {
-//   text-decoration: none;
-// }
-
 .section {
-  padding: 45px 0;
+  // margin: 45px 0;
+  padding: 25px 0;
+
+  &-title {
+    text-align: center;
+
+    .text-desc {
+      margin: 0 auto;
+      max-width: 500px;
+    }
+  }
 }
 
 .bold {
   font-weight: 600;
+}
+
+.text-link {
+  color: $global-color-2;
 }
