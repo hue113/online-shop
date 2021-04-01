@@ -1,0 +1,58 @@
+export const stores = [
+  {
+    id: 1,
+    name: "Shine Fairview",
+    address1: "50 Fairview Street",
+    address2: "Ottawa, ON",
+    postalCode: "K1V 7B8",
+  },
+  {
+    id: 2,
+    name: "Shine Fairview",
+    address1: "50 Fairview Street",
+    address2: "Ottawa, ON",
+    postalCode: "K1V 7B8",
+  },
+  {
+    id: 3,
+    name: "Shine Fairview",
+    address1: "50 Fairview Street",
+    address2: "Ottawa, ON",
+    postalCode: "K1V 7B8",
+  },
+  {
+    id: 4,
+    name: "Shine Fairview",
+    address1: "50 Fairview Street",
+    address2: "Ottawa, ON",
+    postalCode: "K1V 7B8",
+  },
+  {
+    id: 5,
+    name: "Shine Fairview",
+    address1: "50 Fairview Street",
+    address2: "Ottawa, ON",
+    postalCode: "K1V 7B8",
+  },
+  {
+    id: 6,
+    name: "Shine Fairview",
+    address1: "50 Fairview Street",
+    address2: "Ottawa, ON",
+    postalCode: "K1V 7B8",
+  },
+  {
+    id: 7,
+    name: "Shine Fairview",
+    address1: "50 Fairview Street",
+    address2: "Ottawa, ON",
+    postalCode: "K1V 7B8",
+  },
+  {
+    id: 8,
+    name: "Shine Fairview",
+    address1: "50 Fairview Street",
+    address2: "Ottawa, ON",
+    postalCode: "K1V 7B8",
+  },
+];

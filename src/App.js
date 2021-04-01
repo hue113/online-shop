@@ -1,8 +1,8 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import Home from "./pages/home/Home.page";
 
 const Home = lazy(() => import("./pages/home/Home.page"));
+const Shop = lazy(() => import("./pages/shop/Shop.page"));
 
 const App = () => {
   return (
@@ -11,6 +11,7 @@ const App = () => {
         <Switch>
           <Route exact path={process.env.PUBLIC_URL + "/"} component={Home} />
           <Route path={process.env.PUBLIC_URL + "/home"} component={Home} />
+          <Route path={process.env.PUBLIC_URL + "/shop"} component={Shop} />
         </Switch>
       </Suspense>
     </Router>

@@ -18,9 +18,9 @@ const Header = () => {
   }, [toggleMenu]);
 
   return (
-    <header className="header py-4 px-md-2">
+    <header className="header">
       <div className="container-fluid">
-        <nav className="navbar navbar-expand-md navbar-light d-flex justify-content-between p-0">
+        <nav className="navbar navbar-expand-md navbar-light d-flex justify-content-between mx-5 py-4">
           <div className="">
             <Link className="logo" to="/">
               <h3 className="logo">Shine</h3>

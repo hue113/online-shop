@@ -1,0 +1,21 @@
+.custom-button {
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid white;
+  border-radius: 30px;
+  padding: 10px 25px;
+  display: inline-block;
+  background: linear-gradient(
+    to right,
+    rgba(238, 238, 238, 0.5),
+    rgba(238, 238, 238, 0.5)
+  );
+  background-repeat: no-repeat;
+  background-size: 0 100%;
+  transition: background-size 0.5s 0s;
+  font-size: 16px;
+}
+
+.custom-button:hover {
+  background-size: 100% 100%;
+}
