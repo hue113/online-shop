@@ -2,16 +2,22 @@ import React from "react";
 import MetaTags from "react-meta-tags";
 
 import Layout from "../../components/layout/Layout.component";
+import ShopPreview from "../../components/shop-preview/ShopPreview.component";
+import { shop } from "../../data/shop.js";
 
 const Shop = () => {
   return (
     <div className="shop">
       <MetaTags>
-        <title>Shine | New Collection Online</title>
-        <meta name="description" content="Shine Online Shop." />
+        <title>Shine | New Spring Collection</title>
+        <meta name="description" content="Shine Online Shop" />
       </MetaTags>
 
-      <Layout></Layout>
+      <Layout>
+        {shop.map((category) => (
+          <ShopPreview key={category.id} data={category} />
+        ))}
+      </Layout>
     </div>
   );
 };
