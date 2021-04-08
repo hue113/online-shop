@@ -14,8 +14,8 @@ const Home = () => {
   return (
     <div className="home">
       <MetaTags>
-        <title>Shine | New Collection Online</title>
-        <meta name="description" content="Shine Online Shop." />
+        <title>Shine | New Clothes, New Passion</title>
+        <meta name="description" content="Shine Online Shop" />
       </MetaTags>
 
       <Layout>
