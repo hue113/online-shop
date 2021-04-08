@@ -1,10 +1,10 @@
 .custom-button {
   cursor: pointer;
+  color: #fff;
+  border: 1px solid white;
   border-radius: 30px;
   padding: 10px 25px;
   display: inline-block;
-  transition: background-size 0.5s 0s;
-  font-size: 16px;
   background: linear-gradient(
     to right,
     rgba(238, 238, 238, 0.5),
@@ -12,50 +12,10 @@
   );
   background-repeat: no-repeat;
   background-size: 0 100%;
-
-  background-color: $color-bg-1;
-  color: $color-text-1;
-
-  &.color {
-    background-color: $global-color-5;
-    color: $color-text-2;
-    // border: 1px solid $global-color-5;
-    border: none;
-  }
-  &.white {
-    box-shadow: 0px 0px 0px 1px black inset;
-    border: none;
-  }
-  &.transparent {
-    border: 1px solid white;
-    background: linear-gradient(
-      to right,
-      rgba(238, 238, 238, 0.5),
-      rgba(238, 238, 238, 0.5)
-    );
-    background-repeat: no-repeat;
-    background-size: 0 100%;
-    color: $color-text-2;
-  }
-  &.black {
-    background-color: $color-bg-2;
-    color: $color-text-2;
-  }
-  &.square {
-    border-radius: 0px;
-  }
-  &.fullWidth {
-    width: 100%;
-    text-align: center;
-  }
+  transition: background-size 0.5s 0s;
+  font-size: 16px;
 }
 
 .custom-button:hover {
-  &.slide {
-    background-size: 100% 100%;
-  }
-
-  &.lighter {
-    background-color: rgba($global-color-5, 0.9);
-  }
+  background-size: 100% 100%;
 }
