@@ -20,23 +20,27 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container-fluid">
-        <nav className="navbar navbar-expand-md navbar-light d-flex justify-content-between mx-5 py-4">
-          <div className="">
+        <nav className="navbar navbar-expand-md navbar-light d-flex justify-content-between mx-md-5 py-4">
+          <div className="col-2">
             <Link className="logo" to="/">
               <h3 className="logo">Shine</h3>
             </Link>
           </div>
 
-          <div className="navbar-nav icon-group order-md-3 ml-auto d-flex flex-row align-items-baseline">
-            <Link className="icon" to="/">
+          <div className="navbar-nav icon-group order-md-3 ml-auto d-flex flex-row align-items-center">
+            <Link className="icon mr-3" to="/login">
               <i className="bi bi-person" />
+              <span className="ml-2 d-none d-lg-inline-block">Sign in</span>
             </Link>
-            <Link className="icon" to="/">
+            <Link className="icon mr-3" to="/">
               <i className="bi bi-heart" />
+              <span className="ml-2 d-none d-lg-inline-block">Favourites</span>
             </Link>
-            <Link className="icon" to="/">
+            <Link className="icon mr-3" to="/">
               <i className="bi bi-bag" />
+              <span className="ml-2 d-none d-lg-inline-block">Bags</span>
             </Link>
+
             <button
               aria-controls="basic-navbar-nav"
               type="button"
@@ -53,13 +57,13 @@ const Header = () => {
               <Link className="nav-item" to="/">
                 Home
               </Link>
-              <Link className="nav-item" to="/">
+              <Link className="nav-item" to="/shop">
                 Shop
               </Link>
-              <Link className="nav-item" to="/">
+              <Link className="nav-item" to="/shop/new-arrivals">
                 New Arrivals
               </Link>
-              <Link className="nav-item" to="/">
+              <Link className="nav-item" to="/shop/sale">
                 Sale
               </Link>
             </div>
