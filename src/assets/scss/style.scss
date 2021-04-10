@@ -1,0 +1,27 @@
+@import "~bootstrap/scss/bootstrap.scss";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700");
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
+
+@import "variables";
+@import "common";
+
+@import "./pages/productDetail.page";
+
+@import "./components/header.component";
+@import "./components/footer.component";
+@import "./components/services.component";
+@import "./components/category.component";
+@import "./components/imageSlider.component";
+@import "./components/customButton.component";
+@import "./components/productCard.component";
+@import "./components/hotDeal.component";
+@import "./components/stores.component";
+@import "./components/shopPreview.component";
+@import "./components/productSlider.component";
+@import "./components/sidebar.component";
+@import "./components/customForm.component";
+@import "./components/signIn.component";
+@import "./components/map.component";

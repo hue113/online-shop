@@ -1,0 +1,151 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: $font-1;
+  // font-size: 15px;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: 0.1px;
+
+  color: $color-text-1;
+  // background-color: pink;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-1;
+  font-weight: 400;
+  margin-top: 0;
+  // color: $color-text-1;
+}
+
+p {
+  font-family: $font-1;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 30px;
+
+  margin-bottom: 15px;
+
+  color: $color-text-1;
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 42px;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+h5 {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+h6 {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+a,
+button {
+  line-height: inherit;
+
+  cursor: pointer;
+  text-decoration: none;
+
+  color: $color-text-1;
+}
+
+a,
+button,
+img,
+input,
+span {
+  transition: all 0.3s ease 0s;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+a:focus {
+  text-decoration: none;
+
+  color: inherit;
+  outline: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: outside none none;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+.section {
+  // margin: 45px 0;
+  padding: 25px 0;
+
+  &-title {
+    text-align: center;
+
+    .text-desc {
+      margin: 0 auto;
+      max-width: 600px;
+    }
+  }
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.text-link {
+  color: $global-color-2;
+}
