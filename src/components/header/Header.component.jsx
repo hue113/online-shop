@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container-fluid">
-        <nav className="navbar navbar-expand-md navbar-light d-flex justify-content-between mx-md-5 py-4">
+        <nav className="navbar navbar-expand-lg navbar-light d-flex justify-content-between mx-md-5 py-4">
           <div className="col-2">
             <Link className="logo" to="/">
               <h3 className="logo">Shine</h3>
@@ -65,6 +65,9 @@ const Header = () => {
               </Link>
               <Link className="nav-item" to="/shop/sale">
                 Sale
+              </Link>
+              <Link className="nav-item" to="/stores">
+                Store Locators
               </Link>
             </div>
           </div>

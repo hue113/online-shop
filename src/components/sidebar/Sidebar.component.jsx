@@ -1,5 +1,6 @@
 import React from "react";
 import SidebarProductCard from "./sub-components/SidebarProductCard.component";
+// import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (

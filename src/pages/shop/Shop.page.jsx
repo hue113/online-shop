@@ -9,7 +9,7 @@ const Shop = () => {
   return (
     <div className="shop">
       <MetaTags>
-        <title>Shine | New Spring Collection</title>
+        <title>Shine | Shop All Collections </title>
         <meta name="description" content="Shine Online Shop" />
       </MetaTags>
 

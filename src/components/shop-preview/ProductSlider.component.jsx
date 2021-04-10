@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import TinySlider from "tiny-slider-react";
 
 import ProductCard from "../product-card/ProductCard.component";
@@ -43,7 +44,9 @@ const ProductSlider = ({ products }) => {
       {/* <TinySlider settings={settings} onInit={clickEvent} className="row m-2"> */}
       <TinySlider settings={settings} className="row mx-1 my-2">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <Link to={`/product/${product.id}`} key={product.id}>
+            <ProductCard product={product} />
+          </Link>
         ))}
       </TinySlider>
     </div>

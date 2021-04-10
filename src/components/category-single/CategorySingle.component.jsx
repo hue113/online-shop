@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 import ProductCard from "../product-card/ProductCard.component";
@@ -27,10 +28,9 @@ const CategorySingle = () => {
         </div>
         <div className="row row-cols-2 row-cols-md-3">
           {data.items.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-          {data.items.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <Link to={`/product/${product.id}`} key={product.id}>
+              <ProductCard product={product} />
+            </Link>
           ))}
         </div>
       </div>

@@ -17,6 +17,7 @@ const ProductDetail = () => {
         <title>Shine | {product.name} </title>
         <meta name="description" content="Shine Online Shop" />
       </MetaTags>
+
       <Layout>
         <div className="container">
           <div className="row section center-block d-flex align-items-center justify-content-center">

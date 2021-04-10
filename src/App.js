@@ -9,6 +9,9 @@ const ProductDetail = lazy(() =>
 );
 const Login = lazy(() => import("./pages/log-in/LogIn.page"));
 const Register = lazy(() => import("./pages/register/Register.page"));
+const StoreLocator = lazy(() =>
+  import("./pages/store-locator/StoreLocator.page")
+);
 
 const App = () => {
   return (
@@ -31,6 +34,7 @@ const App = () => {
             component={ShopSingle}
           />
           <Route
+            exact
             path={process.env.PUBLIC_URL + "/product/:id"}
             component={ProductDetail}
           />
@@ -43,6 +47,11 @@ const App = () => {
             exact
             path={process.env.PUBLIC_URL + "/register"}
             component={Register}
+          />
+          <Route
+            exact
+            path={process.env.PUBLIC_URL + "/stores"}
+            component={StoreLocator}
           />
         </Switch>
       </Suspense>

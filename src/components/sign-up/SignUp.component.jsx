@@ -68,7 +68,7 @@ const SignUp = () => {
           required
         />
 
-        <div className="row-cols-md-2 gx-5 d-flex">
+        <div className="row-cols-md-2 pt-4 d-flex">
           {/* <div className="pr-3">
             <Button name="Sign In" styleClass="white square fullWidth" />
           </div> */}

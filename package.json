@@ -7,14 +7,18 @@
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
     "bootstrap": "^4.6.0",
+    "mapbox-gl": "^2.2.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
     "react-countdown": "^2.3.1",
     "react-dom": "^17.0.2",
+    "react-image-gallery": "^1.0.9",
     "react-meta-tags": "^1.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "redux-logger": "^3.0.6",
     "sass": "^1.32.8",
+    "tiny-slider-react": "^0.5.3",
     "web-vitals": "^1.1.1"
   },
   "scripts": {

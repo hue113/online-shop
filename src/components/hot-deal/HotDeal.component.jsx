@@ -15,7 +15,11 @@ const HotDeal = () => {
             <h2 className="title mb-5">Deal of the day</h2>
             <Countdown date={time} renderer={renderer} />
             <div className="py-4">
-              <Button name="Shop Now" link="/" styleClass="color slide" />
+              <Button
+                name="Shop Now"
+                link="/product/300"
+                styleClass="color slide"
+              />
             </div>
           </div>
         </div>

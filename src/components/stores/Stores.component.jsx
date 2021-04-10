@@ -11,7 +11,7 @@ const Stores = () => {
           <h2 className="title">Store Locator</h2>
           <p className="text-desc">
             There are many variations of passages of Lorem Ipsum available.{" "}
-            <Link to="/" className="text-link">
+            <Link to="/stores" className="text-link">
               Find a store.
             </Link>
           </p>

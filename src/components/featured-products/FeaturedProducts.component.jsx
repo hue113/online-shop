@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import ProductCard from "../product-card/ProductCard.component";
 import { shop } from "../../data/shop.js";
@@ -23,7 +24,9 @@ const FeaturedProducts = () => {
         </div>
         <div className="row row-cols-2 row-cols-md-4">
           {popularProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <Link to={`/product/${product.id}`} key={product.id}>
+              <ProductCard product={product} />
+            </Link>
           ))}
         </div>
       </div>
