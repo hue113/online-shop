@@ -10,20 +10,21 @@ const Map = () => {
   const mapContainerRef = useRef(null);
   const [filteredStores, setFilteredStores] = useState(null);
 
-  const [state] = useState({
-    lng: -84.5638875,
-    lat: 46.5318913,
-    zoom: 3,
-  });
   const coordinates = [];
   stores.forEach((i) => coordinates.push(i.coordinates));
 
   useEffect(() => {
+    const initialPoint = {
+      lng: -84.5638875,
+      lat: 46.5318913,
+      zoom: 3,
+    };
+
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v11",
-      center: [state.lng, state.lat],
-      zoom: state.zoom,
+      center: [initialPoint.lng, initialPoint.lat],
+      zoom: initialPoint.zoom,
     });
 
     // add navigation control (zoom buttons)
@@ -54,14 +55,12 @@ const Map = () => {
 
     // clean up on unmount
     return () => map.remove();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     var button = document.getElementsByClassName("mapboxgl-popup-close-button");
-    // console.log(button[0]);
     if (button[0])
       button[0].addEventListener("click", () => {
-        // console.log("click");
         setFilteredStores(null);
       });
     if (button[0] === undefined) setFilteredStores(null);

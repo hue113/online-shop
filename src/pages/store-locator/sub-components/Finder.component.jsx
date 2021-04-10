@@ -11,11 +11,11 @@ const Finder = ({ stores, filteredStores }) => {
         i.postalCode.toLowerCase().includes(e.target.value.toLowerCase())
       );
       setSearchResults(results);
-    }
+    } else if (e.target.value === "") setSearchResults([]);
   };
 
   useEffect(() => {
-    // console.log("searchTerm", searchTerm);
+    // console.log("searchTerm", typeof searchTerm);
     // console.log("filteredStores", filteredStores);
     // console.log("searchResult", searchResults);
   }, [filteredStores, searchTerm, searchResults]);
