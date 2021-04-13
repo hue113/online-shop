@@ -14,7 +14,7 @@ const LogIn = () => {
 
       <Layout>
         <div className="container">
-          <div className="row">
+          <div className="row mx-3">
             <SignIn />
           </div>
         </div>

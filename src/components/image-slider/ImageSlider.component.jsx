@@ -15,7 +15,7 @@ const ImageSlider = () => {
           <Carousel.Caption>
             <h1 className="title p-2 bold">Stylish clothes</h1>
             <h1 className="title p-1 bold">Stylish life</h1>
-            <h4 className="m-4 p-4">
+            <h4 className="subtitle d-none d-md-block  m-4 p-4">
               Embrace styles that make your energy flow
             </h4>
             <Button
@@ -33,8 +33,10 @@ const ImageSlider = () => {
           />
           <Carousel.Caption className="reverse">
             <h1 className="title p-2 bold">New for Spring</h1>
-            <h1 className="title p-1 bold">A meadow of wildflowers</h1>
-            <h4 className="m-4 p-4">Get the best outfit of your life</h4>
+            <h1 className="title p-1 bold">Shop Your Style</h1>
+            <h4 className="subtitle d-none d-md-block m-4 p-4">
+              Get the best outfit of your life
+            </h4>
             <Button
               name="Shop Now"
               link="/shop/new-arrivals"
