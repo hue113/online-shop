@@ -1,26 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "../../../components/custom-button/Button.component";
 
-const ProductDetailRightSide = ({ product }) => {
+const MainInfo = ({ product }) => {
   const [color, setColor] = useState(
     product.variation ? product.variation[0].color : ""
   );
   const [size, setSize] = useState(
     product.variation ? product.variation[0].size[0].name : ""
   );
-  const handleSelectColor = (e) => {
-    setColor(e);
-    console.log(e);
-  };
-  const handleSelectSize = (e) => {
-    setSize(e);
-    console.log(e);
+
+  const handleSelectColor = (color) => {
+    setColor(color);
   };
 
+  const handleSelectSize = (size, i) => {
+    // fixed Safari issue: not changing style on click
+    const sizeBtn = document.querySelectorAll(".sizebtn");
+    sizeBtn.forEach((btn) => {
+      btn.classList.remove("focus");
+    });
+    const selectedSize = document.querySelector(`.box.sizebtn.s${size}`);
+    selectedSize.classList.add("focus");
+
+    setSize(size);
+  };
+
+  useEffect(() => {
+    return () => {};
+  }, []);
+
   return (
-    <div className="section right-side">
+    <div className="section main-info">
       <div className="container">
         <div className="">
           <h2 className="mb-5">{product.name}</h2>
@@ -45,7 +57,7 @@ const ProductDetailRightSide = ({ product }) => {
 
         {/* <div className="right-side middle mt-4"> */}
         <div className="d-flex pt-4">
-          <div className="color mr-5">
+          <div className="colorPick mr-5">
             <h4>Color</h4>
             <div className="color-btn color d-flex py-3">
               <DropdownButton title={color} onSelect={handleSelectColor}>
@@ -57,20 +69,28 @@ const ProductDetailRightSide = ({ product }) => {
               </DropdownButton>
             </div>
           </div>
-          <div className="size ml-5">
+          <div className="sizePick ml-4">
             <h4>Size</h4>
-            <div className="size-content d-flex mt-4">
+            <div className="size-content d-flex my-4 w-100">
               {product.variation
                 .filter((el) => el.color === color)[0]
-                .size.map((el, index) => (
-                  <button
-                    key={index}
-                    className="box mr-3 d-flex justify-content-center align-items-center"
-                    onClick={() => handleSelectSize(el.name)}
-                  >
-                    {el.name.toUpperCase()}
-                  </button>
-                ))}
+                .size.map((el, index) =>
+                  el.stock === 0 ? (
+                    <div key={index} className={`outOfStock mr-3 `}>
+                      <div className="text d-flex justify-content-center align-items-center">
+                        {el.name.toUpperCase()}
+                      </div>
+                    </div>
+                  ) : (
+                    <button
+                      key={index}
+                      className={`box sizebtn s${el.name} mr-3 d-flex justify-content-center align-items-center`}
+                      onClick={() => handleSelectSize(el.name, index)}
+                    >
+                      {el.name.toUpperCase()}
+                    </button>
+                  )
+                )}
             </div>
           </div>
         </div>
@@ -82,6 +102,7 @@ const ProductDetailRightSide = ({ product }) => {
             <input
               className="py-3 text-center"
               type="number"
+              pattern="[0-9]*"
               min="1"
               defaultValue="1"
             ></input>
@@ -101,4 +122,4 @@ const ProductDetailRightSide = ({ product }) => {
   );
 };
 
-export default ProductDetailRightSide;
+export default MainInfo;

@@ -1,21 +1,30 @@
 .hot-deal {
-  // background-color: rgba($color-bg-5, 0.8);
   background-color: $color-bg-5;
   img {
     width: 100%;
     height: 100%;
   }
-
   .content {
     text-align: center;
-
     .title {
-      font-size: 47px;
+      font-size: 45px;
     }
-
     .countdown {
       font-size: 40px;
       color: $color-text-6;
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .hot-deal {
+    .content {
+      .title {
+        font-size: 38px;
+      }
+      .countdown {
+        font-size: 35px;
+        padding: 0 10px;
+      }
     }
   }
 }

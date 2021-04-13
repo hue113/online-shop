@@ -23,10 +23,10 @@ const Footer = () => {
   }, [toggle]);
 
   return (
-    <footer className="footer bg-dark py-5">
+    <footer className="footer bg-dark py-5 px-4">
       <div className="container">
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-6 col-md-3">
             <h4 onClick={(e) => handleToggle("shop")}>Shop</h4>
             <div className={`${toggle.shop ? "collapse" : ""}`} id="shop">
               <div className="d-none d-flex flex-column" id="shop2">
@@ -40,7 +40,7 @@ const Footer = () => {
                   Kids
                 </Link>
                 <Link className="item" to="/">
-                  New Arrival
+                  New Arrivals
                 </Link>
                 <Link className="item" to="/">
                   Sale
@@ -49,7 +49,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-md-3">
+          <div className="col-6 col-md-3">
             <h4 onClick={(e) => handleToggle("usefulLinks")}>Useful Links</h4>
             <div
               className={`${toggle.usefulLinks ? "collapse" : ""}`}
@@ -72,7 +72,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-md-3">
+          <div className="col-6 col-md-3">
             <h4 onClick={(e) => handleToggle("followUs")}>Follow us</h4>
             {/* <ToggleItem name="followUs" handleToggle={(e) => handleToggle("followUs")}>
               Follow Us
@@ -98,12 +98,11 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-md-3">
-            <h4>Subscribe form</h4>
+          <div className="col-6 col-md-3">
+            <h4>Become A Member</h4>
             <span className="pb-2">
               Get E-mail updates about our latest shop and special offers.
             </span>
-            <input placeholder="Enter your email address ..." />
           </div>
         </div>
       </div>

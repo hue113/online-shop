@@ -15,7 +15,7 @@ export const shop = [
         new: false,
         rating: 4,
         saleCount: 54,
-        category: ["fashion", "women"],
+        category: "women",
         tag: ["fashion", "women", "jacket", "full sleeve"],
         variation: [
           {
@@ -106,7 +106,7 @@ export const shop = [
         new: false,
         rating: 4,
         saleCount: 54,
-        category: ["fashion", "women"],
+        category: "women",
         tag: ["fashion", "women", "jacket", "full sleeve"],
         variation: [
           {
@@ -197,7 +197,7 @@ export const shop = [
         new: false,
         rating: 4,
         saleCount: 54,
-        category: ["fashion", "women"],
+        category: "women",
         tag: ["fashion", "women", "jacket", "full sleeve"],
         variation: [
           {
@@ -288,7 +288,7 @@ export const shop = [
         new: false,
         rating: 4,
         saleCount: 54,
-        category: ["fashion", "women"],
+        category: "women",
         tag: ["fashion", "women", "jacket", "full sleeve"],
         variation: [
           {
@@ -379,7 +379,7 @@ export const shop = [
         new: false,
         rating: 4,
         saleCount: 54,
-        category: ["fashion", "women"],
+        category: "women",
         tag: ["fashion", "women", "jacket", "full sleeve"],
         variation: [
           {

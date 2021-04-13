@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import ProductCard from "../product-card/ProductCard.component";
 import { shop } from "../../data/shop.js";
@@ -7,9 +6,9 @@ import { shop } from "../../data/shop.js";
 const FeaturedProducts = () => {
   let allProducts = [];
   shop.map((el) => el.items.map((el) => allProducts.push(el)));
-  const popularProducts = allProducts.filter(
-    (product) => product.saleCount < 30
-  );
+  const popularProducts = allProducts
+    .filter((product) => product.saleCount > 30)
+    .slice(0, 8);
   // console.log("popularProducts", popularProducts);
 
   return (
@@ -24,9 +23,7 @@ const FeaturedProducts = () => {
         </div>
         <div className="row row-cols-2 row-cols-md-4">
           {popularProducts.map((product) => (
-            <Link to={`/product/${product.id}`} key={product.id}>
-              <ProductCard product={product} />
-            </Link>
+            <ProductCard product={product} key={product.id} />
           ))}
         </div>
       </div>

@@ -13,8 +13,8 @@ export const categories = [
     // subtitle: "8 Products",
     link: "/shop/men",
     startPrice: 34.99,
-    image: "https://i.imgur.com/xnHhIeK.png",
-    // "https://st.depositphotos.com/1007995/1274/i/950/depositphotos_12746841-stock-photo-fashion-man-sitting-and-thinking.jpg",
+    image:
+      "https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1650&q=80",
   },
   {
     id: "3",
@@ -22,7 +22,8 @@ export const categories = [
     // subtitle: "9 Products",
     link: "/shop/kids",
     startPrice: 19.99,
-    image: "https://i.imgur.com/wmzvy01.jpg",
+    image:
+      "https://images.unsplash.com/photo-1595930013415-ca6958dc8a8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1650&q=80",
   },
   {
     id: "4",
@@ -30,7 +31,8 @@ export const categories = [
     // subtitle: "4 Products",
     link: "/shop/accessories",
     startPrice: 19.99,
-    image: "https://i.imgur.com/LOirSo2.png",
+    image:
+      "https://images.unsplash.com/photo-1513373319109-eb154073eb0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1650&q=80",
   },
   {
     id: "5",
@@ -38,6 +40,7 @@ export const categories = [
     // subtitle: "4 Products",
     link: "/shop/new-arrivals",
     startPrice: 19.99,
-    image: "https://i.imgur.com/WN50wTw.png",
+    image:
+      "https://images.unsplash.com/photo-1542500121-0d07e29f27f3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80",
   },
 ];

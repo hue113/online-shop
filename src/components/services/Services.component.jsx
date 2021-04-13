@@ -9,7 +9,7 @@ const Services = () => {
   return (
     <div className="section service mt-5">
       <div className="container">
-        <div className="row">
+        <div className="row px-3">
           <ServiceCard
             name="Free Shipping"
             content="Variations of passages of lorem isum is available here."

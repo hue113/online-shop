@@ -1,18 +1,32 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const SidebarProductCard = () => {
+const SidebarProductCard = ({ product }) => {
+  // console.log(product);
   return (
-    <div className="sidebar-product-card my-3">
+    <div className="sidebar-product-card p-4">
       <div className="row">
         <div className="col-4 pr-0 image">
-          <img
-            src="https://images.unsplash.com/photo-1617178388553-a9d022974a5c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80"
-            alt=""
-          />
+          <Link to={`/products/${product.id}`}>
+            <img src={product.image[0]} alt="" />
+          </Link>
         </div>
         <div className="col-8 pr-0 my-auto">
-          <h5 className="bold">Jumpsuit Summer</h5>
-          <p>$32</p>
+          <Link to={`/products/${product.id}`}>
+            <h5 className="product-title bold">{product.name}</h5>
+          </Link>
+          {product.discount === 0 ? (
+            <span className="mr-3">${product.price.toFixed(2)}</span>
+          ) : (
+            <div>
+              <span className="mr-3 old-price">
+                ${product.price.toFixed(2)}
+              </span>
+              <span className="sale-price">
+                ${(product.price * (1 - product.discount / 100)).toFixed(2)}
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </div>

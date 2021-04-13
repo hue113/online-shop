@@ -8,12 +8,12 @@ const settings = {
   showFullscreenButton: false,
 };
 
-const ProductDetailLeftSide = ({ product }) => {
+const ProductImageGallery = ({ product }) => {
   let images = [];
   product.image.map((e) => images.push({ original: e, thumbnail: e }));
 
   return (
-    <div className="section left-side">
+    <div className="section product-image-gallery">
       <div className="container">
         <ImageGallery {...settings} items={images} />
       </div>
@@ -21,4 +21,4 @@ const ProductDetailLeftSide = ({ product }) => {
   );
 };
 
-export default ProductDetailLeftSide;
+export default ProductImageGallery;

@@ -1,5 +1,6 @@
 .product-slider {
   padding: 0 20px 0 10px;
+
   .tns-outer {
     position: relative;
 
@@ -30,19 +31,29 @@
       }
     }
 
-    .tns-inner {
-      // padding-left: 10px;
+    .tns-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      button {
+        margin: 0 3px;
+        padding: 0;
+        min-width: 10px;
+        min-height: 10px;
+        background-color: transparent;
+        border-radius: 5px;
+        border: 1px solid $color-text-3;
+      }
+      button.tns-nav-active {
+        background-color: rgba($global-color-5, 0.7);
+        border: none;
+      }
     }
 
-    // .tns-nav {
-    //   button {
-    //     background-color: $color-text-6;
-    //     border: 0;
-    //     // border-radius: 50%;
-    //     // width: 5px;
-    //     // height: 5px;
-    //     margin: 5px;
-    //   }
+    // Fix error showing double navigation indicator when clicking on product
+    // #tns1-mw .tns-inner .tns-outer .tns-nav {
+    //   display: none;
     // }
   }
 }

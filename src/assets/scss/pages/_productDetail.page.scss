@@ -1,9 +1,8 @@
 .product-detail {
-  // .left-side {
+  // .product-image-gallery{
   // }
 
-  .right-side {
-    // .upper {
+  .main-info {
     .price {
       font-size: 20px;
       .old-price {
@@ -13,13 +12,13 @@
       .sale-price {
         color: $global-color-4;
       }
-      // }
     }
     .line-break {
       border-top: 1px solid rgba($color-text-3, 0.3);
     }
 
-    .color {
+    .colorPick {
+      // color: $color-text-1;
       .color-btn {
         button {
           border-color: $color-text-3;
@@ -35,15 +34,29 @@
       }
     }
 
-    .size {
-      .box {
-        min-width: 35px;
-        height: 35px;
-        background-color: rgba($color-text-3, 0.4);
-        border: none;
-      }
-      .box:focus {
-        background-color: rgba($global-color-5, 0.7);
+    .sizePick {
+      .size-content {
+        .box,
+        .text {
+          min-width: 35px;
+          height: 35px;
+          background-color: rgba($color-text-3, 0.3);
+          border: none;
+        }
+        .outOfStock {
+          background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M1 0 L0 1 L99 100 L100 99' fill='' /><path d='M0 99 L99 0 L100 1 L1 100' fill='' /></svg>");
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: 100% 100%, auto;
+
+          .text {
+            background-color: rgba($color-text-3, 0.1);
+          }
+        }
+        .box:focus,
+        .box.focus {
+          background-color: rgba($global-color-5, 0.7);
+        }
       }
     }
     // }
@@ -56,7 +69,7 @@
     }
   }
 
-  .bottom-tab {
+  .additional-info {
     .top-bar {
       border-bottom: 1px solid $color-text-3;
 

@@ -3,9 +3,14 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [toggleBtn, setToggleBtn] = useState(false);
 
   const handleToggle = () => {
     setToggleMenu(!toggleMenu);
+  };
+
+  const handleToggleBtn = () => {
+    setToggleBtn(!toggleBtn);
   };
 
   useEffect(() => {
@@ -15,28 +20,34 @@ const Header = () => {
     } else {
       navbarCollapse.classList.remove("show");
     }
-  }, [toggleMenu]);
+    const shopBtn = document.getElementsByClassName("dropdown-content")[0];
+    if (toggleBtn === true) {
+      shopBtn.classList.add("show");
+    } else {
+      shopBtn.classList.remove("show");
+    }
+  }, [toggleMenu, toggleBtn]);
 
   return (
     <header className="header">
       <div className="container-fluid">
-        <nav className="navbar navbar-expand-lg navbar-light d-flex justify-content-between mx-md-5 py-4">
-          <div className="col-2">
+        <nav className="navbar navbar-expand-lg navbar-light py-0 d-flex justify-content-between mx-md-5">
+          <div className="col-2  p-0">
             <Link className="logo" to="/">
               <h3 className="logo">Shine</h3>
             </Link>
           </div>
 
-          <div className="navbar-nav icon-group order-md-3 ml-auto d-flex flex-row align-items-center">
-            <Link className="icon mr-3" to="/login">
+          <div className="navbar-nav icon-group order-lg-3 ml-auto d-flex flex-row align-items-center">
+            <Link className="icon mr-2" to="/login">
               <i className="bi bi-person" />
               <span className="ml-2 d-none d-lg-inline-block">Sign in</span>
             </Link>
-            <Link className="icon mr-3" to="/">
+            <Link className="icon mr-2" to="/">
               <i className="bi bi-heart" />
               <span className="ml-2 d-none d-lg-inline-block">Favourites</span>
             </Link>
-            <Link className="icon mr-3" to="/">
+            <Link className="icon mr-2" to="/">
               <i className="bi bi-bag" />
               <span className="ml-2 d-none d-lg-inline-block">Bags</span>
             </Link>
@@ -53,21 +64,49 @@ const Header = () => {
           </div>
 
           <div className="navbar-collapse collapse" id="basic-navbar-nav">
-            <div className="navbar-nav mx-auto align-content-center flex-wrap">
+            <div className="navbar-nav p-0 mx-auto align-content-center flex-wrap">
               <Link className="nav-item" to="/">
                 Home
               </Link>
-              <Link className="nav-item" to="/shop">
-                Shop
-              </Link>
-              <Link className="nav-item" to="/shop/new-arrivals">
+              <div className="dropdown">
+                <div className="nav-item dropbtn" onClick={handleToggleBtn}>
+                  Shop
+                </div>
+                <div className="dropdown-content">
+                  <Link className="" to="/shop">
+                    Shop All
+                  </Link>
+                  <Link className="" to="/shop/women">
+                    Women
+                  </Link>
+                  <Link className="" to="/shop/men">
+                    Men
+                  </Link>
+                  <Link className="" to="/shop/kids">
+                    Kids
+                  </Link>
+                  <Link className="" to="/shop/accessories">
+                    Accessories
+                  </Link>
+                  <Link className="" to="/shop/new-arrivals">
+                    New Arrivals
+                  </Link>
+                  <Link className="" to="/shop/sale">
+                    Hot Sale
+                  </Link>
+                </div>
+              </div>
+              <Link className="nav-item new-arrivals" to="/shop/new-arrivals">
                 New Arrivals
               </Link>
-              <Link className="nav-item" to="/shop/sale">
-                Sale
-              </Link>
+              <div className="sale">
+                <Link className="nav-item" to="/shop/sale">
+                  Sale
+                </Link>
+                <div className="tag"></div>
+              </div>
               <Link className="nav-item" to="/stores">
-                Store Locators
+                Store Locator
               </Link>
             </div>
           </div>
