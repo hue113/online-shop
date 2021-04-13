@@ -2,9 +2,9 @@ import React from "react";
 import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 
-const ProductDetailBottomTab = ({ product }) => {
+const AdditionalInfo = ({ product }) => {
   return (
-    <div className="section bottom-tab w-100">
+    <div className="section additional-info w-100">
       <div className="container">
         <Tab.Container defaultActiveKey="additionalInfo">
           {/* 1. Navigation Tab (top bar) */}
@@ -193,4 +193,4 @@ const ProductDetailBottomTab = ({ product }) => {
   );
 };
 
-export default ProductDetailBottomTab;
+export default AdditionalInfo;

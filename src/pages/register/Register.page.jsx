@@ -14,7 +14,7 @@ const Register = () => {
 
       <Layout>
         <div className="container">
-          <div className="row">
+          <div className="row mx-3">
             <SignUp />
           </div>
         </div>

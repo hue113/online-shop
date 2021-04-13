@@ -1,0 +1,51 @@
+.review {
+  &-card {
+    display: flex;
+
+    .avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      overflow: hidden;
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+    .content {
+      margin-top: 10px;
+      .star {
+        color: $global-color-6;
+        font-size: 14px;
+      }
+      .author-review {
+        color: $color-text-6;
+      }
+    }
+  }
+
+  &-form {
+    max-width: 700px;
+    border: 1px solid $color-text-3;
+    .input {
+      border: none;
+    }
+    .rating {
+      unicode-bidi: bidi-override;
+      direction: rtl;
+    }
+    .rating > span {
+      display: inline-block;
+      position: relative;
+      width: 1.1em;
+      color: $global-color-6;
+      margin-right: 1px;
+      cursor: pointer;
+    }
+    .rating > span:hover:before,
+    .rating > span:hover ~ span:before {
+      content: "\2605";
+      position: absolute;
+    }
+  }
+}

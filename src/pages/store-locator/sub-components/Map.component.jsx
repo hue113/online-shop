@@ -4,7 +4,8 @@ import mapboxgl from "mapbox-gl";
 import { stores } from "../../../data/stores";
 import Finder from "./Finder.component";
 
-mapboxgl.accessToken = "p.";
+mapboxgl.accessToken =
+  "pk.eyJ1Ijoiam9obmRvZTExMjM5OTEiLCJhIjoiY2tsZzRrdDc5MjA3NTJucWVtMnJiejN1biJ9.lzkXskloQlty07ri-gqp6A";
 
 const Map = () => {
   const mapContainerRef = useRef(null);

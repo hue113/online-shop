@@ -12,12 +12,15 @@ const HotDeal = () => {
             <img src="https://i.imgur.com/rJAQvok.png" alt="" />
           </div>
           <div className="col-md-7 content d-flex flex-column justify-content-center">
-            <h2 className="title mb-5">Deal of the day</h2>
+            <h2 className="title">Deal of the day</h2>
+            <span className="mt-4 mb-5">
+              Get <span className="color bold">50%</span> off to your order
+            </span>
             <Countdown date={time} renderer={renderer} />
             <div className="py-4">
               <Button
                 name="Shop Now"
-                link="/product/300"
+                link="/products/201"
                 styleClass="color slide"
               />
             </div>

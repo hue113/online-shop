@@ -22,7 +22,7 @@ const Finder = ({ stores, filteredStores }) => {
 
   return (
     <div className="section finder">
-      <h2 className="bold mb-5">Find A Store</h2>
+      <h3 className="bold mb-5">Find A Store</h3>
       <form>
         <input
           type="text"
@@ -33,14 +33,15 @@ const Finder = ({ stores, filteredStores }) => {
       </form>
 
       <div className="py-3">Suggested stores nearby</div>
-      {searchResults.map((store) => (
-        <div className="infoTab py-3" key={store.id}>
-          <h5 className="bold title mb-3">{store.name}</h5>
-          <h5>{store.address1}</h5>
-          <h5>{store.address2}</h5>
-          <h5>{store.postalCode}</h5>
-        </div>
-      ))}
+      {searchResults &&
+        searchResults.map((store) => (
+          <div className="infoTab py-3" key={store.id}>
+            <h5 className="bold title mb-3">{store.name}</h5>
+            <h5>{store.address1}</h5>
+            <h5>{store.address2}</h5>
+            <h5>{store.postalCode}</h5>
+          </div>
+        ))}
       {filteredStores === null
         ? ""
         : filteredStores.map((store) => (

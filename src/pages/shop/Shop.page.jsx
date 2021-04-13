@@ -3,6 +3,7 @@ import MetaTags from "react-meta-tags";
 
 import Layout from "../../components/layout/Layout.component";
 import ShopPreview from "../../components/shop-preview/ShopPreview.component";
+import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs.component";
 import { shop } from "../../data/shop.js";
 
 const Shop = () => {
@@ -14,6 +15,7 @@ const Shop = () => {
       </MetaTags>
 
       <Layout>
+        <Breadcrumbs path="home, shop" />
         {shop.map((category) => (
           <ShopPreview key={category.id} data={category} />
         ))}

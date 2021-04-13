@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Layout from "../../components/layout/Layout.component";
 import CategorySingle from "../../components/category-single/CategorySingle.component";
 import Sidebar from "../../components/sidebar/Sidebar.component";
+import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs.component";
 // import { shop } from "../../data/shop.js";
 import { categories } from "../../data/categories.js";
 
@@ -26,6 +27,7 @@ const ShopSingle = () => {
       </MetaTags>
 
       <Layout>
+        <Breadcrumbs path={`home, shop, ${category}`} name="Shop Page" />
         <div className="container">
           <div className="row">
             <div className="col-md-9">

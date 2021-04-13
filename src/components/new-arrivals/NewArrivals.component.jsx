@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import ProductCard from "../product-card/ProductCard.component";
 import { shop } from "../../data/shop.js";
@@ -18,10 +17,8 @@ const NewArrival = () => {
           </p>
         </div>
         <div className="row row-cols-2 row-cols-md-4">
-          {data.items.map((product) => (
-            <Link to={`/product/${product.id}`} key={product.id}>
-              <ProductCard product={product} />
-            </Link>
+          {data.items.slice(0, 8).map((product) => (
+            <ProductCard product={product} key={product.id} />
           ))}
         </div>
       </div>

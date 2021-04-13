@@ -1,21 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CategoryCard = ({ name, image, price, link }) => {
+const CategoryCard = ({ category, styleClass }) => {
+  const { title, startPrice, link, image } = category;
+
   return (
     <div className="category-card col mb-4">
-      <Link to={link}>
-        <img src={image} alt="" />
-      </Link>
-      <div className="content">
-        <h2>{name}</h2>
-        <h4 className="mb-5">
-          Starting at <span>${price.toFixed(2)}</span>
-        </h4>
-        <Link to={link}>
-          <i className="bi bi-arrow-right-circle" />
-        </Link>
+      <div className="image-box">
+        <img src={image} alt="" className={`${styleClass} background-image}`} />
       </div>
+      <Link to={link}>
+        <div className="content">
+          <h3 className="title bold mb-2">{title}</h3>
+          <h4 className="price">
+            Starting at <span>${startPrice.toFixed(2)}</span>
+          </h4>
+          <i className="bi bi-arrow-right-circle" />
+        </div>
+      </Link>
     </div>
   );
 };

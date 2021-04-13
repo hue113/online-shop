@@ -4,7 +4,7 @@ export const stores = [
     name: "Shine Toronto",
     address1: "50 Toronto Street",
     address2: "Toronto, ON",
-    postalCode: "K1V 7B8",
+    postalCode: "M3F 1Z3",
     coordinates: [-79.2576797, 43.7728978],
   },
   {
@@ -12,7 +12,7 @@ export const stores = [
     name: "Shine Winnipeg",
     address1: "50 Winnipeg Centre",
     address2: "Winnipeg, MB",
-    postalCode: "R3M 2A6",
+    postalCode: "R3I 2Q6",
     coordinates: [-97.1732823, 49.8562634],
   },
   {
@@ -20,7 +20,7 @@ export const stores = [
     name: "Shine Regina",
     address1: "50 Regina Street",
     address2: "Regina, SK",
-    postalCode: "S4T 1B7",
+    postalCode: "S4A 1G7",
     coordinates: [-104.7054489, 50.4586825],
   },
   {
@@ -28,7 +28,7 @@ export const stores = [
     name: "Shine Marie",
     address1: "50 Marie Street",
     address2: "Sault Ste. Marie, ON",
-    postalCode: "P6A 6W4",
+    postalCode: "P6N 6W4",
     coordinates: [-84.5638875, 46.5318913],
   },
   {
@@ -36,16 +36,16 @@ export const stores = [
     name: "Shine Ottawa",
     address1: "50 Ottawa Street",
     address2: "Ottawa, ON",
-    postalCode: "K1V 7B8",
+    postalCode: "K1V 7I8",
     coordinates: [-75.5942867, 45.4473421],
   },
   {
     id: 6,
-    name: "Shine Quebec City",
-    address1: "50 Quebec City Street",
-    address2: "Quebec City, QC",
-    postalCode: "K1V 7B8",
-    coordinates: [-71.1390043, 46.7957208],
+    name: "Shine Calgary",
+    address1: "50 Calgary Street",
+    address2: "Calgary, AB",
+    postalCode: "T2U 1D9",
+    coordinates: [-114.3680166, 51.0277202],
   },
   {
     id: 7,
@@ -60,7 +60,7 @@ export const stores = [
     name: "Shine Dartmouth",
     address1: "50 Dartmouth Street",
     address2: "Dartmouth, NS",
-    postalCode: "K1V 7B8",
+    postalCode: "B2X 2L1",
     coordinates: [-62.5281757, 44.917696],
   },
 ];

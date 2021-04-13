@@ -1,0 +1,23 @@
+.error-boundary {
+  background-color: #83d9c7;
+  .wrapper {
+    .image {
+      display: inline-block;
+      background-image: url("https://i.imgur.com/Q2BAOd2.png");
+      background-size: cover;
+      background-position: center;
+      width: 40vh;
+      height: 40vh;
+    }
+
+    .title {
+      color: #396177;
+    }
+
+    .description {
+      max-width: 500px;
+      // font-size: 16px;
+      color: rgb(51, 87, 107);
+    }
+  }
+}

@@ -6,7 +6,7 @@ import FeaturedProducts from "../../components/featured-products/FeaturedProduct
 import Layout from "../../components/layout/Layout.component";
 import Services from "../../components/services/Services.component";
 import ImageSlider from "../../components/image-slider/ImageSlider.component";
-import NewArrival from "../../components/new-arrival/NewArrivals.component";
+import NewArrival from "../../components/new-arrivals/NewArrivals.component";
 import HotDeal from "../../components/hot-deal/HotDeal.component";
 import Stores from "../../components/stores/Stores.component";
 

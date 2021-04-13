@@ -1,0 +1,38 @@
+.category-single {
+  .result-numers {
+    color: $color-text-6;
+  }
+  .options {
+    &:hover {
+      cursor: pointer;
+    }
+    .icon {
+      font-size: 20px;
+    }
+
+    .filter-option + .sort-option {
+      position: relative;
+    }
+    .sort-option {
+      .dropdown {
+        width: 180px;
+        position: absolute;
+        top: 30px;
+        left: 15px;
+        z-index: 1;
+        background-color: $color-bg-1;
+        box-shadow: 0px 3px 5px rgba($color-text-3, 0.5);
+        visibility: hidden;
+      }
+    }
+    .sort-option:hover {
+      .dropdown {
+        visibility: visible;
+
+        .item:hover {
+          background-color: rgba($color-text-3, 0.3);
+        }
+      }
+    }
+  }
+}

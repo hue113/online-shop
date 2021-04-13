@@ -16,12 +16,6 @@
     .custom-button {
       padding: 16px 50px;
       margin-top: 30px;
-      // position: absolute;
-      // top: 70%;
-      // left: 30%;
-      // transform: translate(-50%, -50%);
-      // z-index: 10;
-      // font-size: 16px;
     }
   }
 
@@ -30,5 +24,28 @@
     left: 70%;
     transform: translate(-50%, -50%);
     width: 100%;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .carousel-caption {
+      top: 40%;
+      left: 30%;
+      .title {
+        font-size: 20px;
+        padding: 0 !important;
+      }
+      // .subtitle {
+      //   font-size: 14px;
+      // }
+      .custom-button {
+        padding: 4px 10px;
+        margin-top: 20px;
+        font-size: 13px;
+      }
+    }
+    .reverse {
+      top: 40%;
+      left: 65%;
+    }
   }
 }
