@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "title": "Women",
+    "link": "/shop/women",
+    "startPrice": 29.99,
+    "image": "https://i.imgur.com/Uh82RTf.jpg"
+  },
+  {
+    "id": "2",
+    "title": "Men",
+    "link": "/shop/men",
+    "startPrice": 34.99,
+    "image": "https://images.unsplash.com/photo-1529400971008-f566de0e6dfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1650&q=80"
+  },
+  {
+    "id": "3",
+    "title": "Kids",
+    "link": "/shop/kids",
+    "startPrice": 19.99,
+    "image": "https://images.unsplash.com/photo-1595930013415-ca6958dc8a8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1650&q=80"
+  },
+  {
+    "id": "4",
+    "title": "Accessories",
+    "link": "/shop/accessories",
+    "startPrice": 19.99,
+    "image": "https://images.unsplash.com/photo-1513373319109-eb154073eb0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1650&q=80"
+  },
+  {
+    "id": "5",
+    "title": "New Arrivals",
+    "link": "/shop/new-arrivals",
+    "startPrice": 19.99,
+    "image": "https://images.unsplash.com/photo-1542500121-0d07e29f27f3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80"
+  }
+]

@@ -1,0 +1,33 @@
+.product-card-small {
+  .image {
+    // width: 50px;
+    height: 60px;
+    overflow: hidden;
+    object-fit: cover;
+
+    img {
+      width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      overflow: hidden;
+    }
+  }
+  a:hover {
+    color: initial;
+  }
+  .product-title {
+    max-width: 110px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .old-price {
+    color: $color-text-3;
+    text-decoration: line-through;
+    font-size: 14px;
+  }
+  .sale-price {
+    color: $global-color-4;
+    font-size: 14px;
+  }
+}
