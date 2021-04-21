@@ -28,8 +28,10 @@
     padding-bottom: 25px;
   }
 
-  a:hover {
+  a:hover,
+  .icon:hover {
     color: $global-color-5;
+    cursor: pointer;
   }
 
   .navbar-light .navbar-toggler-icon {
@@ -59,7 +61,7 @@
       position: absolute;
       top: 0;
       left: 18px;
-      background: url("../../images/hotdeal.jpg") top no-repeat;
+      background: url('../../images/hotdeal.jpg') top no-repeat;
       background-size: cover;
 
       z-index: -1;
@@ -75,7 +77,7 @@
 
     &:after {
       margin-left: 5px;
-      content: "+";
+      content: '+';
       width: 5px;
     }
   }
@@ -89,7 +91,7 @@
       color: $global-color-5;
     }
     .dropbtn:after {
-      content: "-";
+      content: '-';
       width: 5px;
     }
   }

@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import MetaTags from "react-meta-tags";
-import { useParams } from "react-router-dom";
-// import { connect } from "react-redux";
-// import { createStructuredSelector } from "reselect";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import MetaTags from 'react-meta-tags';
+import { useParams } from 'react-router-dom';
 
-import Layout from "../../components/layout/Layout.component";
-import CategorySingle from "../../components/category-single/CategorySingle.component";
-import Sidebar from "../../components/sidebar/Sidebar.component";
-import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs.component";
-import { capitalizeFirstLetterEachWord } from "../../utils/helper";
+import Layout from '../../components/layout/Layout.component';
+import CategorySingle from '../../components/category-single/CategorySingle.component';
+import Sidebar from '../../components/sidebar/Sidebar.component';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs.component';
+import { capitalizeFirstLetterEachWord } from '../../utils/helper';
 
 const ShopSingle = () => {
   const { category } = useParams();
   const [products, setProducts] = useState();
 
   useEffect(() => {
-    console.log("fetching");
+    console.log('fetching');
+
     axios
-      .get(`http://localhost:3030/api/v1/products/${category}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/v1/products/${category}`)
       .then((res) => {
         const products = res.data.data;
         console.log(products);
         setProducts(products);
-      });
-    // };
+      })
+      .catch((e) => console.log(e));
+
     return () => {};
   }, [category]);
 
@@ -52,9 +52,4 @@ const ShopSingle = () => {
   );
 };
 
-// const mapStateToProps = createStructuredSelector({
-//   categories: selectCategories,
-// });
-
-// export default connect(mapStateToProps)(ShopSingle);
 export default ShopSingle;

@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ProductCardSmall = ({ product }) => {
   // console.log(product);
@@ -9,7 +9,7 @@ const ProductCardSmall = ({ product }) => {
       <div className="row">
         <div className="col-4 pr-0 image">
           <Link
-            to={`/products/${product.name.toLowerCase().replace(" ", "-")}.${
+            to={`/products/${product.name.toLowerCase().replaceAll(' ', '-')}.${
               product.sku
             }`}
           >
@@ -18,7 +18,7 @@ const ProductCardSmall = ({ product }) => {
         </div>
         <div className="col-8 pr-0 my-auto">
           <Link
-            to={`/products/${product.name.toLowerCase().replace(" ", "-")}.${
+            to={`/products/${product.name.toLowerCase().replaceAll(' ', '-')}.${
               product.sku
             }`}
           >
@@ -28,9 +28,7 @@ const ProductCardSmall = ({ product }) => {
             <span className="mr-3">${product.price.toFixed(2)}</span>
           ) : (
             <div>
-              <span className="mr-3 old-price">
-                ${product.price.toFixed(2)}
-              </span>
+              <span className="mr-3 old-price">${product.price.toFixed(2)}</span>
               <span className="sale-price">
                 ${(product.price * (1 - product.discount / 100)).toFixed(2)}
               </span>

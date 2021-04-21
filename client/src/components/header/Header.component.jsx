@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import IconGroup from "./sub-components/IconGroup.component";
-import Logo from "./sub-components/Logo.component";
-import MobileMenu from "./sub-components/MobileMenu.component";
+import IconGroup from './sub-components/IconGroup.component';
+import Logo from './sub-components/Logo.component';
+import MobileMenu from './sub-components/MobileMenu.component';
 
 const Header = () => {
   return (

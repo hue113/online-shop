@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Button = ({ name, children, link, styleClass }) => {
+const Button = ({ name, children, link, styleClass, onClick }) => {
   return (
     <>
       {link ? (
@@ -12,7 +12,7 @@ const Button = ({ name, children, link, styleClass }) => {
           </button>
         </Link>
       ) : (
-        <button className={`custom-button ${styleClass}`}>
+        <button className={`custom-button ${styleClass}`} onClick={onClick}>
           {name}
           {children}
         </button>
