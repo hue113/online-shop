@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // import { shop } from "../../data/shop";
-import { shuffleArray } from "../../utils/helper";
-import ProductCardSmall from "../product-card/ProductCardSmall.component";
+import { shuffleArray } from '../../utils/helper';
+import ProductCardSmall from '../product-card/ProductCardSmall.component';
 
 const Sidebar = () => {
   const [newArrivals, setNewArrivals] = useState();
-  let recentViewed = JSON.parse(localStorage.getItem("recentViewed") || "[]");
+  let recentViewed = JSON.parse(localStorage.getItem('recentViewed') || '[]');
 
   useEffect(() => {
-    console.log("fetching");
+    console.log('fetching');
     axios
-      .get(`http://localhost:3030/api/v1/products/new-arrivals`)
+      .get(`${process.env.REACT_APP_API_URL}/api/v1/products/new-arrivals`)
       .then((res) => {
         const products = res.data.data;
         setNewArrivals(shuffleArray(products).slice(0, 4));
@@ -35,9 +35,7 @@ const Sidebar = () => {
         <div className="row mb-4">
           <h3 className="title bold px-4">New Products</h3>
           {newArrivals &&
-            newArrivals.map((p) => (
-              <ProductCardSmall key={p.sku} product={p} />
-            ))}
+            newArrivals.map((p) => <ProductCardSmall key={p.sku} product={p} />)}
         </div>
       </div>
     </div>

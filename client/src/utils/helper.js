@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const shuffleArray = (array) => {
   var currentIndex = array.length,
     temporaryValue,
@@ -39,4 +41,17 @@ export const capitalizeFirstLetterEachWord = (string) => {
   }
   words.join(" ");
   return words;
+};
+
+export const toastTopCenter = (type, message) => {
+  switch (type) {
+    case "error":
+      toast.error(message, { position: toast.POSITION.TOP_CENTER });
+      break;
+    case "success":
+      toast.success(message, { position: toast.POSITION.TOP_CENTER });
+      break;
+    default:
+      break;
+  }
 };

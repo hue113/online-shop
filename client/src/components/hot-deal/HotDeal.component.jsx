@@ -1,6 +1,6 @@
-import React from "react";
-import Button from "../custom-button/Button.component";
-import Countdown from "react-countdown";
+import React from 'react';
+import Button from '../custom-button/Button.component';
+import Countdown from 'react-countdown';
 
 const HotDeal = () => {
   const time = Date.now() + 400000000;
@@ -20,7 +20,7 @@ const HotDeal = () => {
             <div className="py-4">
               <Button
                 name="Shop Now"
-                link="/products/201"
+                link="/products/denim-shirt.m201"
                 styleClass="color slide"
               />
             </div>
