@@ -1,12 +1,17 @@
-import React from "react";
-// import { Link } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-const ProductCardGrid = ({ product }) => {
+import { addItemToFavourite } from '../../../redux/favourite/favourite.actions';
+import { addItemToCart } from '../../../redux/cart/cart.actions';
+
+const ProductCardGrid = ({ product, addItemToFavourite, addItemToCart }) => {
+  // console.log(product);
   return (
     <div className="product-card-grid">
       <div className="image-box mb-3">
         <a
-          href={`/products/${product.name.toLowerCase().replaceAll(" ", "-")}.${
+          href={`/products/${product.name.toLowerCase().replace(/ /g, '-')}.${
             product.sku
           }`}
         >
@@ -18,18 +23,23 @@ const ProductCardGrid = ({ product }) => {
         )}
 
         <div className="icon-group">
-          <div className="box favourite mb-2 px-3 py-2">
-            <i className="bi bi-heart" />
+          {/*  */}
+          <div
+            className="box favourite mb-2 px-3 py-2"
+            onClick={() => addItemToFavourite(product)}
+          >
+            <i className="bi bi-heart icon" />
+            {/* <i className="bi bi-heart-fill favourite-icon"></i> */}
           </div>
-          <div className="box cart px-3 py-2">
-            <i className="bi bi-bag-plus" />
+          <div className="box cart px-3 py-2" onClick={() => addItemToCart(product)}>
+            {/* <div className="box cart px-3 py-2" onClick={() => console.log('click')}> */}
+            <i className="bi bi-bag-plus icon" />
           </div>
         </div>
       </div>
-
       <div className="content">
         <a
-          href={`/products/${product.name.toLowerCase().replaceAll(" ", "-")}.${
+          href={`/products/${product.name.toLowerCase().replace(/ /g, '-')}.${
             product.sku
           }`}
         >
@@ -52,4 +62,10 @@ const ProductCardGrid = ({ product }) => {
   );
 };
 
-export default ProductCardGrid;
+const mapDispatchToProps = (dispatch) => ({
+  addItemToFavourite: (item) => dispatch(addItemToFavourite(item)),
+  addItemToCart: (item) => dispatch(addItemToCart(item)),
+});
+
+export default connect(null, mapDispatchToProps)(ProductCardGrid);
+// export default ProductCardGrid;

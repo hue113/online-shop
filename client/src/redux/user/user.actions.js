@@ -6,9 +6,9 @@ export const setCurrentUser = (user) => ({
   payload: user,
 });
 
-export const toggleLogOut = () => ({
-  type: UserActionTypes.TOOGLE_LOGOUT,
-});
+// export const toggleLogOut = () => ({
+//   type: UserActionTypes.TOOGLE_LOGOUT,
+// });
 
 export const getCurrentUser = () => {
   console.log('get current user');

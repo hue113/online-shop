@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 // const ToggleItem = ({ name, children, handleToggle }) => {
 //   return <h4 onClick={() => handleToggle(name)}>{children}</h4>;
 // };
 
 const Footer = () => {
-  const [toggle, setToggle] = useState([]);
+  // const [toggle, setToggle] = useState([]);
 
-  const handleToggle = (name) => {
-    const itemCollapse = document.querySelector(`#${name}`);
-    if (toggle.name === true) {
-      itemCollapse.classList.add("collapse");
-    } else {
-      itemCollapse.classList.remove("collapse");
-    }
-    setToggle({ ...toggle, [name]: !toggle[name] });
-  };
+  // const handleToggle = (name) => {
+  //   const itemCollapse = document.querySelector(`#${name}`);
+  //   if (toggle.name === true) {
+  //     itemCollapse.classList.add("collapse");
+  //   } else {
+  //     itemCollapse.classList.remove("collapse");
+  //   }
+  //   setToggle({ ...toggle, [name]: !toggle[name] });
+  // };
 
-  useEffect(() => {
-    console.log(toggle);
-  }, [toggle]);
+  // useEffect(() => {
+  //   console.log(toggle);
+  // }, [toggle]);
 
   return (
     <footer className="footer bg-dark py-5 px-4">
       <div className="container">
         <div className="row">
           <div className="col-6 col-md-3">
-            <h4 onClick={(e) => handleToggle("shop")}>Shop</h4>
-            <div className={`${toggle.shop ? "collapse" : ""}`} id="shop">
+            <h4>Shop</h4>
+            <div className="" id="shop">
               <div className="d-none d-flex flex-column" id="shop2">
                 <Link className="item" to="/">
                   Women
@@ -50,11 +50,8 @@ const Footer = () => {
           </div>
 
           <div className="col-6 col-md-3">
-            <h4 onClick={(e) => handleToggle("usefulLinks")}>Useful Links</h4>
-            <div
-              className={`${toggle.usefulLinks ? "collapse" : ""}`}
-              id="usefulLinks"
-            >
+            <h4>Useful Links</h4>
+            <div className="" id="usefulLinks">
               <div className="collapse d-flex flex-column">
                 <Link className="item" to="/">
                   Customer Service
@@ -73,14 +70,8 @@ const Footer = () => {
           </div>
 
           <div className="col-6 col-md-3">
-            <h4 onClick={(e) => handleToggle("followUs")}>Follow us</h4>
-            {/* <ToggleItem name="followUs" handleToggle={(e) => handleToggle("followUs")}>
-              Follow Us
-            </ToggleItem> */}
-            <div
-              className={`${toggle.followUs ? "collapse" : ""}`}
-              id="followUs"
-            >
+            <h4>Follow us</h4>
+            <div className="" id="followUs">
               <div className="collapse d-flex flex-column">
                 <Link className="item" to="/">
                   Facebook
