@@ -38,6 +38,17 @@
       .box {
         background-color: $color-bg-1;
       }
+
+      .icon:hover {
+        color: $global-color-5;
+        cursor: pointer;
+      }
+
+      // .favourite-icon {
+      //   &:hover {
+      //     color: $global-color-4;
+      //   }
+      // }
     }
 
     .special {

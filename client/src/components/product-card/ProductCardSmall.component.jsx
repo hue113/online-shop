@@ -9,7 +9,7 @@ const ProductCardSmall = ({ product }) => {
       <div className="row">
         <div className="col-4 pr-0 image">
           <Link
-            to={`/products/${product.name.toLowerCase().replaceAll(' ', '-')}.${
+            to={`/products/${product.name.toLowerCase().replace(/ /g, '-')}.${
               product.sku
             }`}
           >
@@ -18,7 +18,7 @@ const ProductCardSmall = ({ product }) => {
         </div>
         <div className="col-8 pr-0 my-auto">
           <Link
-            to={`/products/${product.name.toLowerCase().replaceAll(' ', '-')}.${
+            to={`/products/${product.name.toLowerCase().replace(/ /g, '-')}.${
               product.sku
             }`}
           >

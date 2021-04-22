@@ -1,14 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ProductCardSingle = ({ product }) => {
   return (
     <div className="product-card-single row">
       <div className="image-box col-sm-4 mb-4">
         <Link
-          to={`/products/${product.name.toLowerCase().replaceAll(" ", "-")}.${
-            product.sku
-          }`}
+          to={`/products/${product.name.toLowerCase().replace(/ /g, '-')}.${product.sku}`}
         >
           <img src={product.image} alt="" />
         </Link>
@@ -28,9 +26,7 @@ const ProductCardSingle = ({ product }) => {
             <span className="mr-4">${product.price.toFixed(2)}</span>
           ) : (
             <div>
-              <span className="mr-4 old-price">
-                ${product.price.toFixed(2)}
-              </span>
+              <span className="mr-4 old-price">${product.price.toFixed(2)}</span>
               <span className="sale-price">
                 ${(product.price * (1 - product.discount / 100)).toFixed(2)}
               </span>

@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
-import Button from "../../../components/custom-button/Button.component";
+import React, { useState, useEffect } from 'react';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
+import { connect } from 'react-redux';
 
-const MainInfo = ({ product }) => {
-  const [color, setColor] = useState(
-    product.variation ? product.variation[0].color : ""
-  );
+import Button from '../../../components/custom-button/Button.component';
+import { addItemToFavourite } from '../../../redux/favourite/favourite.actions';
+
+const MainInfo = ({ product, addItemToFavourite }) => {
+  const [color, setColor] = useState(product.variation ? product.variation[0].color : '');
   const [size, setSize] = useState(
-    product.variation ? product.variation[0].size[0].name : ""
+    product.variation ? product.variation[0].size[0].name : '',
   );
 
   const handleSelectColor = (color) => {
@@ -17,12 +18,12 @@ const MainInfo = ({ product }) => {
 
   const handleSelectSize = (size, i) => {
     // fixed Safari issue: not changing style on click
-    const sizeBtn = document.querySelectorAll(".sizebtn");
+    const sizeBtn = document.querySelectorAll('.sizebtn');
     sizeBtn.forEach((btn) => {
-      btn.classList.remove("focus");
+      btn.classList.remove('focus');
     });
     const selectedSize = document.querySelector(`.box.sizebtn.s${size}`);
-    selectedSize.classList.add("focus");
+    selectedSize.classList.add('focus');
 
     setSize(size);
   };
@@ -41,9 +42,7 @@ const MainInfo = ({ product }) => {
               <span className="mr-5">${product.price.toFixed(2)}</span>
             ) : (
               <div>
-                <span className="mr-4 old-price">
-                  ${product.price.toFixed(2)}
-                </span>
+                <span className="mr-4 old-price">${product.price.toFixed(2)}</span>
                 <span className="sale-price">
                   ${(product.price * (1 - product.discount / 100)).toFixed(2)}
                 </span>
@@ -89,7 +88,7 @@ const MainInfo = ({ product }) => {
                     >
                       {el.name.toUpperCase()}
                     </button>
-                  )
+                  ),
                 )}
             </div>
           </div>
@@ -112,8 +111,11 @@ const MainInfo = ({ product }) => {
         <div className="line-break my-5"></div>
 
         <div className="d-flex justify-content-center">
-          <Button link="/" styleClass="color square mx-4" name="Add To Cart" />
-          <Button link="/" styleClass="color square mx-4">
+          <Button styleClass="color square mx-4" name="Add To Cart" />
+          <Button
+            onClick={() => addItemToFavourite(product)}
+            styleClass="color square mx-4"
+          >
             <i className="bi bi-heart" />
           </Button>
         </div>
@@ -122,4 +124,9 @@ const MainInfo = ({ product }) => {
   );
 };
 
-export default MainInfo;
+const mapDispatchToProps = (dispatch) => ({
+  addItemToFavourite: (item) => dispatch(addItemToFavourite(item)),
+});
+
+export default connect(null, mapDispatchToProps)(MainInfo);
+// export default MainInfo;

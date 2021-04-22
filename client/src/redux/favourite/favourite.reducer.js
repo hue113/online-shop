@@ -1,44 +1,62 @@
 import { FavouriteActionTypes } from './favourite.types';
-import { addItemToCart, removeItemFromCart } from './cart.utils';
+import { addItemToFavourite, removeItemFromFavourite } from '../../utils/helper';
+
+// const INITIAL_STATE = [];
+
+// const favouriteReducer = (favouriteItems = INITIAL_STATE, action) => {
+//   switch (action.type) {
+//     case FavouriteActionTypes.ADD_ITEM:
+//       return {
+//         favouriteItems: addItemToFavourite(favouriteItems, action.payload),
+//       };
+//     case FavouriteActionTypes.REMOVE_ITEM:
+//       return {
+//         favouriteItems: removeItemFromList(favouriteItems, action.payload),
+//       };
+//     case FavouriteActionTypes.CLEAR_ITEM_FROM_LIST:
+//       return {
+//         favouriteItems: favouriteItems.filter((item) => item.id !== action.payload.id),
+//       };
+//     case FavouriteActionTypes.CLEAR_LIST:
+//       return {
+//         favouriteItems: [],
+//       };
+//     default:
+//       return favouriteItems;
+//   }
+// };
 
 const INITIAL_STATE = {
-  hidden: true,
   favouriteItems: [],
 };
 
-const cartReducer = (state = INITIAL_STATE, action) => {
+const favouriteReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case FavouriteActionTypes.TOOGLE_FAVOURITE_HIDDEN:
+    case FavouriteActionTypes.ADD_ITEM_TO_FAVOURITE:
       return {
         ...state,
-        hidden: !state.hidden,
+        favouriteItems: addItemToFavourite(state.favouriteItems, action.payload),
       };
-    case FavouriteActionTypes.ADD_ITEM:
+    case FavouriteActionTypes.REMOVE_ITEM_FROM_FAVOURITE:
       return {
         ...state,
-        cartItems: addItemToCart(state.cartItems, action.payload),
-        // BEFORE: cartItems: [...state.cartItems, action.payload]
-      };
-    case FavouriteActionTypes.REMOVE_ITEM:
-      return {
-        ...state,
-        cartItems: removeItemFromCart(state.cartItems, action.payload),
+        favouriteItems: removeItemFromFavourite(state.favouriteItems, action.payload),
       };
     case FavouriteActionTypes.CLEAR_ITEM_FROM_LIST:
       return {
         ...state,
-        cartItems: state.cartItems.filter(
-          (cartItem) => cartItem.id !== action.payload.id,
+        favouriteItems: state.favouriteItems.filter(
+          (item) => item.id !== action.payload.id,
         ),
       };
     case FavouriteActionTypes.CLEAR_LIST:
       return {
         ...state,
-        cartItems: [],
+        favouriteItems: [],
       };
     default:
       return state;
   }
 };
 
-export default cartReducer;
+export default favouriteReducer;

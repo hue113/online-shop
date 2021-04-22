@@ -20,8 +20,8 @@ app.use(cors());
 //     origin: [
 //       `http://localhost:3000`,
 //       `https://localhost:3000`,
-//       `http://192.168.2.61`,
-//       `https://192.168.2.61/`,
+//       `http://192.168.2.61:3000`,
+//       `https://192.168.2.61:3000/`,
 //     ],
 //     credentials: "true",
 //     exposedHeaders: ["set-cookie"],

@@ -1,17 +1,16 @@
 import { FavouriteActionTypes } from './favourite.types';
 
-export const toggleCartHidden = (state) => ({
-  type: FavouriteActionTypes.TOOGLE_FAVOURITE_HIDDEN,
-  // payload: state           // no need to write this, because you just need the action type, then react will automatically set the opposite for this case
-});
+// export const toggleFavourite = () => ({
+//   type: FavouriteActionTypes.TOOGLE_FAVOURITE,
+// });
 
-export const addItem = (item) => ({
-  type: FavouriteActionTypes.ADD_ITEM,
+export const addItemToFavourite = (item) => ({
+  type: FavouriteActionTypes.ADD_ITEM_TO_FAVOURITE,
   payload: item,
 });
 
-export const removeItem = (item) => ({
-  type: FavouriteActionTypes.REMOVE_ITEM,
+export const removeItemFromFavourite = (item) => ({
+  type: FavouriteActionTypes.REMOVE_ITEM_FROM_FAVOURITE,
   payload: item,
 });
 
