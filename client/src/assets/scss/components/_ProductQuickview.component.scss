@@ -1,0 +1,152 @@
+.product-quickview#quickview {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 30px rgb(0 0 0 / 20%);
+  // width: 100vw !important;
+  // height: 100vh !important;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  transition: 0.3s all linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .inner {
+    background-color: $color-bg-1;
+    width: 850px;
+    height: 540px;
+    position: relative;
+
+    // 1. IMAGE GALLERY (left side)
+    .image {
+      // OVERRIDE STYLING FOR IMAGE GALLERY LIB
+      .image-gallery-wrapper {
+      }
+      .image-gallery {
+        // max-height: 540px;
+        width: 360px;
+        padding: 20px;
+        overflow: hidden;
+      }
+      .image-gallery-slide img {
+        height: 405px;
+        width: 100%;
+        object-fit: cover;
+      }
+      // resize thumbnails image
+      .image-gallery-thumbnails {
+        .image-gallery-thumbnail-inner {
+          .image-gallery-thumbnail-image {
+            height: 85px;
+            object-fit: cover;
+          }
+        }
+      }
+      // resize navigation button
+      .image-gallery-left-nav .image-gallery-svg,
+      .image-gallery-right-nav .image-gallery-svg {
+        height: 50px;
+      }
+    }
+
+    // 2. PRODUCT CONTENT (right side)
+    .detail {
+      padding: 40px 30px;
+      width: calc(100% - 360px);
+      height: 100%;
+
+      .star {
+        color: $global-color-6;
+        font-size: 15px;
+      }
+      .title {
+        font-size: 26px;
+      }
+      .price {
+        font-size: 17px;
+        .old-price {
+          color: $color-text-3;
+          text-decoration: line-through;
+        }
+        .sale-price {
+          color: $global-color-4;
+        }
+      }
+      .description {
+        color: $color-text-6;
+        font-size: 14px;
+      }
+      .options {
+        .colorPick {
+          // color: $color-text-1;
+          .color-btn {
+            button {
+              border-color: $color-text-3;
+              background-color: $color-bg-1;
+              color: $color-text-1;
+              width: 80px;
+              height: 35px;
+            }
+            button,
+            .dropdown-item {
+              font-size: 14px;
+            }
+          }
+        }
+
+        .sizePick {
+          .size-content {
+            .box,
+            .text {
+              min-width: 35px;
+              height: 35px;
+              background-color: rgba($color-text-3, 0.3);
+              border: none;
+            }
+            .outOfStock {
+              background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M1 0 L0 1 L99 100 L100 99' fill='' /><path d='M0 99 L99 0 L100 1 L1 100' fill='' /></svg>");
+              background-repeat: no-repeat;
+              background-position: center center;
+              background-size: 100% 100%, auto;
+
+              .text {
+                background-color: rgba($color-text-3, 0.1);
+              }
+            }
+            .box:focus,
+            .box.focus {
+              background-color: rgba($global-color-5, 0.7);
+            }
+          }
+        }
+        // }
+      }
+
+      .quantity {
+        input {
+          width: 50px;
+          height: 35px;
+        }
+      }
+
+      .custom-button {
+        font-size: 15px;
+      }
+    }
+    // 3. CLOSE BUTTON
+    .close-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 30px;
+      &:hover {
+        cursor: pointer;
+        color: $global-color-5;
+      }
+    }
+  }
+}

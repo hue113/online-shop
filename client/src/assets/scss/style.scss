@@ -10,6 +10,7 @@
 @import 'common';
 
 @import './pages/ProductDetail.page';
+@import './pages/Checkout.page';
 
 @import './components/Header.component';
 @import './components/Footer.component';
@@ -33,3 +34,4 @@
 @import './components/Favourites.component';
 @import './components/ProductCardSmall.component';
 @import './components/SignOut.component';
+@import './components/ProductQuickview.component';
