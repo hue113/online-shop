@@ -67,21 +67,48 @@ export const addItemToFavourite = (existingItems, itemToAdd) => {
   return [...existingItems, itemToAdd];
 };
 
-export const addItemToCart = (existingItems, itemToAdd) => {
-  console.log('add item to cart');
-  const existingListItem = existingItems.find((item) => item._id === itemToAdd._id);
-  // check if item is found in array (means add more than 1 quantity)
+export const addItemToCart = (existingItems, itemToAdd, orderToAdd) => {
+  // CHECK IF ITEM ALREADY EXISTS IN CART
+  let existingListItem = existingItems.find((item) => item._id === itemToAdd._id);
+  // 1a. IF ITEM EXIST
   if (existingListItem) {
-    return existingItems.map(
-      (item) =>
-        item._id === itemToAdd._id ? { ...item, quantity: item.quantity + 1 } : item, // means no modification to item
-      // Don't put {item} with curly braces here.
-      // Because the result with the curly braces is a nested object rather than the object itself
+    let orders = existingListItem.orders;
+
+    const existingOrder = orders.find(
+      (existOrder) =>
+        existOrder.color === orderToAdd.color && existOrder.size === orderToAdd.size,
     );
+    // STEP 2a. CHECK IF SAME ORDER EXIST --> QUANTITY + 1 FOR THAT ORDER
+    if (existingOrder) {
+      let foundProduct = existingListItem;
+      let foundOrder = existingOrder;
+      foundOrder.quantity += 1;
+      let updatedOrders = foundProduct.orders.map((existOrder) =>
+        existOrder.color === orderToAdd.color && existOrder.size === orderToAdd.size
+          ? foundOrder
+          : existOrder,
+      );
+      foundProduct.orders = updatedOrders;
+
+      return existingItems.map((item) =>
+        item._id === itemToAdd._id ? foundProduct : item,
+      );
+    }
+
+    // STEP 2b. IF ORDER IS DIFFERENT --> ADD ORDER TO ARRAYS
+    else {
+      let foundProduct = existingListItem;
+      foundProduct.orders.push(orderToAdd);
+      return existingItems.map((item) =>
+        item._id === itemToAdd._id ? foundProduct : item,
+      );
+    }
   }
 
-  // if item is not found in array, we will return the original existingItems and add base quantity =1
-  return [...existingItems, { ...itemToAdd, quantity: 1 }];
+  // 1b. IF ITEM DOES NOT EXIST
+  const orders = [];
+  orders.push(orderToAdd);
+  return [...existingItems, { ...itemToAdd, orders }];
 };
 
 export const removeItemFromFavourite = (existingItems, itemToRemove) => {

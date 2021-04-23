@@ -15,6 +15,7 @@ const ProductDetail = lazy(() => import('./pages/product-detail/ProductDetail.pa
 const Login = lazy(() => import('./pages/log-in/LogIn.page'));
 const Register = lazy(() => import('./pages/register/Register.page'));
 const StoreLocator = lazy(() => import('./pages/store-locator/StoreLocator.page'));
+const Checkout = lazy(() => import('./pages/checkout/Checkout.page'));
 
 toast.configure();
 const App = ({ getCurrentUser }) => {
@@ -32,6 +33,7 @@ const App = ({ getCurrentUser }) => {
             <Route exact path={process.env.PUBLIC_URL + '/home'} component={Home} />
             <Route exact path={process.env.PUBLIC_URL + '/shop'} component={Shop} />
             <Route
+              exact
               path={process.env.PUBLIC_URL + '/shop/:category'}
               component={ShopSingle}
             />
@@ -50,6 +52,11 @@ const App = ({ getCurrentUser }) => {
               exact
               path={process.env.PUBLIC_URL + '/stores'}
               component={StoreLocator}
+            />
+            <Route
+              exact
+              path={process.env.PUBLIC_URL + '/checkout'}
+              component={Checkout}
             />
           </ErrorBoundary>
           <ToastContainer />

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { renderRatingStars } from "../../../utils/helper";
+import { renderRatingStars } from '../../../utils/helper';
 
 const ReviewCard = ({ name, rating, review, imageUrl }) => {
   return (
