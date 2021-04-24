@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { createPortal } from 'react-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -11,15 +12,18 @@ import {
   selectCartHidden,
   selectFavouriteHidden,
   selectLogOutHidden,
-} from '../../../redux/icon/icon.selectors';
+} from '../../../redux/toggle/toggle.selectors';
 import {
   toggleFavourite,
   toggleCart,
   toggleLogOut,
-} from '../../../redux/icon/icon.actions';
+} from '../../../redux/toggle/toggle.actions';
 
 import SignOut from '../../sign-out/SignOut.component';
 import MobileMenu from './MobileMenu.component';
+import CartList from '../../cart-list/CartList.component';
+
+const cartModalContainer = document.getElementById('cart_modal');
 
 const IconGroup = ({
   currentUser,
@@ -73,7 +77,8 @@ const IconGroup = ({
           <i className="bi bi-bag icon" />
           <span className="name ml-2 d-none d-lg-inline-block">Bags</span>
         </div>
-        {showCart ? '' : <Favourites />}
+
+        {showCart ? '' : createPortal(<CartList />, cartModalContainer)}
       </div>
 
       {/* MOBILE MENU icon (hidden on desktop) */}
@@ -95,6 +100,7 @@ const mapStateToProps = createStructuredSelector({
   showLogOut: selectLogOutHidden,
   showFavourite: selectFavouriteHidden,
   showCart: selectCartHidden,
+  // showProductModal: selectProductModalHidden,
   favouriteLength: selectFavouriteLength,
   cartLength: selectCartLength,
 });
@@ -103,6 +109,7 @@ const mapDispatchToProps = (dispatch) => ({
   toggleLogOut: () => dispatch(toggleLogOut()),
   toggleFavourite: () => dispatch(toggleFavourite()),
   toggleCart: () => dispatch(toggleCart()),
+  // toggleProductModal: () => dispatch(toggleProductModal()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(IconGroup);

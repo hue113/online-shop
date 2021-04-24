@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 
 import Button from '../custom-button/Button.component';
 import CustomForm from '../form/CustomForm.component';
-
+import { toastSetting } from '../../utils/helper';
 import { setCurrentUser } from '../../redux/user/user.actions';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
@@ -26,7 +26,6 @@ const SignIn = ({ currentUser, setCurrentUser }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('click');
 
     axios
       .post(`${process.env.REACT_APP_API_URL}/api/v1/users/login`, userCredentials)
@@ -37,26 +36,20 @@ const SignIn = ({ currentUser, setCurrentUser }) => {
           // set token in cookies
           document.cookie = `jwt=${res.data.token}`;
           // console.log(`jwt=${res.data.token}`);
-          toast.success('Successfully Logged In!', {
-            position: toast.POSITION.TOP_CENTER,
-          });
+          toast.success('Successfully Logged In!', toastSetting);
           localStorage.setItem('user', JSON.stringify(res.data));
           window.setTimeout(() => {
             history.push('/');
           }, 2000);
         } else if (res.status === 400) {
-          toast.error(res.data.message, {
-            position: toast.POSITION.TOP_CENTER,
-          });
+          toast.error(res.data.message, toastSetting);
         }
         console.log(res);
         // console.log(res.data.token);
       })
       .catch((err) => {
         console.log(err);
-        toast.error(err.response.data.message, {
-          position: toast.POSITION.TOP_CENTER,
-        });
+        toast.error(err.response.data.message, toastSetting);
       });
   };
 

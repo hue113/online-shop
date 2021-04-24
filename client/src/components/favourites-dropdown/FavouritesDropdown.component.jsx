@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -9,24 +9,16 @@ import { selectFavouriteItems } from '../../redux/favourite/favourite.selectors'
 import { removeItemFromFavourite } from '../../redux/favourite/favourite.actions';
 
 const FavouritesDropdown = ({ favourites, removeItemFromFavourite }) => {
-  // console.log(favourites);
-
-  console.log('favourite');
-  // useEffect(() => {
-  //   return () => {};
-  // }, [favourites]);
-
   return (
     <div className="favourites-dropdown d-flex justify-content-between align-items-center">
       <div className="items">
         {favourites.length ? (
-          favourites.slice(0, 3).map((product) => (
+          favourites.map((product) => (
             <div className="wrapper d-flex flex-row" key={product.sku}>
               <ProductCardSmall product={product} />
               <span
                 className="remove p-3 m-auto"
                 onClick={() => removeItemFromFavourite(product)}
-                // onClick={() => console.log('click')}
               >
                 <i className="bi bi-x" />
               </span>
@@ -35,9 +27,9 @@ const FavouritesDropdown = ({ favourites, removeItemFromFavourite }) => {
         ) : (
           <span className="empty-message">Your wishlist is empty.</span>
         )}
-        {favourites.length > 3 ? <span className="more text-center">...</span> : ''}
+        {/* {favourites.length > 3 ? <span className="more text-center">...</span> : ''} */}
       </div>
-      <Button name="View All" styleClass="square color" />
+      <Button name="View All" styleClass="square color lighter" />
     </div>
   );
 };

@@ -7,7 +7,7 @@ import productReducer from './product/product.reducer';
 import categoryReducer from './category/category.reducer';
 import favouriteReducer from './favourite/favourite.reducer';
 import cartReducer from './cart/cart.reducer';
-import iconReducer from './icon/icon.reducer';
+import toggleReducer from './toggle/toggle.reducer';
 
 const persistConfig = {
   key: 'root', // start from the root
@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
   category: categoryReducer,
   favourite: favouriteReducer,
   cart: cartReducer,
-  icon: iconReducer,
+  toggle: toggleReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);

@@ -10,7 +10,6 @@ const Sidebar = () => {
   let recentViewed = JSON.parse(localStorage.getItem('recentViewed') || '[]');
 
   useEffect(() => {
-    console.log('fetching');
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/v1/products/new-arrivals`)
       .then((res) => {

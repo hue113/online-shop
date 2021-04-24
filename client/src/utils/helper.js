@@ -43,6 +43,11 @@ export const capitalizeFirstLetterEachWord = (string) => {
   return words;
 };
 
+export const toastSetting = {
+  position: toast.POSITION.TOP_CENTER,
+  draggable: true,
+};
+
 export const toastTopCenter = (type, message) => {
   switch (type) {
     case 'error':
@@ -56,33 +61,42 @@ export const toastTopCenter = (type, message) => {
   }
 };
 
+/**
+ * This method calculate product price/order price based on orginal price (required), discount (required) & quantity (if yes)
+ * @returns price after calculation
+ */
+export const calculatePrice = (price, discount, quantity) => {
+  if (quantity) {
+    const ItemOrderPrice = (quantity * price * (100 - discount)) / 100;
+    return ItemOrderPrice.toFixed(2);
+  } else return ((price * (100 - discount)) / 100).toFixed(2);
+};
 export const addItemToFavourite = (existingItems, itemToAdd) => {
-  // console.log('existingItems', existingItems);
-  // console.log('itemToAdd', itemToAdd);
   const existingListItem = existingItems.find((item) => item._id === itemToAdd._id);
   if (existingListItem) {
+    toast.warn('Item already exists in your favourite list', toastSetting);
     return existingItems;
   }
-  // if item is not found in array, we will return the original existingItems and add base quantity =1
+  toast('Item was successfully added to Favourites !', toastSetting);
   return [...existingItems, itemToAdd];
 };
 
 export const addItemToCart = (existingItems, itemToAdd, orderToAdd) => {
   // CHECK IF ITEM ALREADY EXISTS IN CART
   let existingListItem = existingItems.find((item) => item._id === itemToAdd._id);
-  // 1a. IF ITEM EXIST
+
+  // 1. IF ITEM EXIST --> can be either same order or new order for that ITEM
   if (existingListItem) {
     let orders = existingListItem.orders;
-
     const existingOrder = orders.find(
       (existOrder) =>
         existOrder.color === orderToAdd.color && existOrder.size === orderToAdd.size,
     );
-    // STEP 2a. CHECK IF SAME ORDER EXIST --> QUANTITY + 1 FOR THAT ORDER
+    // STEP 1a. CHECK IF SAME ORDER already EXIST --> UPDATE QUANTITY FOR THAT ORDER
     if (existingOrder) {
       let foundProduct = existingListItem;
       let foundOrder = existingOrder;
-      foundOrder.quantity += 1;
+      foundOrder.quantity += orderToAdd.quantity;
       let updatedOrders = foundProduct.orders.map((existOrder) =>
         existOrder.color === orderToAdd.color && existOrder.size === orderToAdd.size
           ? foundOrder
@@ -95,7 +109,7 @@ export const addItemToCart = (existingItems, itemToAdd, orderToAdd) => {
       );
     }
 
-    // STEP 2b. IF ORDER IS DIFFERENT --> ADD ORDER TO ARRAYS
+    // STEP 1b. IF ORDER IS DIFFERENT for that ITEM --> ADD ORDER TO ITEM's ORDERS ARRAY
     else {
       let foundProduct = existingListItem;
       foundProduct.orders.push(orderToAdd);
@@ -105,7 +119,7 @@ export const addItemToCart = (existingItems, itemToAdd, orderToAdd) => {
     }
   }
 
-  // 1b. IF ITEM DOES NOT EXIST
+  // 2. IF ITEM DOES NOT EXIST --> ADD ITEM with NEW ORDER
   const orders = [];
   orders.push(orderToAdd);
   return [...existingItems, { ...itemToAdd, orders }];
@@ -115,12 +129,76 @@ export const removeItemFromFavourite = (existingItems, itemToRemove) => {
   return existingItems.filter((item) => item._id !== itemToRemove._id);
 };
 
-export const removeItemFromCart = (existingItems, itemToRemove) => {
-  const existingListItem = existingItems.find((item) => item._id === itemToRemove._id);
-  if (existingListItem.quantity === 1) {
-    return existingItems.filter((item) => item.id !== itemToRemove.id);
+export const removeItemOrderFromCart = (existingItems, itemToRemove, orderToDelete) => {
+  // FIND PRODUCT ITEM THAT NEEDS REMOVE ORDERS
+  let existingListItem = itemToRemove;
+
+  // 1. If that product has only 1 order -> remove that product from cart
+  if (existingListItem.orders.length === 1) {
+    toast.warn('Order was removed successfully', toastSetting);
+    return existingItems.filter((item) => item._id !== itemToRemove._id);
   }
+
+  // 2. If that product includes other nested orders
+  // -> Filter to remove the requested order, then Update the product with new filtered orders array
+  else {
+    const filteredOrders = existingListItem.orders.filter(
+      (o) => o.size !== orderToDelete.size || o.color !== orderToDelete.color,
+    );
+    existingListItem.orders = filteredOrders;
+    toast.warn('Order was removed successfully', toastSetting);
+    return existingItems.map((item) =>
+      item._id === itemToRemove._id ? existingListItem : item,
+    );
+  }
+};
+
+export const decreaseQuantity = (existingItems, itemToDecrease, orderToDecrease) => {
+  let existingListItem = itemToDecrease;
+  // 1. If order has quantity = 1 --> remove that order from product
+  if (orderToDecrease.quantity === 1) {
+    const filteredOrders = existingListItem.orders.filter(
+      (o) => o.size !== orderToDecrease.size || o.color !== orderToDecrease.color,
+    );
+    existingListItem.orders = filteredOrders;
+
+    return existingItems.map((item) =>
+      item._id === itemToDecrease._id ? existingListItem : item,
+    );
+  }
+
+  // 2. If order has quantity > 1 --> Decrease quantity for that order & Update product with new orders array
+  else {
+    // 2a. Decrease quantity for order
+    orderToDecrease.quantity -= 1;
+    // 2b. Update product with new orders array
+    const productOrders = existingListItem.orders.map((order) =>
+      order.size !== orderToDecrease.size || order.color !== orderToDecrease.color
+        ? order
+        : orderToDecrease,
+    );
+    existingListItem.orders = productOrders;
+
+    return existingItems.map((item) =>
+      item._id === itemToDecrease._id ? existingListItem : item,
+    );
+  }
+};
+
+export const increaseQuantity = (existingItems, itemToIncrease, orderToIncrease) => {
+  let existingListItem = itemToIncrease;
+  // 1. decrease quantity for order
+  orderToIncrease.quantity += 1;
+  // 2. make a new updated orders array for that product
+  const productOrders = existingListItem.orders.map((o) =>
+    o.size !== orderToIncrease.size || o.color !== orderToIncrease.color
+      ? o
+      : orderToIncrease,
+  );
+  // 3. update that product with new order arrays
+  existingListItem.orders = productOrders;
+
   return existingItems.map((item) =>
-    item.id === itemToRemove.id ? { ...item, quantity: item.quantity - 1 } : item,
+    item._id === itemToIncrease._id ? existingListItem : item,
   );
 };

@@ -8,6 +8,7 @@ import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs.component';
 import ProductImageGallery from './sub-components/ProductImageGallery.component';
 import MainInfo from './sub-components/MainInfo.component';
 import AdditionalInfo from './sub-components/AdditionalInfo.component';
+// import RelatedProducts from '../../components/related-products/RelatedProducts.component';
 import RelatedProducts from './sub-components/RelatedProducts.component';
 
 const ProductDetail = () => {
@@ -15,9 +16,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState();
   const [category, setCategory] = useState();
 
-  console.log('product detail');
   useEffect(() => {
-    console.log('product detail useEffect');
     axios.get(`${process.env.REACT_APP_API_URL}/api/v1/products/${name}`).then((res) => {
       const product = res.data.data[0];
       setProduct(product);
@@ -26,13 +25,12 @@ const ProductDetail = () => {
       let recentViewed = JSON.parse(localStorage.getItem('recentViewed') || '[]');
       const isExisted = recentViewed.some((el) => el._id === product._id);
       // const isExisted = false;
-      console.log(isExisted);
+
       if (!isExisted) {
         if (recentViewed.length > 3) {
           const newRecent = recentViewed.slice(-3);
           recentViewed = newRecent;
         }
-        console.log(product);
         localStorage.setItem('recentViewed', JSON.stringify([...recentViewed, product]));
       }
       return axios

@@ -2,7 +2,9 @@ import React from 'react';
 import MetaTags from 'react-meta-tags';
 
 import Layout from '../../components/layout/Layout.component';
-import CheckoutItem from './sub-component/CheckoutItem.component';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs.component';
+import BillingDetails from './sub-component/BillingDetails.component';
+import OrderSummary from './sub-component/OrderSummary.component';
 
 const Checkout = () => {
   return (
@@ -13,12 +15,17 @@ const Checkout = () => {
       </MetaTags>
 
       <Layout>
-        <div className="row">
-          <div className="col-8">
-            <CheckoutItem />
-            <CheckoutItem />
+        <Breadcrumbs path="home, checkout" />
+        <div className="container">
+          <div className="row"></div>
+          <div className="row">
+            <div className="col-md-6">
+              <BillingDetails />
+            </div>
+            <div className="col-md-6">
+              <OrderSummary />
+            </div>
           </div>
-          <div className="col-4">Price</div>
         </div>
       </Layout>
     </div>

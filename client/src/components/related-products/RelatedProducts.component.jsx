@@ -2,11 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import ProductSlider from '../../../components/product-slider/ProductSlider.component';
-import { selectProducts } from '../../../redux/product/product.selectors';
-// import { shop } from "../../../data/shop";
+import RelatedProductSlider from './sub-components/RelatedProductSlider.component';
+import { selectProducts } from '../../redux/product/product.selectors';
 
-import { shuffleArray } from '../../../utils/helper';
+import { shuffleArray } from '../../utils/helper';
 
 const RelatedProducts = ({ product, allProducts }) => {
   // console.log("product", product);
@@ -18,7 +17,9 @@ const RelatedProducts = ({ product, allProducts }) => {
   return (
     <div className="section related-product w-100">
       <h2 className="title text-center mb-4">Related Products</h2>
-      <div className="row">{products && <ProductSlider products={products} />}</div>
+      <div className="row">
+        {products && <RelatedProductSlider products={products} />}
+      </div>
     </div>
   );
 };

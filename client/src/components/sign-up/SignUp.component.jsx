@@ -3,10 +3,11 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import validator from 'validator';
 
 import Button from '../custom-button/Button.component';
 import CustomForm from '../form/CustomForm.component';
-import validator from 'validator';
+import { toastSetting } from '../../utils/helper';
 import { setCurrentUser } from '../../redux/user/user.actions';
 
 const SignUp = ({ setCurrentUser }) => {
@@ -28,27 +29,22 @@ const SignUp = ({ setCurrentUser }) => {
     console.log(userCredentials);
     e.preventDefault();
     if (!/^[a-zA-Z0-9]*$/.test(name) || name.length === 0) {
-      toast.error('Please provide a display name, with no special characters', {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      toast.error(
+        'Please provide a display name, with no special characters',
+        toastSetting,
+      );
       return;
     }
     if (!validator.isEmail(email)) {
-      toast.error('Please provide a valid email', {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      toast.error('Please provide a valid email', toastSetting);
       return;
     }
     if (password !== passwordConfirm) {
-      toast.error("Passwords don't match, please try again", {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      toast.error("Passwords don't match, please try again", toastSetting);
       return;
     }
     if (password.length < 8 || passwordConfirm.length < 8) {
-      toast.error('Password: Be 8 or more characters long', {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      toast.error('Password: Be 8 or more characters long', toastSetting);
       return;
     }
 
@@ -57,9 +53,10 @@ const SignUp = ({ setCurrentUser }) => {
       .then((res) => {
         if (res.data.data !== 0) {
           console.log(res);
-          toast.error('Email already exists, please choose a different email.', {
-            position: toast.POSITION.TOP_CENTER,
-          });
+          toast.error(
+            'Email already exists, please choose a different email.',
+            toastSetting,
+          );
           return;
         } else
           return axios.post(`api/v1/users/signup`, userCredentials).then((res) => {
@@ -70,7 +67,7 @@ const SignUp = ({ setCurrentUser }) => {
               setCredentials({ name: '', email: '', password: '', passwordConfirm: '' });
               toast.success(
                 'Account successfully created. Thank you for your registration!',
-                { position: toast.POSITION.TOP_CENTER },
+                toastSetting,
               );
               localStorage.setItem('user', JSON.stringify(res.data.user));
               window.setTimeout(() => {
@@ -81,9 +78,7 @@ const SignUp = ({ setCurrentUser }) => {
       })
       .catch((e) => {
         console.log(e);
-        toast.error('Error happened!', {
-          position: toast.POSITION.TOP_CENTER,
-        });
+        toast.error('Error happened!', toastSetting);
       });
   };
 

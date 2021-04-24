@@ -6,12 +6,7 @@ export const setCurrentUser = (user) => ({
   payload: user,
 });
 
-// export const toggleLogOut = () => ({
-//   type: UserActionTypes.TOOGLE_LOGOUT,
-// });
-
 export const getCurrentUser = () => {
-  console.log('get current user');
   // const userInfo = JSON.parse(localStorage.getItem('user'));
   // if (userInfo) return setCurrentUser(userInfo.user);
   // else return setCurrentUser(null);
@@ -21,7 +16,7 @@ export const getCurrentUser = () => {
       return axios
         .get(`${process.env.REACT_APP_API_URL}/api/v1/users/jwt`, {
           headers: {
-            Authorization: 'Bearer ' + jwt, //the token is a variable which holds the token
+            Authorization: 'Bearer ' + jwt,
           },
         })
         .then((res) => {
@@ -30,12 +25,5 @@ export const getCurrentUser = () => {
         })
         .catch((e) => console.log(e));
     }
-
-    // return axios
-    //   .get(`${process.env.REACT_APP_API_URL}/api/v1/users/jwt/${jwt}`, {
-    //     // .get(`${process.env.REACT_APP_API_URL}/api/v1/users/jwt`, {
-    //     withCredentials: true,
-    //     // credentials: 'include',
-    //   })
   };
 };

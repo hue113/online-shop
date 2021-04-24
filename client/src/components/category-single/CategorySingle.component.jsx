@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 // import { useParams } from "react-router-dom";
 // import { connect } from "react-redux";
 // import { createStructuredSelector } from "reselect";
 
-import ProductCard from "../product-card/ProductCard.component";
-import DisplayOption from "./sub-components/DisplayOption.component";
-import SortOption from "./sub-components/SortOption.component";
+import ProductCard from '../product-card/ProductCard.component';
+import DisplayOption from './sub-components/DisplayOption.component';
+import SortOption from './sub-components/SortOption.component';
 
 const CategorySingle = ({ categoryProducts }) => {
   const [products, setProducts] = useState(categoryProducts);
-  const [grid, setGrid] = useState("row-cols-2 row-cols-md-3");
+  const [grid, setGrid] = useState('row-cols-2 row-cols-md-3');
   const [singleColumn, setSingleColumn] = useState(false);
-  const [sortOption, setSortOption] = useState("default");
+  const [sortOption, setSortOption] = useState('default');
 
   const handleSelectGrid = (grid) => {
     setGrid(grid);
-    if (grid === "row-cols-1") setSingleColumn(true);
+    if (grid === 'row-cols-1') setSingleColumn(true);
     else setSingleColumn(false);
   };
 
@@ -23,35 +23,35 @@ const CategorySingle = ({ categoryProducts }) => {
     setSortOption(option);
   };
 
-  console.log("called");
+  console.log('called');
 
   useEffect(() => {
-    console.log("use effect");
+    console.log('use effect');
     switch (sortOption) {
-      case "popular":
+      case 'popular':
         var popularProducts = [...products];
         popularProducts.sort((a, b) => b.saleCount - a.saleCount);
-        console.log("popularProducts", popularProducts);
+        console.log('popularProducts', popularProducts);
         setProducts(popularProducts);
-        console.log("popular");
+        console.log('popular');
         break;
-      case "price-lth":
+      case 'price-lth':
         var lthProducts = [...products];
         lthProducts.sort(
-          (a, b) => a.price * (100 - a.discount) - b.price * (100 - b.discount)
+          (a, b) => a.price * (100 - a.discount) - b.price * (100 - b.discount),
         );
-        console.log("lthProducts", lthProducts);
+        console.log('lthProducts', lthProducts);
         setProducts(lthProducts);
-        console.log("price-lth");
+        console.log('price-lth');
         break;
-      case "price-htl":
+      case 'price-htl':
         var htlProducts = [...products];
         htlProducts.sort(
-          (a, b) => b.price * (100 - b.discount) - a.price * (100 - a.discount)
+          (a, b) => b.price * (100 - b.discount) - a.price * (100 - a.discount),
         );
-        console.log("htlProducts", htlProducts);
+        console.log('htlProducts', htlProducts);
         setProducts(htlProducts);
-        console.log("price-htl");
+        console.log('price-htl');
         break;
       default:
         setProducts(categoryProducts);
@@ -68,9 +68,8 @@ const CategorySingle = ({ categoryProducts }) => {
             {products && (
               <>
                 Showing 1–
-                {products.length < 12
-                  ? products.length
-                  : products.length} of {products.length} results{" "}
+                {products.length < 12 ? products.length : products.length} of{' '}
+                {products.length} results{' '}
               </>
             )}
           </div>

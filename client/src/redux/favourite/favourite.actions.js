@@ -1,9 +1,5 @@
 import { FavouriteActionTypes } from './favourite.types';
 
-// export const toggleFavourite = () => ({
-//   type: FavouriteActionTypes.TOOGLE_FAVOURITE,
-// });
-
 export const addItemToFavourite = (item) => ({
   type: FavouriteActionTypes.ADD_ITEM_TO_FAVOURITE,
   payload: item,

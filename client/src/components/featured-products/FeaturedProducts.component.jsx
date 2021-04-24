@@ -7,11 +7,9 @@ const FeaturedProducts = () => {
   const [products, setProducts] = useState();
 
   useEffect(() => {
-    // console.log('fetching');
     axios.get(`${process.env.REACT_APP_API_URL}/api/v1/products/8popular`).then((res) => {
       const popularProducts = res.data.data;
       setProducts(popularProducts);
-      // console.log(popularProducts);
     });
     // };
     return () => {};

@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import Button from '../custom-button/Button.component';
+import { toastSetting } from '../../utils/helper';
 import { setCurrentUser } from '../../redux/user/user.actions';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 
@@ -17,7 +18,7 @@ const SignOut = ({ currentUser, setCurrentUser }) => {
       .get(`${process.env.REACT_APP_API_URL}/api/v1/users/logout`)
       .then((res) => {
         if (res.status === 200) {
-          toast('Logged out successfully!', { position: toast.POSITION.TOP_CENTER });
+          toast('Logged out successfully!', toastSetting);
           // localStorage.removeItem('user');
           // console.log(document.cookie);
           document.cookie = document.cookie + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -29,9 +30,7 @@ const SignOut = ({ currentUser, setCurrentUser }) => {
       })
       .catch((err) => {
         console.log(err);
-        toast.error(err.response.data.message, {
-          position: toast.POSITION.TOP_CENTER,
-        });
+        toast.error(err.response.data.message, toastSetting);
       });
   };
 
