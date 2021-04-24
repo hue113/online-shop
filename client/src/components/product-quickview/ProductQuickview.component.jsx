@@ -4,8 +4,6 @@ import ProductDetail from './sub-components/ProductDetail.component';
 import ProductImageGallery from './sub-components/ProductImageGallery.component';
 
 const ProductQuickview = ({ product, onClick }) => {
-  // console.log(product);
-
   return (
     <div className="product-quickview" id="quickview">
       <div className="inner row">

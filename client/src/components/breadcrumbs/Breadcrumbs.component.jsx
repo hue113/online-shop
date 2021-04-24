@@ -1,13 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { link } from "../../data/breadcrumbs";
+import { link } from '../../data/breadcrumbs';
 
 const Breadcrumbs = ({ path, productName, productPath }) => {
-  const results = path.split(", ").map((i) => {
-    return link.filter(
-      (el) => el.name.toLowerCase() === i.replace("-", " ")
-    )[0];
+  const results = path.split(', ').map((i) => {
+    return link.filter((el) => el.name.toLowerCase() === i.replace('-', ' '))[0];
   });
   // console.log(results);
 
@@ -27,7 +25,6 @@ const Breadcrumbs = ({ path, productName, productPath }) => {
             ))}
             {productPath && <Link to={productPath}>{productName}</Link>}
           </span>
-          {/* {product && <span className="link">{product}</span>} */}
         </div>
       </div>
     </div>

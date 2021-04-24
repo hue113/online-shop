@@ -7,15 +7,12 @@ const NewArrival = () => {
   const [products, setProducts] = useState();
 
   useEffect(() => {
-    // console.log("fetching");
     axios
       .get(`${process.env.REACT_APP_API_URL}/api/v1/products/new-arrivals`)
       .then((res) => {
         const newProducts = res.data.data;
         setProducts(newProducts);
-        // console.log(newProducts);
       });
-
     return () => {};
   }, []);
 

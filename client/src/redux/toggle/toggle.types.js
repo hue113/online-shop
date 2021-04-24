@@ -1,5 +1,6 @@
-export const IconActionTypes = {
+export const ToggleActionTypes = {
   TOOGLE_LOGOUT: 'TOOGLE_LOGOUT',
   TOOGLE_FAVOURITE: 'TOOGLE_FAVOURITE',
   TOOGLE_CART: 'TOOGLE_CART',
+  TOOGLE_PRODUCT_MODAL: 'TOOGLE_PRODUCT_MODAL',
 };

@@ -1,7 +1,14 @@
 .product-detail {
-  // .product-image-gallery{
-  // }
+  // 1. PRODUCT GALLERY (LEFT SIDE)
+  .product-image-gallery {
+    // resize navigation button (override library)
+    .image-gallery-left-nav .image-gallery-svg,
+    .image-gallery-right-nav .image-gallery-svg {
+      height: 70px;
+    }
+  }
 
+  // 2. PRODUCT MAIN INFORMATION (RIGHT SIDE)
   .main-info {
     .price {
       font-size: 20px;
@@ -69,6 +76,7 @@
     }
   }
 
+  // 3. PRODUCT ADDITIONAL INFORMATION (BOTTOM)
   .additional-info {
     .top-bar {
       border-bottom: 1px solid $color-text-3;

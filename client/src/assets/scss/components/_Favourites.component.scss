@@ -2,6 +2,7 @@
   position: absolute;
   width: 240px;
   min-height: 200px;
+  max-height: 400px;
   display: flex;
   flex-direction: column;
   padding: 8px;
@@ -9,8 +10,9 @@
   background-color: $color-bg-1;
   box-shadow: 0px 2px 2px 0px rgba($color-bg-3, 0.2);
   top: 52px;
-  right: -25px;
+  right: -80px;
   z-index: 5;
+  overflow-y: scroll;
 
   &:hover {
     color: initial;
@@ -45,5 +47,6 @@
   .custom-button {
     margin: 12px 15px;
     width: 120px;
+    font-size: 15px;
   }
 }

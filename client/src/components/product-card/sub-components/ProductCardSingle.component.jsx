@@ -1,50 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createPortal } from 'react-dom';
 
-const ProductCardSingle = ({ product }) => {
+import { addItemToFavourite } from '../../../redux/favourite/favourite.actions';
+import ProductQuickview from '../../product-quickview/ProductQuickview.component';
+import { calculatePrice } from '../../../utils/helper';
+
+const productModalContainer = document.getElementById('product_modal');
+
+const ProductCardSingle = ({ product, addItemToFavourite }) => {
+  const [showModal, setShowModal] = useState(false);
+  const { name, image, sku, price, discount, shortDescription } = product;
+
   return (
     <div className="product-card-single row">
       <div className="image-box col-sm-4 mb-4">
-        <Link
-          to={`/products/${product.name.toLowerCase().replace(/ /g, '-')}.${product.sku}`}
-        >
-          <img src={product.image} alt="" />
+        <Link to={`/products/${name.toLowerCase().replace(/ /g, '-')}.${sku}`}>
+          <img src={image} alt="" />
         </Link>
         {product.new && <div className="special new p-3">New</div>}
-        {product.discount !== 0 && (
-          <div className="special sale p-3">-{product.discount}%</div>
-        )}
+        {discount !== 0 && <div className="special sale p-3">-{discount}%</div>}
       </div>
 
       <div className="content px-4 col-sm-8 d-flex flex-column">
-        {/*  */}
-        <h4 className="bold my-3 order-md-1 order-lg-2">{product.name}</h4>
-
-        {/*  */}
+        <h4 className="bold my-3 order-md-1 order-lg-2">{name}</h4>
         <div className="price mb-3 order-md-2 order-lg-1">
-          {product.discount === 0 ? (
-            <span className="mr-4">${product.price.toFixed(2)}</span>
+          {discount === 0 ? (
+            <span className="mr-4">${price.toFixed(2)}</span>
           ) : (
             <div>
-              <span className="mr-4 old-price">${product.price.toFixed(2)}</span>
-              <span className="sale-price">
-                ${(product.price * (1 - product.discount / 100)).toFixed(2)}
-              </span>
+              <span className="mr-4 old-price">${price.toFixed(2)}</span>
+              <span className="sale-price">${calculatePrice(price, discount)}</span>
             </div>
           )}
         </div>
-
-        {/*  */}
         <div className="icon-group d-flex order-md-3 order-lg-4 mb-3">
-          <i className="bi bi-heart icon mr-4" />
-          <i className="bi bi-bag-plus icon" />
+          <i
+            className="bi bi-heart icon mr-4"
+            onClick={() => addItemToFavourite(product)}
+          />
+          <i className="bi bi-bag-plus icon" onClick={() => setShowModal(true)} />
         </div>
-
-        {/* <h4 className="bold my-4 order-sm-1">{product.name}</h4> */}
-        <p className="order-md-4 order-lg-2 mb-4">{product.shortDescription}</p>
+        <p className="order-md-4 order-lg-2 mb-4">{shortDescription}</p>
       </div>
+
+      {showModal
+        ? createPortal(
+            <ProductQuickview product={product} onClick={() => setShowModal(false)} />,
+            productModalContainer,
+          )
+        : ''}
     </div>
   );
 };
 
-export default ProductCardSingle;
+const mapDispatchToProps = (dispatch) => ({
+  addItemToFavourite: (item) => dispatch(addItemToFavourite(item)),
+});
+
+export default connect(null, mapDispatchToProps)(ProductCardSingle);

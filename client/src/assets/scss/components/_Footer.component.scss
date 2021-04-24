@@ -3,9 +3,11 @@
   color: $color-text-2;
   position: static;
 
-  h4 {
-    margin-top: 10px;
+  .title {
+    color: $color-text-2;
+    font-size: 18px;
   }
+
   a,
   span {
     color: $color-text-3;

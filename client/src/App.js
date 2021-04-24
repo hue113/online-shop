@@ -16,10 +16,12 @@ const Login = lazy(() => import('./pages/log-in/LogIn.page'));
 const Register = lazy(() => import('./pages/register/Register.page'));
 const StoreLocator = lazy(() => import('./pages/store-locator/StoreLocator.page'));
 const Checkout = lazy(() => import('./pages/checkout/Checkout.page'));
+const Favourites = lazy(() => import('./pages/favourites/Favourites.page'));
 
 toast.configure();
 const App = ({ getCurrentUser }) => {
   console.log('App');
+
   useEffect(() => {
     getCurrentUser();
   }, [getCurrentUser]);
@@ -57,6 +59,11 @@ const App = ({ getCurrentUser }) => {
               exact
               path={process.env.PUBLIC_URL + '/checkout'}
               component={Checkout}
+            />
+            <Route
+              exact
+              path={process.env.PUBLIC_URL + '/favourites'}
+              component={Favourites}
             />
           </ErrorBoundary>
           <ToastContainer />
