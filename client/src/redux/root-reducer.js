@@ -12,7 +12,7 @@ import toggleReducer from './toggle/toggle.reducer';
 const persistConfig = {
   key: 'root', // start from the root
   storage, // check import cai j thi type vao day
-  whitelist: ['product', 'category'], // array of string name of reducers you wanna use
+  whitelist: ['product', 'category', 'favourite', 'cart'], // array of string name of reducers you wanna use
 };
 
 const rootReducer = combineReducers({

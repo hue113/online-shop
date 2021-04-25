@@ -12,8 +12,10 @@ import OrderItemCard from './OrderItemCard.component';
 
 const OrderSummary = ({ cartTotal, cartItemOrders }) => {
   const shipping = Number(5.18);
-  const OrderTotal = (cartTotal * 1 + shipping).toFixed(2);
-  console.log(typeof cartTotal);
+  let OrderTotal;
+  if (cartTotal > 50) {
+    OrderTotal = cartTotal;
+  } else OrderTotal = (cartTotal * 1 + shipping).toFixed(2);
 
   return (
     <div className="section order-summary">
@@ -34,9 +36,11 @@ const OrderSummary = ({ cartTotal, cartItemOrders }) => {
         </div>
         <div className="line row">
           <span className="col-7 bold">Shipping & Handling:</span>
-          <span className="col-5 text-center bold">${shipping}</span>
+          <span className="col-5 text-center bold">
+            {cartTotal > 50 ? 'Free' : `$ ${shipping}`}
+          </span>
         </div>
-        <div className="row total mb-4">
+        <div className="row total mb-4 mt-3">
           <span className="col-7 bold">Order Total</span>
           <span className="col-5 text-center bold color">${OrderTotal}</span>
         </div>

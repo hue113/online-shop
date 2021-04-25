@@ -35,13 +35,15 @@
       font-size: 20px;
     }
     .cart-item-wrapper {
-      border-bottom: 1px solid $color-text-3;
+      // border-bottom: 1px solid $color-text-3;
       .cart-item {
         position: relative;
+        border-bottom: 1px solid rgba($color-text-6, 0.3);
+
         .image {
           img {
-            width: 80px;
-            height: 100px;
+            width: 70px;
+            height: 80px;
             object-fit: cover;
           }
         }
@@ -50,7 +52,7 @@
           width: calc(100% - 90px);
 
           .name {
-            font-size: 16px;
+            font-size: 15px;
           }
           a:hover,
           .name:hover {
@@ -61,6 +63,10 @@
             &-color:after {
               content: '-';
               margin: 0 8px;
+            }
+            &-color,
+            &-size {
+              color: $color-text-6;
             }
 
             &-quantity {
@@ -78,7 +84,7 @@
 
           .price {
             font-size: 14px;
-            color: $color-text-3;
+            color: $color-text-6;
             .old-price {
               color: $color-text-3;
               text-decoration: line-through;

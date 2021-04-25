@@ -72,6 +72,9 @@
 
   // 1b. Content
   .content {
+    .name {
+      font-size: 17px;
+    }
     .old-price {
       color: $color-text-3;
       text-decoration: line-through;
@@ -91,11 +94,15 @@
       font-size: 17px;
     }
     .icon-group {
-      font-size: 20px;
+      font-size: 22px;
       .icon:hover {
         color: $global-color-5;
         cursor: pointer;
+        transform: scale(1.1);
       }
+    }
+    .description {
+      color: $color-text-6;
     }
   }
 }

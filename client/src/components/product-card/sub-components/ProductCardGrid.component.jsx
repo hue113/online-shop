@@ -52,7 +52,7 @@ const ProductCardGrid = ({ product, addItemToFavourite }) => {
         </div>
         <div className="content">
           <Link to={`/products/${name.toLowerCase().replace(/ /g, '-')}.${sku}`}>
-            <h4 className="">{name}</h4>
+            <h4 className="name">{name}</h4>
           </Link>
           {discount === 0 ? (
             <div>

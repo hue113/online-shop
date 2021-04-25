@@ -57,13 +57,13 @@ const IconGroup = ({
       )}
 
       {/* FAVOURITE icon */}
-      <div className="item favourite-wrapper px-3">
+      <div className="item favourite-wrapper px-3" onClick={toggleFavourite}>
         {favouriteLength > 0 ? (
           <span className="favourite-count">{favouriteLength}</span>
         ) : (
           ''
         )}
-        <div onClick={toggleFavourite}>
+        <div>
           <i className="bi bi-heart icon" />
           <span className="name ml-2 d-none d-lg-inline-block">Favourites</span>
         </div>
