@@ -59,4 +59,10 @@ export const link = [
     fullName: 'Checkout',
     link: '/checkout',
   },
+  {
+    id: 10,
+    name: 'Favourites',
+    fullName: 'Favourites',
+    link: '/favourites',
+  },
 ];

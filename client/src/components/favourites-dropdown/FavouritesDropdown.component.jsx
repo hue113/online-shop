@@ -29,7 +29,7 @@ const FavouritesDropdown = ({ favourites, removeItemFromFavourite }) => {
         )}
         {/* {favourites.length > 3 ? <span className="more text-center">...</span> : ''} */}
       </div>
-      <Button name="View All" styleClass="square color lighter" />
+      <Button link="/favourites" name="View All" styleClass="square color lighter" />
     </div>
   );
 };

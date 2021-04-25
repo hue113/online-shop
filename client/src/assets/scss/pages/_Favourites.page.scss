@@ -1,0 +1,116 @@
+.favourites {
+  .favourites-wrapper {
+    // min-height: 350px;
+    margin-bottom: auto;
+    .custom-button {
+      font-size: 14px;
+    }
+
+    .favourites-item {
+      .image-box {
+        position: relative;
+        // width: 100%;
+        a,
+        img {
+          width: 200px;
+          height: 280px;
+          object-fit: cover;
+        }
+
+        .special {
+          position: absolute;
+          top: -5%;
+          left: -2%;
+          border-radius: 50%;
+          color: $color-text-2;
+        }
+        .sale {
+          background-color: $global-color-5;
+        }
+        .new {
+          background-color: $global-color-2;
+        }
+      }
+      .image-box:hover {
+        .icon-group {
+          visibility: visible;
+          opacity: 1;
+          :nth-child(1),
+          :nth-child(2) {
+            transform: translateX(0px);
+          }
+        }
+      }
+
+      // 1b. Content
+      .content {
+        position: relative;
+        .remove-icon {
+          font-size: 19px;
+          position: absolute;
+          top: 0;
+          right: 0;
+
+          &:hover {
+            color: $global-color-5;
+            transform: scale(1.1);
+          }
+        }
+        .old-price {
+          color: $color-text-3;
+          text-decoration: line-through;
+        }
+        .sale-price {
+          color: $global-color-4;
+        }
+
+        a:hover {
+          color: initial;
+        }
+        .description {
+          color: $color-text-6;
+        }
+
+        .options {
+          .colorPick,
+          .sizePick {
+            button {
+              border-color: $color-text-3;
+              background-color: $color-bg-1;
+              color: $color-text-1;
+              width: 80px;
+              height: 35px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 0 12px;
+            }
+            button,
+            .dropdown-item {
+              font-size: 14px;
+            }
+          }
+        }
+
+        .quantity {
+          input {
+            width: 50px;
+            height: 35px;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  .favourites {
+    .favourites-item {
+      .image-box {
+        a,
+        img {
+          min-width: 280px;
+        }
+      }
+    }
+  }
+}

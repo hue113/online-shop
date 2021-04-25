@@ -38,7 +38,7 @@ const CartList = ({ cartLength, cartTotal, toggleCart, cartItemOrders }) => {
           )}
         </div>
 
-        <div className="subtotal mt-4 pt-1 d-flex justify-content-between">
+        <div className="subtotal pt-1 d-flex justify-content-between">
           <h4 className="title bold">Sub Total</h4>
           <h4 className="total bold mr-2">${cartTotal}</h4>
         </div>

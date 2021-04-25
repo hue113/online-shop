@@ -1,10 +1,10 @@
-import React from "react";
-import Footer from "../footer/Footer.component";
-import Header from "../header/Header.component";
+import React from 'react';
+import Footer from '../footer/Footer.component';
+import Header from '../header/Header.component';
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <div className="d-flex flex-column min-vh-100">
       <Header />
       {children}
       <Footer />
