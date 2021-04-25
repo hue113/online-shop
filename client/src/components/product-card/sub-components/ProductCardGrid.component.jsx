@@ -22,7 +22,7 @@ const ProductCardGrid = ({ product, addItemToFavourite }) => {
       <div className="product-card-grid">
         <div className="image-box mb-3">
           <Link to={`/products/${name.toLowerCase().replace(/ /g, '-')}.${sku}`}>
-            <img src={image} alt="" />
+            <img src={image} alt={name} />
           </Link>
           {product.new && <div className="special new p-3">New</div>}
           {discount !== 0 && <div className="special sale p-3">-{discount}%</div>}

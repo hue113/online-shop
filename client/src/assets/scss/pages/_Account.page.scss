@@ -1,0 +1,130 @@
+.account-page {
+  .content-wrapper {
+    background-color: $color-bg-1;
+    box-shadow: 0 2.5rem 8rem 2rem rgb(0 0 0 / 7%);
+    // max-width: 1000px;
+
+    // 1. DASHBOARD (Left side)
+    .dashboard {
+      border-right: 1px solid rgba($color-text-3, 0.1);
+      &-wrapper {
+        .profile-picture {
+          .avatar {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            overflow: hidden;
+            img {
+              max-width: 100%;
+              height: auto;
+            }
+          }
+        }
+        .options {
+          .item {
+            font-size: 16px;
+            .icon {
+              font-size: 20px;
+            }
+            &:hover {
+              color: $global-color-5;
+              cursor: pointer;
+              transform: translateX(3px);
+              transition: all 0.4s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+
+    // 2. MAIN INFORMATION (Right side)
+    .account-main {
+      &-wrapper {
+        padding: 40px 60px;
+        max-width: 700px;
+
+        .settings {
+          .title {
+            font-size: 27px;
+            text-transform: uppercase;
+
+            background-clip: text;
+            background-image: linear-gradient(
+              to right,
+              rgb(238, 132, 132),
+              rgb(231, 54, 23)
+            );
+            color: transparent;
+          }
+
+          .field {
+            .label {
+              color: rgba($color-text-6, 0.9);
+              font-size: 17px;
+            }
+            .input {
+              color: rgba($color-text-1, 0.7);
+              padding: 14px 20px;
+              border: none;
+              width: 100%;
+              max-width: 600px;
+              background-color: rgba($color-bg-4, 0.4);
+              border-radius: 4px;
+
+              &:focus {
+                box-shadow: 0 3px 0 0 rgba($global-color-5, 0.7);
+              }
+            }
+            .half {
+              width: 48%;
+            }
+            .sub-label {
+              color: rgba($color-text-6, 0.9);
+            }
+          }
+
+          .account-settings {
+            border-bottom: 1px solid rgba($color-text-3, 0.1);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .account-page {
+    .content-wrapper {
+      .dashboard {
+        border-right: none;
+        width: 80%;
+      }
+      .account-main {
+        &-wrapper {
+          padding: 20px 30px;
+          .settings {
+            .field {
+              .input {
+                max-width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .account-page {
+    .content-wrapper {
+      .dashboard {
+        width: 100%;
+        &-wrapper {
+          flex-direction: column !important;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

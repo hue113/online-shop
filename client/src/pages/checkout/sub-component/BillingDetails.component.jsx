@@ -73,8 +73,26 @@ const BillingDetails = () => {
           className="input"
           value={card}
           onChange={(e) => setName(e.target.value)}
+          placeholder="Address Line"
+        />
+        <input
+          className="input"
+          value={card}
+          onChange={(e) => setName(e.target.value)}
           placeholder="Zip / Postal Code"
         />
+        <div className="mt-4">
+          <input
+            type="checkbox"
+            id="shippingAddress"
+            name="shippingAddress"
+            defaultChecked
+            onChange={() => console.log('change')}
+          />
+          <label htmlFor="shippingAddress" className="ml-4">
+            Shipping Address is the same as billing address{' '}
+          </label>
+        </div>
 
         <div className="secure-connection m-4 d-flex justify-content-center align-items-end">
           <i className="bi bi-shield-lock-fill icon" />

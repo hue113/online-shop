@@ -42,7 +42,12 @@ const IconGroup = ({
     <div className="icon-group d-flex justify-content-between">
       {/* USER icon */}
       {currentUser ? (
-        <div className="item account-wrapper px-3" onClick={toggleLogOut}>
+        <div
+          className="item account-wrapper px-3"
+          onMouseEnter={toggleLogOut}
+          onMouseLeave={toggleLogOut}
+          onClick={toggleLogOut}
+        >
           <i className="bi bi-person icon" />
           <span className="name ml-2 d-none d-lg-inline-block">
             Hi {currentUser.name}
@@ -57,15 +62,17 @@ const IconGroup = ({
       )}
 
       {/* FAVOURITE icon */}
-      <div className="item favourite-wrapper px-3" onClick={toggleFavourite}>
-        {favouriteLength > 0 ? (
-          <span className="favourite-count">{favouriteLength}</span>
-        ) : (
-          ''
-        )}
-        <div>
-          <i className="bi bi-heart icon" />
-          <span className="name ml-2 d-none d-lg-inline-block">Favourites</span>
+      <div className="item favourite-wrapper px-3">
+        <div onClick={toggleFavourite} onMouseEnter={toggleFavourite}>
+          {favouriteLength > 0 ? (
+            <span className="favourite-count">{favouriteLength}</span>
+          ) : (
+            ''
+          )}
+          <div>
+            <i className="bi bi-heart icon" />
+            <span className="name ml-2 d-none d-lg-inline-block">Favourites</span>
+          </div>
         </div>
         {showFavourite ? '' : <Favourites />}
       </div>

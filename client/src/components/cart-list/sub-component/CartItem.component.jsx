@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { toggleCart } from '../../../redux/icon/icon.actions';
+import { toggleCart } from '../../../redux/toggle/toggle.actions';
 import {
   removeItemOrderFromCart,
   decreaseQuantity,
