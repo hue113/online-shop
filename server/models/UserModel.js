@@ -51,6 +51,10 @@ const userSchema = new mongoose.Schema({
     default: 0,
     min: 0,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
   address: {
     country: {
       type: String,
@@ -68,7 +72,7 @@ const userSchema = new mongoose.Schema({
       type: String,
       default: "",
       trim: true,
-      length: 6,
+      maxlength: 6,
     },
   },
 });

@@ -14,7 +14,7 @@ export const getCurrentUser = () => {
     const jwt = document.cookie.split('=')[1];
     if (jwt) {
       return axios
-        .get(`${process.env.REACT_APP_API_URL}/api/v1/users/jwt`, {
+        .get(`${process.env.REACT_APP_API_URL}/api/v1/users/me`, {
           headers: {
             Authorization: 'Bearer ' + jwt,
           },

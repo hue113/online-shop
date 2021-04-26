@@ -42,7 +42,7 @@ const SignOut = ({ currentUser, setCurrentUser }) => {
         {currentUser && <h5 className="view mb-4 d-lg-none">Hi {currentUser.name}</h5>}
         <div className="my-4">
           <Link to="/account" className="view-account">
-            <i class="bi bi-person-lines-fill mr-3" />
+            <i className="bi bi-person-lines-fill mr-3" />
             <span className="text my-5">View Profile</span>
           </Link>
         </div>
