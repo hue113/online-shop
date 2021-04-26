@@ -1,52 +1,56 @@
 .favourites-dropdown {
   position: absolute;
-  width: 240px;
-  min-height: 200px;
-  max-height: 400px;
   display: flex;
   flex-direction: column;
-  padding: 8px;
-  // border: 1px solid black;
   background-color: $color-bg-1;
-  box-shadow: 0px 2px 2px 0px rgba($color-bg-3, 0.2);
-  top: 52px;
+  top: 27px;
   right: -80px;
   z-index: 5;
-  overflow-y: scroll;
-
   &:hover {
     color: initial;
   }
-
-  .empty-message {
-    font-size: 14px;
-    margin: 50px auto;
-    color: $color-text-1;
+  .gap-fill {
+    height: 29px;
+    width: 100%;
   }
+  .favourites-dropdown-wrapper {
+    box-shadow: 0px 2px 2px 0px rgba($color-bg-3, 0.2);
+    width: 240px;
+    min-height: 200px;
+    max-height: 400px;
+    padding: 8px;
+    overflow-y: scroll;
 
-  .items {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
-
-    .remove {
-      font-size: 16px;
+    .empty-message {
+      font-size: 14px;
+      margin: 50px auto;
+      color: $color-text-1;
     }
-    .remove:hover {
-      cursor: pointer;
-      transform: scale(1.2);
-      color: $global-color-5;
+
+    .items {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      overflow: scroll;
+
+      .remove {
+        font-size: 16px;
+      }
+      .remove:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+        color: $global-color-5;
+      }
     }
-  }
 
-  .more {
-    color: $color-text-1;
-  }
+    .more {
+      color: $color-text-1;
+    }
 
-  .custom-button {
-    margin: 12px 15px;
-    width: 110px;
-    font-size: 14px;
+    .custom-button {
+      margin: 12px 15px;
+      width: 110px;
+      font-size: 14px;
+    }
   }
 }

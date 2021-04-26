@@ -1,12 +1,14 @@
 import React, { useEffect, Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import ErrorBoundary from './components/error-boundary/error-boundary.component';
 import Spinner from './components/loading-spinner/Spinner.component';
 
 import { getCurrentUser } from './redux/user/user.actions';
+import { selectCurrentUser } from './redux/user/user.selectors';
 
 const Home = lazy(() => import('./pages/home/Home.page'));
 const Shop = lazy(() => import('./pages/shop/Shop.page'));
@@ -17,9 +19,10 @@ const Register = lazy(() => import('./pages/register/Register.page'));
 const StoreLocator = lazy(() => import('./pages/store-locator/StoreLocator.page'));
 const Checkout = lazy(() => import('./pages/checkout/Checkout.page'));
 const Favourites = lazy(() => import('./pages/favourites/Favourites.page'));
+const Account = lazy(() => import('./pages/account/Account.page'));
 
 toast.configure();
-const App = ({ getCurrentUser }) => {
+const App = ({ getCurrentUser, currentUser }) => {
   console.log('App');
 
   useEffect(() => {
@@ -44,7 +47,16 @@ const App = ({ getCurrentUser }) => {
               path={process.env.PUBLIC_URL + '/products/:name'}
               component={ProductDetail}
             />
-            <Route exact path={process.env.PUBLIC_URL + '/login'} component={Login} />
+            <Route
+              exact
+              path={process.env.PUBLIC_URL + '/login'}
+              render={() => (currentUser ? <Redirect to="/" /> : <Login />)}
+            />
+            <Route
+              exact
+              path={process.env.PUBLIC_URL + '/account'}
+              render={() => (currentUser ? <Account /> : <Redirect to="/" />)}
+            />
             <Route
               exact
               path={process.env.PUBLIC_URL + '/register'}
@@ -73,8 +85,12 @@ const App = ({ getCurrentUser }) => {
   );
 };
 
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   getCurrentUser: () => dispatch(getCurrentUser()),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

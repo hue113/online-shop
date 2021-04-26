@@ -17,7 +17,7 @@ const ProductCardSingle = ({ product, addItemToFavourite }) => {
     <div className="product-card-single row">
       <div className="image-box col-sm-4 mb-4">
         <Link to={`/products/${name.toLowerCase().replace(/ /g, '-')}.${sku}`}>
-          <img src={image} alt="" />
+          <img src={image} alt={name} />
         </Link>
         {product.new && <div className="special new p-3">New</div>}
         {discount !== 0 && <div className="special sale p-3">-{discount}%</div>}

@@ -46,6 +46,35 @@ const userSchema = new mongoose.Schema({
     default: true,
     select: false,
   },
+  points: {
+    type: Number,
+    default: 0,
+    min: 0,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
+  address: {
+    country: {
+      type: String,
+      default: "",
+    },
+    state: {
+      type: String,
+      default: "",
+    },
+    addressLine: {
+      type: String,
+      default: "",
+    },
+    postal: {
+      type: String,
+      default: "",
+      trim: true,
+      maxlength: 6,
+    },
+  },
 });
 
 // encrypt password before saving to database

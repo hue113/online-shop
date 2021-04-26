@@ -11,7 +11,7 @@ import { calculatePrice, toastSetting } from '../../../utils/helper';
 
 import { removeItemFromFavourite } from '../../../redux/favourite/favourite.actions';
 
-const FavouriteItem = ({ product, key, removeItemFromFavourite, addItemToCart }) => {
+const FavouriteItem = ({ product, removeItemFromFavourite, addItemToCart }) => {
   const { name, image, sku, price, discount, variation } = product;
   const [color, setColor] = useState(variation ? variation[0].color : '');
   const [size, setSize] = useState(variation ? variation[0].size[0].name : '');
@@ -44,7 +44,7 @@ const FavouriteItem = ({ product, key, removeItemFromFavourite, addItemToCart })
     <div className="favourites-item d-flex flex-column flex-lg-row justify-content-center align-items-center px-4 py-5">
       <div className="image-box p-3 d-flex flex-column justify-content-center align-items-center">
         <Link to={`/products/${name.toLowerCase().replace(/ /g, '-')}.${sku}`}>
-          <img src={image} alt="" />
+          <img src={image} alt={name} />
         </Link>
         {product.new && <div className="special new p-3">New</div>}
         {discount !== 0 && <div className="special sale p-3">-{discount}%</div>}
@@ -90,19 +90,20 @@ const FavouriteItem = ({ product, key, removeItemFromFavourite, addItemToCart })
             <h5 className="mb-3">Size</h5>
             <div className="size-btn d-flex w-100">
               <DropdownButton title={size.toUpperCase()} onSelect={handleSelectSize}>
-                {variation
-                  .filter((el) => el.color === color)[0]
-                  .size.map((el, index) =>
-                    el.stock === 0 ? (
-                      <Dropdown.Item key={index} eventKey={el.name} disabled={true}>
-                        {el.name.toUpperCase()} - out of stock
-                      </Dropdown.Item>
-                    ) : (
-                      <Dropdown.Item key={index} eventKey={el.name}>
-                        {el.name.toUpperCase()}
-                      </Dropdown.Item>
-                    ),
-                  )}
+                {variation &&
+                  variation
+                    .filter((el) => el.color === color)[0]
+                    .size.map((el, index) =>
+                      el.stock === 0 ? (
+                        <Dropdown.Item key={index} eventKey={el.name} disabled={true}>
+                          {el.name.toUpperCase()} - out of stock
+                        </Dropdown.Item>
+                      ) : (
+                        <Dropdown.Item key={index} eventKey={el.name}>
+                          {el.name.toUpperCase()}
+                        </Dropdown.Item>
+                      ),
+                    )}
               </DropdownButton>
             </div>
           </div>

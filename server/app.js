@@ -11,6 +11,7 @@ const cors = require("cors");
 const productRouter = require("./routes/productRoutes");
 const shopRouter = require("./routes/shopRoutes");
 const userRouter = require("./routes/userRoutes");
+const orderRouter = require("./routes/orderRoutes");
 
 const app = express();
 app.use(cors());
@@ -64,5 +65,6 @@ app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/shops", shopRouter);
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/orders", orderRouter);
 
 module.exports = app;

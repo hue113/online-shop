@@ -2,6 +2,9 @@
   .favourites-wrapper {
     // min-height: 350px;
     margin-bottom: auto;
+    .favourites-count {
+      color: $color-text-6;
+    }
     .custom-button {
       font-size: 14px;
     }

@@ -2,16 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 import { useHistory } from 'react-router-dom';
 
 import Button from '../custom-button/Button.component';
 import CustomForm from '../form/CustomForm.component';
 import { toastSetting } from '../../utils/helper';
 import { setCurrentUser } from '../../redux/user/user.actions';
-import { selectCurrentUser } from '../../redux/user/user.selectors';
 
-const SignIn = ({ currentUser, setCurrentUser }) => {
+const SignIn = ({ setCurrentUser }) => {
   const history = useHistory();
   const [userCredentials, setCredentials] = useState({
     email: '',
@@ -32,20 +30,18 @@ const SignIn = ({ currentUser, setCurrentUser }) => {
       .then((res) => {
         if (res.status === 200) {
           setCurrentUser(res.data.user);
-          // console.log(currentUser);
           // set token in cookies
           document.cookie = `jwt=${res.data.token}`;
           // console.log(`jwt=${res.data.token}`);
-          toast.success('Successfully Logged In!', toastSetting);
-          localStorage.setItem('user', JSON.stringify(res.data));
+          toast(` Hi ${res.data.user.name}! Welcome back!`, toastSetting);
+          // localStorage.setItem('user', JSON.stringify(res.data));
           window.setTimeout(() => {
             history.push('/');
-          }, 2000);
+          }, 1500);
         } else if (res.status === 400) {
           toast.error(res.data.message, toastSetting);
         }
         console.log(res);
-        // console.log(res.data.token);
       })
       .catch((err) => {
         console.log(err);
@@ -106,12 +102,8 @@ const SignIn = ({ currentUser, setCurrentUser }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-});
-
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (e) => dispatch(setCurrentUser(e)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(null, mapDispatchToProps)(SignIn);

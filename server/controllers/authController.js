@@ -1,10 +1,9 @@
 // const crypto = require('crypto');
 const jwt = require("jsonwebtoken");
-// const { promisify } = require("util");
 const jwt_decode = require("jwt-decode");
 
 const AppError = require("../utils/appError");
-const User = require("../models/userModel");
+const User = require("../models/UserModel");
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -24,7 +23,7 @@ const createSendToken = async (user, statusCode, req, res) => {
     // sameSite: "none",
     // secure: true,
   });
-  console.log("token in create", token);
+  // console.log("token in create", token);
 
   // Remove password from output (body)
   user.password = undefined;
@@ -37,7 +36,7 @@ const createSendToken = async (user, statusCode, req, res) => {
 };
 
 exports.signup = async (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
@@ -78,7 +77,7 @@ exports.login = async (req, res, next) => {
 };
 
 exports.logout = (req, res) => {
-  console.log("logout");
+  // console.log("logout");
   res.cookie("jwt", "loggedout", {
     expires: new Date(Date.now() + 10 * 1000),
     // expires: new Date(),
@@ -87,9 +86,7 @@ exports.logout = (req, res) => {
   res.status(200).json({ status: "success" });
 };
 
-exports.isLoggedIn = async (req, res, next) => {
-  // console.log("req.params", req.params.token);
-  // console.log(req.headers);
+exports.getMe = async (req, res, next) => {
   if (req.headers.authorization == undefined) {
     return res.status(400).json({
       status: "error",
@@ -104,11 +101,10 @@ exports.isLoggedIn = async (req, res, next) => {
     try {
       const token = req.headers.authorization.split("Bearer ")[1];
       // const token = req.params.token;
-      console.log("token", token);
+      // console.log("token", token);
       // 1) verify token
-      // const decoded = await promisify(jwt.verify)(jwt, process.env.JWT_SECRET);
       const decoded = await jwt_decode(token);
-      console.log(decoded);
+      // console.log(decoded);
 
       // 2) Check if user still exists
       const currentUser = await User.findById(decoded.id);
@@ -123,17 +119,16 @@ exports.isLoggedIn = async (req, res, next) => {
 
       // 3) Check if user changed password after the token was issued
       if (currentUser.changedPasswordAfter(decoded.iat)) {
-        // return next();
-        res.status(400).json({
-          status: "error",
-          message: "User recently changed password! Please log in again.",
-        });
-        return;
+        return next();
+        // res.status(400).json({
+        //   status: "error",
+        //   message: "User recently changed password! Please log in again.",
+        // });
       }
 
       // THERE IS A LOGGED IN USER
       res.locals.user = currentUser;
-      console.log(currentUser);
+      // console.log(currentUser);
       res.status(200).json({
         status: "success",
         message: "user found",
@@ -156,4 +151,132 @@ exports.isLoggedIn = async (req, res, next) => {
     });
   }
   // next(); // need to return next() above because next() should be only called once
+};
+
+exports.checkLoggedIn = async (req, res, next) => {
+  if (req.headers.authorization == undefined) {
+    res.status(400).json({
+      status: "error",
+      message: "You're not logged in!",
+    });
+  } else if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer") &&
+    req.headers.authorization.includes(undefined) == false
+  ) {
+    try {
+      const token = req.headers.authorization.split("Bearer ")[1];
+      // 1) verify token
+      const decoded = await jwt_decode(token);
+
+      // 2) Check if user still exists
+      const currentUser = await User.findById(decoded.id);
+      if (!currentUser) {
+        res.status(400).json({
+          status: "error",
+          message: "The user belonging to this token does no longer exist.",
+        });
+      }
+
+      // 3) Check if user changed password after the token was issued
+      if (currentUser.changedPasswordAfter(decoded.iat)) {
+        res.status(400).json({
+          status: "error",
+          message: "User recently changed password! Please log in again.",
+        });
+        // next();
+      }
+
+      // THERE IS A LOGGED IN USER
+      res.locals.user = currentUser;
+      // console.log(currentUser);
+      // res.status(200).json({
+      //   status: "success",
+      //   message: "user found",
+      //   data: {
+      //     user: currentUser,
+      //   },
+      // });
+      return next();
+    } catch (err) {
+      res.status(400).json({
+        status: "error",
+        message: "invalid token",
+      });
+    }
+  } else {
+    res.status(400).json({
+      status: "error",
+      message: "You are not logged in! Please log in to get access!",
+    });
+  }
+  // next(); // need to return next() above because next() should be only called once
+};
+
+exports.updatePassword = async (req, res, next) => {
+  // 1) check token validation
+  const token = req.headers.authorization.split("Bearer ")[1];
+  const decoded = await jwt_decode(token);
+  let user = await User.findById(decoded.id);
+  console.log(user.changedPasswordAfter(decoded.iat));
+  if (user.changedPasswordAfter(decoded.iat)) {
+    return next();
+  }
+
+  // 2) Get user from collection
+  const id = res.locals.user._id;
+  user = await User.findById(id).select("+password");
+
+  // 3) Check if POSTed current password is correct
+  const checkPassword = await user.correctPassword(
+    req.body.passwordCurrent,
+    user.password
+  );
+  // 3a. If not correct
+  if (!checkPassword) {
+    res.status(401).json({
+      status: "error",
+      message: "Your current password is wrong!",
+    });
+  } else if (req.body.password !== req.body.passwordConfirm) {
+    res.status(401).json({
+      status: "error",
+      message: "Passwords are not the same!",
+    });
+  }
+  // 3b. If correct
+  else if (checkPassword) {
+    user.password = req.body.password;
+    user.password = req.body.password;
+    user.passwordConfirm = req.body.passwordConfirm;
+    await user.save();
+
+    try {
+      // createSendToken(user, 200, req, res);
+      const token = await signToken(user._id);
+      console.log(token);
+      res.cookie("jwt", token, {
+        expires: new Date(
+          Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+        ),
+        httpOnly: true, // this is for heroku set up
+        secure: req.secure || req.headers["x-forwarded-proto"] === "https",
+      });
+      user.password = undefined;
+      console.log(user);
+      res.status(200).json({
+        status: "success",
+        token,
+        user,
+      });
+    } catch (e) {
+      console.log("enter 6");
+      res.status(401).json({
+        status: "error",
+        message: "Error happened",
+      });
+    }
+  }
+
+  return next();
 };

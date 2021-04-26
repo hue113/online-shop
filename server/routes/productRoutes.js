@@ -3,8 +3,10 @@ const productController = require("../controllers/productController");
 
 const productRouter = express.Router();
 
-productRouter.route("/").get(productController.getProducts);
-productRouter.route("/").post(productController.createProduct);
+productRouter
+  .route("/")
+  .get(productController.getProducts)
+  .post(productController.createProduct);
 productRouter.route("/:id").patch(productController.updateProduct);
 
 productRouter.route("/women").get(productController.getWomenProducts);

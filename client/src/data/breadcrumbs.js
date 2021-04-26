@@ -65,4 +65,10 @@ export const link = [
     fullName: 'Favourites',
     link: '/favourites',
   },
+  {
+    id: 11,
+    name: 'Account',
+    fullName: 'My Account',
+    link: '/account',
+  },
 ];
