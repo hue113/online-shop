@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MetaTags from 'react-meta-tags';
 
 import Layout from '../../components/layout/Layout.component';
@@ -7,6 +7,8 @@ import Dashboard from './sub-components/Dashboard.component';
 import AccountMain from './sub-components/AccountMain.componen';
 
 const Account = () => {
+  const [selection, setSelection] = useState('orders');
+
   return (
     <div className="account-page">
       <MetaTags>
@@ -19,8 +21,8 @@ const Account = () => {
 
         <div className="container">
           <div className="row content-wrapper mb-5 d-flex flex-wrap">
-            <Dashboard />
-            <AccountMain />
+            <Dashboard setSelection={setSelection} />
+            <AccountMain selection={selection} />
           </div>
         </div>
       </Layout>

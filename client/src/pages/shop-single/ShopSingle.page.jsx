@@ -14,13 +14,10 @@ const ShopSingle = () => {
   const [products, setProducts] = useState();
 
   useEffect(() => {
-    console.log('fetching');
-
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api/v1/products/${category}`)
+      .get(`${process.env.REACT_APP_API_URL}/api/v1/shops/${category}/products`)
       .then((res) => {
         const products = res.data.data;
-        console.log(products);
         setProducts(products);
       })
       .catch((e) => console.log(e));

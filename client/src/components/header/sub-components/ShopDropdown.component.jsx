@@ -5,7 +5,7 @@ const ShopDropdown = () => {
   return (
     <div className="shop-dropdown">
       <div className="gap-fill"></div>
-      <div className="content px-4 pb-4 d-flex flex-column align-items-start">
+      <div className="content px-4 d-flex flex-column align-items-start">
         <Link className="item" to="/shop">
           Shop All
         </Link>

@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import MetaTags from "react-meta-tags";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import React, { useEffect } from 'react';
+import MetaTags from 'react-meta-tags';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import Layout from "../../components/layout/Layout.component";
-import ShopPreview from "../../components/shop-preview/ShopPreview.component";
-import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs.component";
-import { fetchProductsStartAsync } from "../../redux/product/product.actions";
+import Layout from '../../components/layout/Layout.component';
+import ShopPreview from '../../components/shop-preview/ShopPreview.component';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs.component';
+import { fetchProductsStartAsync } from '../../redux/product/product.actions';
 import {
   selectWomenProducts,
   selectMenProducts,
@@ -14,7 +14,7 @@ import {
   selectAccessoriesProducts,
   selectNewArrivalsProducts,
   selectSaleProducts,
-} from "../../redux/product/product.selectors";
+} from '../../redux/product/product.selectors';
 
 const Shop = ({
   fetchProductsStartAsync,
@@ -29,8 +29,6 @@ const Shop = ({
     fetchProductsStartAsync();
   }, [fetchProductsStartAsync]);
 
-  console.log("shop");
-
   return (
     <div className="shop">
       <MetaTags>
@@ -40,21 +38,9 @@ const Shop = ({
 
       <Layout>
         <Breadcrumbs path="home, shop" />
-        <ShopPreview
-          title="Women Collections"
-          link="/shop/women"
-          data={womenProducts}
-        />
-        <ShopPreview
-          title="Men Collections"
-          link="/shop/men"
-          data={menProducts}
-        />
-        <ShopPreview
-          title="Kids Collections"
-          link="/shop/kids"
-          data={kidsProducts}
-        />
+        <ShopPreview title="Women Collections" link="/shop/women" data={womenProducts} />
+        <ShopPreview title="Men Collections" link="/shop/men" data={menProducts} />
+        <ShopPreview title="Kids Collections" link="/shop/kids" data={kidsProducts} />
         <ShopPreview
           title="Shoes & Accessories"
           link="/shop/accessories"
@@ -65,11 +51,7 @@ const Shop = ({
           link="/shop/new-arrivals"
           data={newArrivalsProducts}
         />
-        <ShopPreview
-          title="All Sale Products"
-          link="/shop/sale"
-          data={saleProducts}
-        />
+        <ShopPreview title="All Sale Products" link="/shop/sale" data={saleProducts} />
       </Layout>
     </div>
   );

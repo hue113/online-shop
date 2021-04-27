@@ -34,6 +34,10 @@ export const renderRatingStars = (rating) => {
   );
 };
 
+export const formatPostal = (string) => {
+  return (string.slice(0, 3) + ' ' + string.slice(3)).toUpperCase();
+};
+
 export const capitalizeFirstLetterEachWord = (string) => {
   const words = string.replace('-', ' ').split(' ');
   for (let i = 0; i < words.length; i++) {
@@ -45,6 +49,10 @@ export const capitalizeFirstLetterEachWord = (string) => {
 
 export const toastSetting = {
   position: toast.POSITION.TOP_CENTER,
+  draggable: true,
+};
+export const toastSetting2 = {
+  position: toast.POSITION.TOP_RIGHT,
   draggable: true,
 };
 
@@ -202,3 +210,5 @@ export const increaseQuantity = (existingItems, itemToIncrease, orderToIncrease)
     item._id === itemToIncrease._id ? existingListItem : item,
   );
 };
+
+export const validateName = (name) => {};

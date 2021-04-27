@@ -63,6 +63,10 @@ exports.updateMe = async (req, res, next) => {
   if (user.changedPasswordAfter(decoded.iat)) {
     return next();
   }
+  const currentUser = await User.findById(decoded.id);
+  if (!currentUser) {
+    return next();
+  }
 
   console.log("updateMe", req.body);
   const id = res.locals.user._id;
@@ -81,11 +85,11 @@ exports.updateMe = async (req, res, next) => {
   if (req.file) filteredBody.photo = req.file.filename;
 
   // 3) Update user document
+
   const updatedUser = await User.findByIdAndUpdate(id, filteredBody, {
     new: true, // so that it returns the new object
     runValidators: true, // bz we want mongoose valid the document
   });
-
   res.status(200).json({
     status: "success",
     data: {

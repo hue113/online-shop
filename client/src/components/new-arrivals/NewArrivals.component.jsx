@@ -8,7 +8,7 @@ const NewArrival = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api/v1/products/new-arrivals`)
+      .get(`${process.env.REACT_APP_API_URL}/api/v1/shops/new-arrivals/products`)
       .then((res) => {
         const newProducts = res.data.data;
         setProducts(newProducts);

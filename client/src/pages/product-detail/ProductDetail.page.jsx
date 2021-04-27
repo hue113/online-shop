@@ -17,29 +17,34 @@ const ProductDetail = () => {
   const [category, setCategory] = useState();
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/api/v1/products/${name}`).then((res) => {
-      const product = res.data.data[0];
-      setProduct(product);
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api/v1/products/url/${name}`)
+      .then((res) => {
+        const product = res.data.data[0];
+        setProduct(product);
 
-      // store to localstorage & slice the array to save storage
-      let recentViewed = JSON.parse(localStorage.getItem('recentViewed') || '[]');
-      const isExisted = recentViewed.some((el) => el._id === product._id);
-      // const isExisted = false;
+        // store to localstorage & slice the array to save storage
+        let recentViewed = JSON.parse(localStorage.getItem('recentViewed') || '[]');
+        const isExisted = recentViewed.some((el) => el._id === product._id);
+        // const isExisted = false;
 
-      if (!isExisted) {
-        if (recentViewed.length > 3) {
-          const newRecent = recentViewed.slice(-3);
-          recentViewed = newRecent;
+        if (!isExisted) {
+          if (recentViewed.length > 3) {
+            const newRecent = recentViewed.slice(-3);
+            recentViewed = newRecent;
+          }
+          localStorage.setItem(
+            'recentViewed',
+            JSON.stringify([...recentViewed, product]),
+          );
         }
-        localStorage.setItem('recentViewed', JSON.stringify([...recentViewed, product]));
-      }
-      return axios
-        .get(`${process.env.REACT_APP_API_URL}/api/v1/shops/${product.category}`)
-        .then((res) => {
-          const matchCategory = res.data.data.slug;
-          setCategory(matchCategory);
-        });
-    });
+        return axios
+          .get(`${process.env.REACT_APP_API_URL}/api/v1/shops/${product.category}`)
+          .then((res) => {
+            const matchCategory = res.data.data.slug;
+            setCategory(matchCategory);
+          });
+      });
   }, [name]);
 
   return (
