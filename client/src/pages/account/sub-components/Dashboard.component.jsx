@@ -16,7 +16,7 @@ const Dashboard = ({ setSelection, currentUser }) => {
             />
           </div>
           <h4 className="name bold text-center">{currentUser.name}</h4>
-          <h4 className="points color text-center mt-3">{currentUser.points} points</h4>
+          <h4 className="points text-center mt-3">{currentUser.points} points</h4>
         </div>
         <div className="options">
           <div className="item py-4" onClick={() => setSelection('orders')}>

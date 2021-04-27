@@ -4,7 +4,7 @@
   padding: 10px 25px;
   display: inline-block;
   transition: background-size 0.5s 0s;
-  font-size: 16px;
+  font-size: 15px;
   background: linear-gradient(
     to right,
     rgba(238, 238, 238, 0.5),
@@ -17,7 +17,7 @@
   color: $color-text-1;
 
   &.color {
-    background-color: $global-color-5;
+    background-color: var(--theme-color);
     color: $color-text-2;
     // border: 1px solid $global-color-5;
     border: none;
@@ -56,6 +56,6 @@
   }
 
   &.lighter {
-    background-color: rgba($global-color-5, 0.9);
+    background-color: var(--theme-color-light9);
   }
 }

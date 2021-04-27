@@ -53,7 +53,7 @@ const CategorySingle = ({ categoryProducts }) => {
 
   return (
     <div className="section category-single">
-      <div className="container mt-5">
+      <div className="wrapper container mt-5">
         <div className="row my-5">
           <div className="col-lg-6 mb-5 result-numers">
             {products && (
@@ -66,8 +66,10 @@ const CategorySingle = ({ categoryProducts }) => {
           </div>
           <div className="options col-lg-6 mb-5 d-flex">
             <div className="filter-option mr-5">
-              <i className="bi bi-funnel icon mr-2"></i>
-              Filter
+              <span className="icon-wrapper">
+                <i className="bi bi-funnel icon mr-2"></i>
+                Filter
+              </span>
               {/* <div className="dropdown row">
                 <div></div>
               </div> */}

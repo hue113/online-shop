@@ -21,6 +21,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  .price {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .old-price {
     color: $color-text-3;
     text-decoration: line-through;

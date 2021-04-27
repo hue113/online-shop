@@ -1,5 +1,5 @@
 .breadcrumbs {
-  background-image: url("../../images/breadcrumbs.jpg");
+  background-image: url('../../images/breadcrumbs.jpg');
   background-position: top;
   height: 250px;
   position: relative;
@@ -23,11 +23,11 @@
       }
 
       & :not(:last-child):after {
-        content: " / ";
+        content: ' / ';
         padding: 0 7px;
       }
       & :last-child {
-        color: $global-color-5;
+        color: var(--text-color);
       }
     }
   }

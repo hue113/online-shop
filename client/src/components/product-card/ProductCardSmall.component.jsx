@@ -14,7 +14,7 @@ const ProductCardSmall = ({ product }) => {
             <img src={image[0]} alt={name} />
           </Link>
         </div>
-        <div className="col-8 pr-0 my-auto">
+        <div className="price col-8 pr-0 my-auto">
           <Link to={`/products/${name.toLowerCase().replace(/ /g, '-')}.${sku}`}>
             <h5 className="product-title bold">{name}</h5>
           </Link>

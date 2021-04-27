@@ -8,6 +8,7 @@
 
 @import 'variables';
 @import 'common';
+@import 'theme';
 
 @import './pages/ProductDetail.page';
 @import './pages/Checkout.page';
@@ -38,3 +39,5 @@
 @import './components/SignOut.component';
 @import './components/ProductQuickview.component';
 @import './components/Cart.component';
+@import './components/ScrollTopButton.component';
+@import './components/ThemeSetting.component';

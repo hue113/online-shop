@@ -22,7 +22,7 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <div className="container">
+      <div className="wrapper container">
         {recentViewed.length !== 0 && (
           <div className="row mb-4">
             <h3 className="title bold px-4">Recently Viewed</h3>

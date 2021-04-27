@@ -119,7 +119,7 @@
             }
             .box:focus,
             .box.focus {
-              background-color: rgba($global-color-5, 0.7);
+              background-color: var(--theme-color-light7);
             }
           }
         }
@@ -132,10 +132,6 @@
           height: 35px;
         }
       }
-
-      .custom-button {
-        font-size: 15px;
-      }
     }
     // 3. CLOSE BUTTON
     .close-btn {
@@ -145,7 +141,7 @@
       font-size: 30px;
       &:hover {
         cursor: pointer;
-        color: $global-color-5;
+        color: var(--text-color);
       }
     }
   }

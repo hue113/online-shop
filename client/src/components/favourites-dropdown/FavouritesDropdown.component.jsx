@@ -11,12 +11,9 @@ import { toggleFavourite } from '../../redux/toggle/toggle.actions';
 
 const FavouritesDropdown = ({ favourites, removeItemFromFavourite, toggleFavourite }) => {
   return (
-    <div
-      className="favourites-dropdown d-flex justify-content-between align-items-center"
-      onMouseLeave={toggleFavourite}
-    >
+    <div className="favourites-dropdown" onMouseLeave={toggleFavourite}>
       <div className="gap-fill" />
-      <div className="favourites-dropdown-wrapper">
+      <div className="favourites-dropdown-wrapper d-flex flex-column justify-content-between">
         <div className="items">
           {favourites.length ? (
             favourites.slice(0, 3).map((product) => (
@@ -35,7 +32,7 @@ const FavouritesDropdown = ({ favourites, removeItemFromFavourite, toggleFavouri
           )}
           {favourites.length > 3 ? <span className="more text-center">...</span> : ''}
         </div>
-        <div onClick={toggleFavourite} className="text-center pb-2">
+        <div onClick={toggleFavourite} className="text-center pb-2 mt-auto">
           <Button link="/favourites" name="View All" styleClass="square color lighter" />
         </div>
       </div>

@@ -39,7 +39,7 @@ const ShopSingle = () => {
             <div className="col-md-9">
               {products && <CategorySingle categoryProducts={products} />}
             </div>
-            <div className="col-md-3">
+            <div className="col-sm-3">
               <Sidebar />
             </div>
           </div>
