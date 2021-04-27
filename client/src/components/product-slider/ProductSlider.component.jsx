@@ -1,19 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 
-import TinySlider from "tiny-slider-react";
-import ProductCard from "../product-card/ProductCard.component";
+import TinySlider from 'tiny-slider-react';
+import ProductCard from '../product-card/ProductCard.component';
 
 const settings = {
-  container: ".my-slider",
+  container: '.my-slider',
   lazyload: true,
   mouseDrag: true,
   loop: true,
   items: 1,
   gutter: 10,
-  controlsText: ["<", ">"],
+  controlsText: ['<', '>'],
   arrowKeys: true,
   nav: true,
-  navPosition: "bottom",
+  navPosition: 'bottom',
   navContainer: false,
   navAsThumbnails: true,
   responsive: {

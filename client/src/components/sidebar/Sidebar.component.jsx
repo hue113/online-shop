@@ -11,7 +11,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_API_URL}/api/v1/products/new-arrivals`)
+      .get(`${process.env.REACT_APP_API_URL}/api/v1/shops/new-arrivals/products`)
       .then((res) => {
         const products = res.data.data;
         setNewArrivals(shuffleArray(products).slice(0, 4));

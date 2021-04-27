@@ -48,10 +48,12 @@ const IconGroup = ({
           onMouseLeave={toggleLogOut}
           onClick={toggleLogOut}
         >
-          <i className="bi bi-person icon" />
-          <span className="name ml-2 d-none d-lg-inline-block">
-            Hi {currentUser.name}
-          </span>
+          <Link className="item px-3" to="/account">
+            <i className="bi bi-person icon" />
+            <span className="name ml-2 d-none d-lg-inline-block">
+              Hi {currentUser.name}
+            </span>
+          </Link>
           {showLogOut ? '' : <SignOut />}
         </div>
       ) : (
@@ -91,11 +93,11 @@ const IconGroup = ({
       {/* MOBILE MENU icon (hidden on desktop) */}
       <div
         className="item mobile-wrapper d-lg-none"
-        onMouseEnter={(e) => setToggleMobile(true)}
-        onMouseLeave={(e) => setToggleMobile(false)}
-        onClick={() => setToggleMobile(!toggleMobile)}
+        // onMouseEnter={(e) => setToggleMobile(true)}
+        // onMouseLeave={(e) => setToggleMobile(false)}
       >
-        <i className="bi bi-list icon"></i>
+        <i className="bi bi-list icon" onClick={() => setToggleMobile(!toggleMobile)} />
+        {/* <MobileMenu /> */}
         {toggleMobile ? <MobileMenu /> : ''}
       </div>
     </div>

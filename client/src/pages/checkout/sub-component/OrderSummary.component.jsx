@@ -13,7 +13,7 @@ import OrderItemCard from './OrderItemCard.component';
 const OrderSummary = ({ cartTotal, cartItemOrders }) => {
   const shipping = Number(5.18);
   let OrderTotal;
-  if (cartTotal > 50) {
+  if (cartTotal * 1 > 50 || cartTotal * 1 === 0) {
     OrderTotal = cartTotal;
   } else OrderTotal = (cartTotal * 1 + shipping).toFixed(2);
 

@@ -9,6 +9,7 @@ import Spinner from './components/loading-spinner/Spinner.component';
 
 import { getCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
+import ScrollToTop from './components/scroll-to-top/ScrollTop.component';
 
 const Home = lazy(() => import('./pages/home/Home.page'));
 const Shop = lazy(() => import('./pages/shop/Shop.page'));
@@ -23,7 +24,7 @@ const Account = lazy(() => import('./pages/account/Account.page'));
 
 toast.configure();
 const App = ({ getCurrentUser, currentUser }) => {
-  console.log('App');
+  // console.log('App');
 
   useEffect(() => {
     getCurrentUser();
@@ -32,54 +33,56 @@ const App = ({ getCurrentUser, currentUser }) => {
   return (
     <Router>
       <Suspense fallback={<Spinner />}>
-        <Switch>
-          <ErrorBoundary>
-            <Route exact path={process.env.PUBLIC_URL + '/'} component={Home} />
-            <Route exact path={process.env.PUBLIC_URL + '/home'} component={Home} />
-            <Route exact path={process.env.PUBLIC_URL + '/shop'} component={Shop} />
-            <Route
-              exact
-              path={process.env.PUBLIC_URL + '/shop/:category'}
-              component={ShopSingle}
-            />
-            <Route
-              exact
-              path={process.env.PUBLIC_URL + '/products/:name'}
-              component={ProductDetail}
-            />
-            <Route
-              exact
-              path={process.env.PUBLIC_URL + '/login'}
-              render={() => (currentUser ? <Redirect to="/" /> : <Login />)}
-            />
-            <Route
-              exact
-              path={process.env.PUBLIC_URL + '/account'}
-              render={() => (currentUser ? <Account /> : <Redirect to="/" />)}
-            />
-            <Route
-              exact
-              path={process.env.PUBLIC_URL + '/register'}
-              component={Register}
-            />
-            <Route
-              exact
-              path={process.env.PUBLIC_URL + '/stores'}
-              component={StoreLocator}
-            />
-            <Route
-              exact
-              path={process.env.PUBLIC_URL + '/checkout'}
-              component={Checkout}
-            />
-            <Route
-              exact
-              path={process.env.PUBLIC_URL + '/favourites'}
-              component={Favourites}
-            />
-          </ErrorBoundary>
-          <ToastContainer />
-        </Switch>
+        <ScrollToTop>
+          <Switch>
+            <ErrorBoundary>
+              <Route exact path={process.env.PUBLIC_URL + '/'} component={Home} />
+              <Route exact path={process.env.PUBLIC_URL + '/home'} component={Home} />
+              <Route exact path={process.env.PUBLIC_URL + '/shop'} component={Shop} />
+              <Route
+                exact
+                path={process.env.PUBLIC_URL + '/shop/:category'}
+                component={ShopSingle}
+              />
+              <Route
+                exact
+                path={process.env.PUBLIC_URL + '/products/:name'}
+                component={ProductDetail}
+              />
+              <Route
+                exact
+                path={process.env.PUBLIC_URL + '/login'}
+                render={() => (currentUser ? <Redirect to="/" /> : <Login />)}
+              />
+              <Route
+                exact
+                path={process.env.PUBLIC_URL + '/account'}
+                render={() => (currentUser ? <Account /> : <Redirect to="/" />)}
+              />
+              <Route
+                exact
+                path={process.env.PUBLIC_URL + '/register'}
+                render={() => (currentUser ? <Redirect to="/" /> : <Register />)}
+              />
+              <Route
+                exact
+                path={process.env.PUBLIC_URL + '/stores'}
+                component={StoreLocator}
+              />
+              <Route
+                exact
+                path={process.env.PUBLIC_URL + '/checkout'}
+                component={Checkout}
+              />
+              <Route
+                exact
+                path={process.env.PUBLIC_URL + '/favourites'}
+                component={Favourites}
+              />
+            </ErrorBoundary>
+            <ToastContainer />
+          </Switch>
+        </ScrollToTop>
       </Suspense>
     </Router>
   );

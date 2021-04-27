@@ -42,6 +42,7 @@
         color: $color-text-2;
       }
     }
+
     .shop-wrapper {
       position: relative;
       .shop {
@@ -68,10 +69,17 @@
         position: absolute;
         top: 40px;
         left: 0;
-        min-width: 180px;
+        min-width: 200px;
         .content {
+          padding-bottom: 18px;
           background-color: $color-bg-1;
           box-shadow: 0px 1px 2px 0px rgba($color-text-3, 0.4);
+
+          .item:hover {
+            color: $global-color-5;
+            transform: translateX(3px);
+            transition: all 0.4s ease-in-out;
+          }
         }
 
         // to put dropdown below navbar & still be able get hover effect
@@ -146,8 +154,79 @@
   // inside .mobile-wrapper (in icon-group)
   .mobile-menu {
     position: absolute;
-    top: 57px;
-    left: 0;
-    background-color: pink;
+    top: 30px;
+    right: -30px;
+    // background-color: $color-bg-1;
+    z-index: 10;
+    width: 320px;
+    // box-shadow: 2px 2px 2px 2px rgba($color-text-3, 0.2);
+
+    .gap-fill {
+      height: 29px;
+    }
+    .invisible {
+      height: 300px;
+      width: 100%;
+      background-color: transparent;
+      visibility: hidden;
+    }
+
+    &-inner {
+      background-color: $color-bg-1;
+      box-shadow: 2px 2px 2px 2px rgba($color-text-3, 0.2);
+      padding: 15px 0;
+      .mobile-item {
+        font-size: 15px;
+        padding: 15px 0 15px 40px;
+        margin-left: -3px;
+      }
+      .mobile-item:hover {
+        background-color: rgba($color-bg-4, 0.4);
+        transform: translateX(3px);
+        transition: all 0.4s ease-in-out;
+        a {
+          color: $global-color-5;
+        }
+        .shop:after {
+          content: '-';
+        }
+        .shop-dropdown .item {
+          color: initial;
+        }
+      }
+
+      .shop-wrapper {
+        position: relative;
+        .shop {
+          &:after {
+            content: '+';
+            width: 5px;
+            margin-left: 5px;
+          }
+        }
+        .shop-dropdown {
+          .gap-fill {
+            height: 0;
+          }
+          .item {
+            padding-top: 20px;
+            color: $color-text-1;
+          }
+          .item:hover {
+            color: $global-color-5;
+            transform: translateX(3px);
+            transition: all 0.4s ease-in-out;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .header {
+    .mobile-menu {
+      width: 100vw;
+    }
   }
 }

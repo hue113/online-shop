@@ -28,7 +28,7 @@ const SignUp = ({ setCurrentUser }) => {
   const handleSubmit = async (e) => {
     console.log(userCredentials);
     e.preventDefault();
-    if (!/^[a-zA-Z0-9]*$/.test(name) || name.length === 0) {
+    if (!/^[a-zA-Z0-9 _]*$/.test(name) || name.length === 0) {
       toast.error(
         'Please provide a display name, with no special characters',
         toastSetting,
@@ -58,22 +58,20 @@ const SignUp = ({ setCurrentUser }) => {
             toastSetting,
           );
           return;
-        } else
-          return axios.post(`api/v1/users/signup`, userCredentials).then((res) => {
-            // console.log(res);
-            if (res.status === 201) {
-              console.log('enter');
-              setCurrentUser(res.data.user);
-              setCredentials({ name: '', email: '', password: '', passwordConfirm: '' });
-              toast.success(
-                'Account successfully created. Thank you for your registration!',
-                toastSetting,
-              );
-              localStorage.setItem('user', JSON.stringify(res.data.user));
-              window.setTimeout(() => {
-                history.push('/');
-              }, 2000);
-            }
+        }
+        return axios
+          .post(`${process.env.REACT_APP_API_URL}/api/v1/users/signup`, userCredentials)
+          .then((res) => {
+            setCurrentUser(res.data.user);
+            setCredentials({ name: '', email: '', password: '', passwordConfirm: '' });
+            toast.success(
+              'Account successfully created. Thank you for your registration!',
+              toastSetting,
+            );
+            // localStorage.setItem('user', JSON.stringify(res.data.user));
+            window.setTimeout(() => {
+              history.push('/');
+            }, 2000);
           });
       })
       .catch((e) => {
@@ -141,7 +139,7 @@ const SignUp = ({ setCurrentUser }) => {
           create your own new account. *
         </span>
         <span className="">Email: test@gmail.com</span>
-        <span className="">Password: 123456</span>
+        <span className="">Password: 12345678</span>
       </div>
     </div>
   );

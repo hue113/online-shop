@@ -7,10 +7,12 @@ const FeaturedProducts = () => {
   const [products, setProducts] = useState();
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/api/v1/products/8popular`).then((res) => {
-      const popularProducts = res.data.data;
-      setProducts(popularProducts);
-    });
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/api/v1/shops/popular/products`)
+      .then((res) => {
+        const popularProducts = res.data.data;
+        setProducts(popularProducts);
+      });
     // };
     return () => {};
   }, []);

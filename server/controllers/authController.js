@@ -12,7 +12,7 @@ const signToken = (id) => {
 };
 
 const createSendToken = async (user, statusCode, req, res) => {
-  // console.log("createSendToken", user._id);
+  console.log("createSendToken", user._id);
   const token = await signToken(user._id);
   res.cookie("jwt", token, {
     expires: new Date(
@@ -36,15 +36,24 @@ const createSendToken = async (user, statusCode, req, res) => {
 };
 
 exports.signup = async (req, res, next) => {
-  // console.log(req.body);
-  const newUser = await User.create({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password,
-    passwordConfirm: req.body.passwordConfirm,
-  });
+  console.log(req.body);
 
-  createSendToken(newUser, 201, req, res);
+  try {
+    const newUser = await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      passwordConfirm: req.body.passwordConfirm,
+    });
+    console.log(newUser);
+    createSendToken(newUser, 201, req, res);
+  } catch (e) {
+    console.log(e.message);
+    return res.status(400).json({
+      status: "error",
+      message: e.message,
+    });
+  }
 };
 
 exports.login = async (req, res, next) => {

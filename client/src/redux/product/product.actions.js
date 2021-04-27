@@ -17,7 +17,6 @@ export const fetchProductsFailure = (errorMessage) => ({
 
 export const fetchProductsStartAsync = () => {
   return (dispatch) => {
-    console.log('fetching');
     return axios
       .get(`${process.env.REACT_APP_API_URL}/api/v1/products`)
       .then((res) => {

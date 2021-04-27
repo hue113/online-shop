@@ -23,35 +23,26 @@ const CategorySingle = ({ categoryProducts }) => {
     setSortOption(option);
   };
 
-  console.log('called');
-
   useEffect(() => {
-    console.log('use effect');
     switch (sortOption) {
       case 'popular':
         var popularProducts = [...products];
         popularProducts.sort((a, b) => b.saleCount - a.saleCount);
-        console.log('popularProducts', popularProducts);
         setProducts(popularProducts);
-        console.log('popular');
         break;
       case 'price-lth':
         var lthProducts = [...products];
         lthProducts.sort(
           (a, b) => a.price * (100 - a.discount) - b.price * (100 - b.discount),
         );
-        console.log('lthProducts', lthProducts);
         setProducts(lthProducts);
-        console.log('price-lth');
         break;
       case 'price-htl':
         var htlProducts = [...products];
         htlProducts.sort(
           (a, b) => b.price * (100 - b.discount) - a.price * (100 - a.discount),
         );
-        console.log('htlProducts', htlProducts);
         setProducts(htlProducts);
-        console.log('price-htl');
         break;
       default:
         setProducts(categoryProducts);

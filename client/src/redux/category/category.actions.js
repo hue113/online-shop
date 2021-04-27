@@ -17,7 +17,6 @@ export const fetchCategoriesFailure = (errorMessage) => ({
 
 export const fetchCategoriesStartAsync = () => {
   return (dispatch) => {
-    console.log('fetching');
     return axios
       .get(`${process.env.REACT_APP_API_URL}/api/v1/shops`)
       .then((res) => {

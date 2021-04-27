@@ -96,7 +96,7 @@ const SignIn = ({ setCurrentUser }) => {
           create your own new account. *
         </span>
         <span className="">Email: test@gmail.com</span>
-        <span className="">Password: 123456</span>
+        <span className="">Password: 12345678</span>
       </div>
     </div>
   );

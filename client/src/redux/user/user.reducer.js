@@ -7,12 +7,12 @@ const INITIAL_STATE = {
 
 const userReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    // case UserActionTypes.TOOGLE_LOGOUT:
-    //   return {
-    //     ...state,
-    //     toggleLogout: !state.toggleLogout,
-    //   };
     case UserActionTypes.SET_CURRENT_USER:
+      return {
+        ...state,
+        currentUser: action.payload,
+      };
+    case UserActionTypes.UPDATE_USER_INFO:
       return {
         ...state,
         currentUser: action.payload,

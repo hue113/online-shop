@@ -1,24 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import ProductSlider from '../../../components/product-slider/ProductSlider.component';
 import { selectProducts } from '../../../redux/product/product.selectors';
-// import { shop } from "../../../data/shop";
 
 import { shuffleArray } from '../../../utils/helper';
 
 const RelatedProducts = ({ product, allProducts }) => {
-  // console.log("product", product);
-  // console.log("allProducts", allProducts);
-  const relatedProducts = allProducts.filter((el) => el.category === product.category);
-  let products = shuffleArray(relatedProducts);
-  // let products = relatedProducts;
+  const categoryProducts = allProducts.filter((el) => el.category === product.category);
+  let products = shuffleArray(categoryProducts);
+  const [relatedProducts, setRelatedProducts] = useState(products);
+
+  useEffect(() => {
+    if (allProducts.length === 0) {
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/api/v1/shops/${product.category}/products`)
+        .then((res) => {
+          const newProducts = shuffleArray(res.data.data);
+          setRelatedProducts(newProducts);
+        });
+    }
+  }, []);
 
   return (
     <div className="section related-product w-100">
       <h2 className="title text-center mb-4">Related Products</h2>
-      <div className="row">{products && <ProductSlider products={products} />}</div>
+      <div className="row">
+        {relatedProducts && <ProductSlider related products={relatedProducts} />}
+      </div>
     </div>
   );
 };
@@ -26,9 +37,5 @@ const RelatedProducts = ({ product, allProducts }) => {
 const mapStateToProps = createStructuredSelector({
   allProducts: selectProducts,
 });
-
-// const mapDispatchToProps = (dispatch) => ({
-//   fetchProductsStartAsync: () => dispatch(fetchProductsStartAsync()),
-// });
 
 export default connect(mapStateToProps)(RelatedProducts);
