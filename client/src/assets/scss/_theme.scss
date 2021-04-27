@@ -1,0 +1,41 @@
+:root {
+  --theme-color: #ec5a5a;
+  --theme-color-light9: rgba(236, 90, 90, 0.9);
+  --theme-color-light7: rgba(236, 90, 90, 0.7);
+  --text-color: #ec5a5a;
+  --gradient1: rgb(238, 132, 132);
+  --gradient2: rgb(231, 54, 23);
+
+  .theme-yellow {
+    --theme-color: #fccd69;
+    --theme-color-light9: rgba(252, 205, 105, 0.9);
+    --theme-color-light7: rgba(252, 205, 105, 0.9);
+    --text-color: rgb(233, 162, 56);
+    --gradient1: rgb(255, 209, 109);
+    --gradient2: rgb(247, 148, 0);
+  }
+  .theme-blue {
+    --theme-color: #6792b0;
+    --theme-color-light9: rgb(103, 146, 176, 0.9);
+    --theme-color-light7: rgb(103, 146, 176, 0.7);
+    --text-color: rgb(103, 146, 176);
+    --gradient1: rgb(138, 206, 255);
+    --gradient2: rgb(0, 116, 199);
+  }
+  .theme-violet {
+    --theme-color: #d29ec5;
+    --theme-color-light9: rgb(210, 158, 197, 0.9);
+    --theme-color-light7: rgb(210, 158, 197, 0.7);
+    --text-color: rgb(158, 89, 141);
+    --gradient1: rgb(228, 151, 209);
+    --gradient2: rgb(158, 89, 141);
+  }
+  .theme-green {
+    --theme-color: #bcdf5b;
+    --theme-color-light9: rgb(188, 223, 91, 0.9);
+    --theme-color-light7: rgb(188, 223, 91, 0.8);
+    --text-color: rgb(137, 175, 32);
+    --gradient1: rgb(188, 223, 91);
+    --gradient2: rgb(147, 190, 26);
+  }
+}

@@ -20,6 +20,9 @@
               height: auto;
             }
           }
+          .points {
+            color: var(--text-color);
+          }
         }
         .options {
           .item {
@@ -28,13 +31,13 @@
               font-size: 20px;
             }
             &:hover {
-              color: $global-color-5;
+              color: var(--text-color);
               cursor: pointer;
               transform: translateX(3px);
               transition: all 0.4s ease-in-out;
             }
             &:focus {
-              color: $global-color-5;
+              color: var(--text-color);
             }
           }
         }
@@ -60,8 +63,8 @@
             background-clip: text;
             background-image: linear-gradient(
               to right,
-              rgb(238, 132, 132),
-              rgb(231, 54, 23)
+              var(--gradient1),
+              var(--gradient2)
             );
             color: transparent;
           }
@@ -81,7 +84,7 @@
               border-radius: 4px;
 
               &:focus {
-                box-shadow: 0 3px 0 0 rgba($global-color-5, 0.7);
+                box-shadow: 0 3px 0 0 var(--theme-color-light7);
               }
             }
             .half {
@@ -124,17 +127,12 @@
               }
               .description {
                 font-size: 14px;
-                // .color,
-                // .size:after {
-                //   content: '-';
-                // }
               }
             }
           }
           .order-card:hover {
             cursor: pointer;
-            box-shadow: 0 5px 0 0 rgba($global-color-5, 0.7);
-            // box-shadow: 1px 1px 1px 1px rgba($color-bg-4, 1);
+            box-shadow: 0 5px 0 0 var(--theme-color-light7);
           }
         }
       }

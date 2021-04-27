@@ -1,0 +1,24 @@
+.scrolltop {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  // z-index: 5;
+  padding-right: 17px;
+  padding-bottom: 13px;
+
+  i {
+    font-size: 40px;
+    color: var(--theme-color);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .scrolltop {
+    padding-right: 13px;
+    padding-bottom: 10px;
+
+    i {
+      font-size: 33px;
+    }
+  }
+}

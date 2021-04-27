@@ -40,7 +40,7 @@
       }
 
       .icon:hover {
-        color: $global-color-5;
+        color: var(--text-color);
         cursor: pointer;
       }
     }
@@ -53,7 +53,7 @@
       color: $color-text-2;
     }
     .sale {
-      background-color: $global-color-5;
+      background-color: var(--theme-color);
     }
     .new {
       background-color: $global-color-2;
@@ -96,13 +96,25 @@
     .icon-group {
       font-size: 22px;
       .icon:hover {
-        color: $global-color-5;
+        color: var(--text-color);
         cursor: pointer;
         transform: scale(1.1);
       }
     }
     .description {
       color: $color-text-6;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .product-card {
+    .product-card-grid {
+      .content {
+        .name {
+          font-size: 15px;
+        }
+      }
     }
   }
 }

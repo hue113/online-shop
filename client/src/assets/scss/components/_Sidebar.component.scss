@@ -1,5 +1,5 @@
 .sidebar {
-  margin-top: 150px;
+  margin-top: 138px;
 
   .title {
     font-size: 20px;
@@ -11,6 +11,7 @@
       height: 60px;
       overflow: hidden;
       object-fit: cover;
+      object-position: center;
 
       img {
         width: 100%;
@@ -33,12 +34,23 @@
     }
   }
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 600px) {
   .sidebar {
     margin-top: 0;
 
     .image {
       height: 100px;
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 868px) {
+  .sidebar {
+    margin-top: 190px;
+    .wrapper {
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: -10px;
     }
   }
 }

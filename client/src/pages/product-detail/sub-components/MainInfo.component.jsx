@@ -132,13 +132,13 @@ const MainInfo = ({ product, addItemToFavourite, addItemToCart }) => {
         {/* BUTTON ADD TO CART & FAVOURITE */}
         <div className="d-flex justify-content-center">
           <Button
-            styleClass="color square mx-4"
+            styleClass="color square lighter mx-4"
             name="Add To Cart"
             onClick={() => handleSubmit(color, size, quantity)}
           />
           <Button
             onClick={() => addItemToFavourite(product)}
-            styleClass="color square mx-4"
+            styleClass="color square lighter mx-4"
           >
             <i className="bi bi-heart" />
           </Button>

@@ -62,7 +62,7 @@
         }
         .box:focus,
         .box.focus {
-          background-color: rgba($global-color-5, 0.7);
+          background-color: var(--theme-color-light7);
         }
       }
     }

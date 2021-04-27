@@ -31,6 +31,12 @@
       }
     }
 
+    // fix slider issue: not showing sale tag on top of product card
+    .tns-ovh {
+      overflow-x: clip !important;
+      overflow: visible;
+    }
+
     .tns-nav {
       display: flex;
       justify-content: center;

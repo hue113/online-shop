@@ -27,7 +27,7 @@
       font-size: 27px;
       &:hover {
         cursor: pointer;
-        color: $global-color-5;
+        color: var(--theme-color);
       }
     }
 
@@ -105,7 +105,7 @@
           top: 0;
           right: 0;
           &:hover {
-            color: $color-text-5;
+            color: var(--text-color);
             transform: scale(1.1);
             cursor: pointer;
           }
@@ -126,10 +126,6 @@
       .total {
         color: $global-color-5;
       }
-    }
-
-    .custom-button {
-      font-size: 15px;
     }
 
     .free-shipping {
