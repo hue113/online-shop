@@ -11,7 +11,6 @@ import {
   selectCartItemOrders,
   selectCartTotal,
 } from '../../redux/cart/cart.selectors';
-import { toggleCart } from '../../redux/toggle/toggle.actions';
 
 const CartList = ({ cartLength, cartTotal, toggleCart, cartItemOrders }) => {
   return (
@@ -65,8 +64,5 @@ const mapStateToProps = createStructuredSelector({
   cartTotal: selectCartTotal,
   cartItemOrders: selectCartItemOrders,
 });
-const mapDispatchToProps = (dispatch) => ({
-  toggleCart: () => dispatch(toggleCart()),
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartList);
+export default connect(mapStateToProps)(CartList);

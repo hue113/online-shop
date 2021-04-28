@@ -37,11 +37,11 @@ const SignIn = ({ setCurrentUser }) => {
           // localStorage.setItem('user', JSON.stringify(res.data));
           window.setTimeout(() => {
             history.push('/');
-          }, 1500);
+          }, 100);
         } else if (res.status === 400) {
           toast.error(res.data.message, toastSetting);
         }
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         console.log(err);

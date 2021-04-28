@@ -1,16 +1,18 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { stores } from "../../data/stores";
+import { stores } from '../../data/stores';
 
 const Stores = () => {
   return (
     <div className="section stores">
       <div className="container">
         <div className="section-title py-4 my-5">
-          <h2 className="title">Store Locator</h2>
+          <Link to="/stores" className="title">
+            <h2 className="title">Store Locator</h2>
+          </Link>
           <p className="text-desc">
-            There are many variations of passages of Lorem Ipsum available.{" "}
+            There are many variations of passages of Lorem Ipsum available.{' '}
             <Link to="/stores" className="text-link">
               Find a store.
             </Link>

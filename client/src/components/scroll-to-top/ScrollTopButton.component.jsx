@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
 const ScrollTopButton = () => {
-  const [scrolling, setScrolling] = useState(false);
+  // const [scrolling, setScrolling] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
 
   useEffect(() => {
     function onScroll() {
       let currentPosition = window.pageYOffset;
-      if (currentPosition > scrollTop) {
-        setScrolling(false);
-      } else {
-        setScrolling(true);
-      }
+      // if (currentPosition > scrollTop) {
+      //   setScrolling(false);
+      // } else {
+      //   setScrolling(true);
+      // }
       setScrollTop(currentPosition <= 0 ? 0 : currentPosition);
     }
 
@@ -21,7 +21,7 @@ const ScrollTopButton = () => {
 
   return (
     <>
-      {scrolling && scrollTop > 100 && (
+      {scrollTop > 100 && (
         <div
           className="scrolltop"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

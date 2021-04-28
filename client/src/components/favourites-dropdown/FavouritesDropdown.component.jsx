@@ -11,7 +11,7 @@ import { toggleFavourite } from '../../redux/toggle/toggle.actions';
 
 const FavouritesDropdown = ({ favourites, removeItemFromFavourite, toggleFavourite }) => {
   return (
-    <div className="favourites-dropdown" onMouseLeave={toggleFavourite}>
+    <div className="favourites-dropdown">
       <div className="gap-fill" />
       <div className="favourites-dropdown-wrapper d-flex flex-column justify-content-between">
         <div className="items">

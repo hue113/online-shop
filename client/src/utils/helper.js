@@ -211,4 +211,97 @@ export const increaseQuantity = (existingItems, itemToIncrease, orderToIncrease)
   );
 };
 
-export const validateName = (name) => {};
+export const sortFilterProducts = (sortFilterOption, categoryProducts) => {
+  let copyProducts = [...categoryProducts];
+  let result;
+  switch (sortFilterOption) {
+    case 'popular':
+      copyProducts.sort((a, b) => b.saleCount - a.saleCount);
+      result = copyProducts;
+      break;
+    case 'price-lth':
+      copyProducts.sort(
+        (a, b) => a.price * (100 - a.discount) - b.price * (100 - b.discount),
+      );
+      result = copyProducts;
+      break;
+    case 'price-htl':
+      copyProducts.sort(
+        (a, b) => b.price * (100 - b.discount) - a.price * (100 - a.discount),
+      );
+      result = copyProducts;
+      break;
+
+    case '0-20':
+    case '21-50':
+    case '51-100':
+    case '101-above':
+      let range = sortFilterOption.split('-');
+      if (isNaN(range[1] * 1)) {
+        result = copyProducts.filter(
+          (p) => calculatePrice(p.price, p.discount) * 1 > range[0] * 1,
+        );
+      } else {
+        result = copyProducts.filter(
+          (p) =>
+            calculatePrice(p.price, p.discount) * 1 > range[0] * 1 &&
+            calculatePrice(p.price, p.discount) * 1 < range[1] * 1,
+        );
+      }
+      break;
+
+    case 'red':
+    case 'blue':
+    case 'yellow':
+    case 'pink':
+    case 'white':
+    case 'brown':
+    case 'green':
+    case 'orange':
+    case 'black':
+    case 'purple':
+      result = categoryProducts.filter((p) => {
+        return p.variation.find((i) => i.color === sortFilterOption) ? p : '';
+      });
+      break;
+
+    default:
+      result = categoryProducts;
+      break;
+  }
+  return result;
+};
+
+export const getSortFilterName = (sortFilterOption) => {
+  switch (sortFilterOption) {
+    case 'popular':
+      return 'Sort by Popularity';
+    case 'price-lth':
+      return 'Sort by price: Low To High';
+    case 'price-htl':
+      return 'Sort: Price High To Low';
+    case '0-20':
+    case '21-50':
+    case '51-100':
+    case '101-above':
+      let range = sortFilterOption.split('-');
+      if (isNaN(range[1] * 1)) {
+        return `Filter: Price above $${range[0]}`;
+      } else {
+        return `Filter: Price between $${range[0]} and $${range[1]}`;
+      }
+    case 'red':
+    case 'blue':
+    case 'yellow':
+    case 'pink':
+    case 'white':
+    case 'brown':
+    case 'green':
+    case 'orange':
+    case 'black':
+    case 'purple':
+      return `Sort by color: ${sortFilterOption}`;
+    default:
+      break;
+  }
+};

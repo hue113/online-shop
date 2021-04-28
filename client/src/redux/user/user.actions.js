@@ -72,7 +72,7 @@ export const updateUserPassword = (passwords) => {
           } else if (res.status === 400) {
             return toast.error(res.data.message);
           } else {
-            console.log(res);
+            // console.log(res);
             document.cookie += '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
             document.cookie = `jwt=${res.data.token}`;
             const user = res.data.user;

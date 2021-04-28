@@ -133,7 +133,9 @@ ul {
 
   &-title {
     text-align: center;
-
+    .title:hover {
+      color: initial;
+    }
     .text-desc {
       margin: 0 auto;
       max-width: 600px;

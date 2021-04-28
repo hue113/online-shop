@@ -13,8 +13,8 @@ const ThemeSetting = () => {
 
   useEffect(() => {
     document.body.className = theme;
-    console.log(theme);
-    console.log(document.body.className);
+    // console.log(theme);
+    // console.log(document.body.className);
     localStorage.setItem('theme', theme);
   }, [theme]);
 

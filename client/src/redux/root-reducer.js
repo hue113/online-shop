@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { createMultilanguageReducer } from 'redux-multilanguage';
 
 import userReducer from './user/user.reducer';
 import productReducer from './product/product.reducer';
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   favourite: favouriteReducer,
   cart: cartReducer,
   toggle: toggleReducer,
+  multilanguage: createMultilanguageReducer({ currentLanguageCode: 'fn' }),
 });
 
 export default persistReducer(persistConfig, rootReducer);

@@ -12,16 +12,19 @@ import {
   selectCartHidden,
   selectFavouriteHidden,
   selectLogOutHidden,
+  selectSearchHidden,
 } from '../../../redux/toggle/toggle.selectors';
 import {
   toggleFavourite,
   toggleCart,
   toggleLogOut,
+  toggleSearch,
 } from '../../../redux/toggle/toggle.actions';
 
 import SignOut from '../../sign-out/SignOut.component';
 import MobileMenu from './MobileMenu.component';
 import CartList from '../../cart-list/CartList.component';
+import SearchProduct from '../../search-product/SearchProduct.component';
 
 const cartModalContainer = document.getElementById('cart_modal');
 
@@ -35,6 +38,8 @@ const IconGroup = ({
   toggleCart,
   showCart,
   cartLength,
+  showSearch,
+  toggleSearch,
 }) => {
   const [toggleMobile, setToggleMobile] = useState(false);
 
@@ -48,7 +53,7 @@ const IconGroup = ({
           onMouseLeave={toggleLogOut}
           onClick={toggleLogOut}
         >
-          <Link className="item px-3" to="/account">
+          <Link className="item" to="/account" aria-label="account">
             <i className="bi bi-person icon" />
             <span className="name ml-2 d-none d-lg-inline-block">
               Hi {currentUser.name}
@@ -57,37 +62,59 @@ const IconGroup = ({
           {showLogOut ? '' : <SignOut />}
         </div>
       ) : (
-        <Link className="item px-3" to="/login">
+        <Link className="item px-3" to="/login" aria-label="login">
           <i className="bi bi-person icon" />
           <span className="name ml-2 d-none d-lg-inline-block">Sign in</span>
         </Link>
       )}
 
       {/* FAVOURITE icon */}
-      <div className="item favourite-wrapper px-3">
-        <div onClick={toggleFavourite} onMouseEnter={toggleFavourite}>
-          {favouriteLength > 0 ? (
-            <span className="favourite-count">{favouriteLength}</span>
-          ) : (
-            ''
-          )}
-          <div>
-            <i className="bi bi-heart icon" />
-            <span className="name ml-2 d-none d-lg-inline-block">Favourites</span>
+      <div className="item favourite-wrapper px-3" onMouseLeave={toggleFavourite}>
+        <Link className="item" to="/favourites" aria-label="favourites">
+          <div onClick={toggleFavourite} onMouseEnter={toggleFavourite}>
+            {favouriteLength > 0 ? (
+              <span className="favourite-count">{favouriteLength}</span>
+            ) : (
+              ''
+            )}
+            <div className="d-flex">
+              <i className="bi bi-heart icon" />
+              <span className="name ml-2 d-none d-xl-inline-block align-self-center">
+                Favourites
+              </span>
+            </div>
           </div>
-        </div>
+        </Link>
         {showFavourite ? '' : <Favourites />}
       </div>
 
       {/* CART icon */}
-      <div className="item cart-wrapper px-3">
+      <div
+        className="item cart-wrapper px-3"
+        // onMouseEnter={toggleCart}
+        // onMouseLeave={toggleCart}
+      >
         {cartLength > 0 ? <span className="cart-count">{cartLength}</span> : ''}
-        <div onClick={toggleCart}>
+        <div className="d-flex" onClick={toggleCart}>
           <i className="bi bi-bag icon" />
-          <span className="name ml-2 d-none d-lg-inline-block">Bags</span>
+          <span className="name ml-2 d-none d-xl-inline-block align-self-center">
+            Bags
+          </span>
         </div>
+        {showCart
+          ? ''
+          : createPortal(<CartList toggleCart={toggleCart} />, cartModalContainer)}
+      </div>
 
-        {showCart ? '' : createPortal(<CartList />, cartModalContainer)}
+      {/* SEARCH icon */}
+      <div className="item search-wrapper px-3">
+        <div className="d-flex" onClick={toggleSearch}>
+          <i className="bi bi-search icon" />
+          <span className="name ml-2 d-none d-xl-inline-block align-self-center">
+            Search
+          </span>
+        </div>
+        {showSearch ? '' : <SearchProduct toggleSearch={toggleSearch} />}
       </div>
 
       {/* MOBILE MENU icon (hidden on desktop) */}
@@ -109,7 +136,7 @@ const mapStateToProps = createStructuredSelector({
   showLogOut: selectLogOutHidden,
   showFavourite: selectFavouriteHidden,
   showCart: selectCartHidden,
-  // showProductModal: selectProductModalHidden,
+  showSearch: selectSearchHidden,
   favouriteLength: selectFavouriteLength,
   cartLength: selectCartLength,
 });
@@ -118,7 +145,7 @@ const mapDispatchToProps = (dispatch) => ({
   toggleLogOut: () => dispatch(toggleLogOut()),
   toggleFavourite: () => dispatch(toggleFavourite()),
   toggleCart: () => dispatch(toggleCart()),
-  // toggleProductModal: () => dispatch(toggleProductModal()),
+  toggleSearch: () => dispatch(toggleSearch()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(IconGroup);

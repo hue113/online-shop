@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SortOption = ({ handleSortOption }) => {
+const SortOption = ({ setSortFilterOption }) => {
   return (
     <div className="sort-option mr-5">
       <span className="icon-wrapper">
@@ -9,16 +9,16 @@ const SortOption = ({ handleSortOption }) => {
       </span>
 
       <div className="dropdown row d-flex flex-column">
-        <div className="item p-4" onClick={() => handleSortOption('default')}>
+        <div className="item" onClick={() => setSortFilterOption('default')}>
           Default
         </div>
-        <div className="item p-4" onClick={() => handleSortOption('popular')}>
+        <div className="item" onClick={() => setSortFilterOption('popular')}>
           Popularity
         </div>
-        <div className="item p-4" onClick={() => handleSortOption('price-lth')}>
+        <div className="item" onClick={() => setSortFilterOption('price-lth')}>
           Price: Low to High
         </div>
-        <div className="item p-4" onClick={() => handleSortOption('price-htl')}>
+        <div className="item" onClick={() => setSortFilterOption('price-htl')}>
           Price: High to Low
         </div>
       </div>

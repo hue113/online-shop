@@ -71,4 +71,10 @@ export const link = [
     fullName: 'My Account',
     link: '/account',
   },
+  {
+    id: 12,
+    name: 'Popular',
+    fullName: 'Best Sellers',
+    link: '/shop/popular',
+  },
 ];

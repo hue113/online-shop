@@ -16,6 +16,12 @@
       font-family: $font-3;
       font-size: 2.4rem;
       color: $color-text-1;
+      &:after {
+        content: '.';
+        margin-left: 5px;
+        // font-size: 3rem;
+        color: var(--text-color);
+      }
     }
     &:hover {
       color: initial;
@@ -106,6 +112,12 @@
       font-size: 14px;
       .icon {
         font-size: 20px;
+      }
+      .name {
+        max-width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
     .item:hover {

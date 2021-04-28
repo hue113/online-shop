@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import ProductCard from '../product-card/ProductCard.component';
@@ -21,7 +22,9 @@ const FeaturedProducts = () => {
     <div className="section featured-products">
       <div className="container">
         <div className="section-title py-4 mb-5">
-          <h2 className="title">Popular Products</h2>
+          <Link to="/shop/popular" className="title">
+            <h2 className="title">Popular Products</h2>
+          </Link>
           <p className="text-desc">
             There are many variations of passages of Lorem Ipsum available, but the
             majority have suffered lebmid alteration in some ledmid form

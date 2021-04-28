@@ -22,3 +22,8 @@ export const selectProductModalHidden = createSelector(
   [selectToggle],
   (toggle) => toggle.productModalHidden,
 );
+
+export const selectSearchHidden = createSelector(
+  [selectToggle],
+  (toggle) => toggle.searchHidden,
+);
