@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   favouriteHidden: true,
   cartHidden: true,
   productModalHidden: true,
+  searchHidden: true,
 };
 
 const toggleReducer = (state = INITIAL_STATE, action) => {
@@ -15,6 +16,7 @@ const toggleReducer = (state = INITIAL_STATE, action) => {
         favouriteHidden: true,
         cartHidden: true,
         productModalHidden: true,
+        searchHidden: state.searchHidden,
       };
     case ToggleActionTypes.TOOGLE_FAVOURITE:
       return {
@@ -22,6 +24,7 @@ const toggleReducer = (state = INITIAL_STATE, action) => {
         favouriteHidden: !state.favouriteHidden,
         cartHidden: true,
         productModalHidden: true,
+        searchHidden: state.searchHidden,
       };
     case ToggleActionTypes.TOOGLE_CART:
       return {
@@ -29,14 +32,24 @@ const toggleReducer = (state = INITIAL_STATE, action) => {
         favouriteHidden: true,
         cartHidden: !state.cartHidden,
         productModalHidden: true,
+        searchHidden: state.searchHidden,
       };
-    // case ToggleActionTypes.TOOGLE_PRODUCT_MODAL:
-    //   return {
-    //     logOutHidden: true,
-    //     favouriteHidden: true,
-    //     cartHidden: true,
-    //     productModalHidden: action.payload,
-    //   };
+    case ToggleActionTypes.TOOGLE_PRODUCT_MODAL:
+      return {
+        logOutHidden: true,
+        favouriteHidden: true,
+        cartHidden: true,
+        productModalHidden: !state.productModalHidden,
+        searchHidden: state.searchHidden,
+      };
+    case ToggleActionTypes.TOOGLE_SEARCH:
+      return {
+        logOutHidden: true,
+        favouriteHidden: true,
+        cartHidden: true,
+        productModalHidden: true,
+        searchHidden: !state.searchHidden,
+      };
     default:
       return state;
   }

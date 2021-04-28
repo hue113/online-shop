@@ -1,6 +1,8 @@
 import React from 'react';
-import Button from '../custom-button/Button.component';
 import Countdown from 'react-countdown';
+import { Link } from 'react-router-dom';
+
+import Button from '../custom-button/Button.component';
 
 const HotDeal = () => {
   const time = Date.now() + 400000000;
@@ -9,7 +11,9 @@ const HotDeal = () => {
       <div className="container py-4">
         <div className="row">
           <div className="col-md-5">
-            <img src="https://i.imgur.com/rJAQvok.png" alt="" />
+            <Link to="/products/denim-shirt.m201">
+              <img src="https://i.imgur.com/yvqOm6V.png" alt="hot sale product" />
+            </Link>
           </div>
           <div className="col-md-7 content d-flex flex-column justify-content-center">
             <h2 className="title">Deal of the day</h2>

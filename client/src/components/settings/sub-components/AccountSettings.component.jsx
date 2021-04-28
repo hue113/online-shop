@@ -84,8 +84,8 @@ const AccountSettings = ({ user, updateUserInfo }) => {
       </div>
       <div className="field mb-5">
         <h4 className="label bold mb-4 mx-2">My Address</h4>
-        <div className="d-flex justify-content-between mb-4">
-          <div className="half">
+        <div className="half-wrapper d-flex justify-content-between mb-4">
+          <div className="half mr-3">
             <h5 className="sub-label mx-2">Country</h5>
             <input
               className="input"

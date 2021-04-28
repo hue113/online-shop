@@ -16,13 +16,14 @@ const ProductCardGrid = ({ product, addItemToFavourite }) => {
   const [showModal, setShowModal] = useState(false);
   const isMobile = window.screen.width < 600; // not show product modal on mobile devices
   const { name, image, sku, price, discount } = product;
+  // console.log(image);
 
   return (
     <>
       <div className="product-card-grid">
         <div className="image-box mb-3">
           <Link to={`/products/${name.toLowerCase().replace(/ /g, '-')}.${sku}`}>
-            <img src={image} alt={name} />
+            <img src={image[0]} alt={name} />
           </Link>
           {product.new && <div className="special new p-3">New</div>}
           {discount !== 0 && <div className="special sale p-3">-{discount}%</div>}
@@ -52,7 +53,7 @@ const ProductCardGrid = ({ product, addItemToFavourite }) => {
         </div>
         <div className="content">
           <Link to={`/products/${name.toLowerCase().replace(/ /g, '-')}.${sku}`}>
-            <h4 className="name">{name}</h4>
+            <h3 className="name">{name}</h3>
           </Link>
           {discount === 0 ? (
             <div>

@@ -2,6 +2,7 @@
   .image {
     // width: 50px;
     height: 60px;
+    max-width: 80px;
     overflow: hidden;
     object-fit: cover;
 
@@ -15,17 +16,17 @@
   a:hover {
     color: initial;
   }
-  .product-title {
-    max-width: 110px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .price {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  // .product-title {
+  //   max-width: 110px;
+  //   white-space: nowrap;
+  //   overflow: hidden;
+  //   text-overflow: ellipsis;
+  // }
+  // .price {
+  //   white-space: nowrap;
+  //   overflow: hidden;
+  //   text-overflow: ellipsis;
+  // }
   .old-price {
     color: $color-text-3;
     text-decoration: line-through;

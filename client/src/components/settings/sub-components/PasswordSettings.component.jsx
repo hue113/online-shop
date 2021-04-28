@@ -38,7 +38,7 @@ const PasswordSettings = ({ updateUserPassword }) => {
       <div className="password-settings">
         <h2 className="title bold py-5 mb-5">Password Change</h2>
         <div className="field mb-5">
-          <h4 className="label bold mb-4 mx-2">Current Password</h4>
+          <h5 className="label mb-4 mx-2">Current Password</h5>
           <input
             className="input"
             type="password"
@@ -48,7 +48,7 @@ const PasswordSettings = ({ updateUserPassword }) => {
           />
         </div>
         <div className="field mb-5">
-          <h4 className="label bold mb-4 mx-2">New Password</h4>
+          <h4 className="label mb-4 mx-2">New Password</h4>
           <input
             className="input"
             type="password"
@@ -58,7 +58,7 @@ const PasswordSettings = ({ updateUserPassword }) => {
           />
         </div>
         <div className="field mb-5">
-          <h4 className="label bold mb-4 mx-2">Confirm New Password</h4>
+          <h4 className="label mb-4 mx-2">Confirm New Password</h4>
           <input
             className="input"
             type="password"

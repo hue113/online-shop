@@ -15,8 +15,6 @@ export const toggleCart = () => ({
 export const toggleProductModal = () => ({
   type: ToggleActionTypes.TOOGLE_PRODUCT_MODAL,
 });
-
-// export const toggleProductModal = (state) => ({
-//   type: ToggleActionTypes.TOOGLE_PRODUCT_MODAL,
-//   payload: state,
-// });
+export const toggleSearch = () => ({
+  type: ToggleActionTypes.TOOGLE_SEARCH,
+});

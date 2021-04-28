@@ -87,8 +87,11 @@
                 box-shadow: 0 3px 0 0 var(--theme-color-light7);
               }
             }
-            .half {
-              width: 48%;
+            .half-wrapper {
+              max-width: 600px;
+              .half {
+                width: 47%;
+              }
             }
             .sub-label {
               color: rgba($color-text-6, 0.9);

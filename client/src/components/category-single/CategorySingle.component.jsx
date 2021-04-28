@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
-// import { useParams } from "react-router-dom";
-// import { connect } from "react-redux";
-// import { createStructuredSelector } from "reselect";
 
 import ProductCard from '../product-card/ProductCard.component';
 import DisplayOption from './sub-components/DisplayOption.component';
+import FilterOption from './sub-components/FilterOption.component';
 import SortOption from './sub-components/SortOption.component';
+import { sortFilterProducts, getSortFilterName } from '../../utils/helper';
 
 const CategorySingle = ({ categoryProducts }) => {
   const [products, setProducts] = useState(categoryProducts);
   const [grid, setGrid] = useState('row-cols-2 row-cols-md-3');
   const [singleColumn, setSingleColumn] = useState(false);
-  const [sortOption, setSortOption] = useState('default');
+  const [sortFilterOption, setSortFilterOption] = useState('default');
+  const [showFilter, setShowFilter] = useState(false);
 
   const handleSelectGrid = (grid) => {
     setGrid(grid);
@@ -19,65 +19,58 @@ const CategorySingle = ({ categoryProducts }) => {
     else setSingleColumn(false);
   };
 
-  const handleSortOption = (option) => {
-    setSortOption(option);
-  };
-
   useEffect(() => {
-    switch (sortOption) {
-      case 'popular':
-        var popularProducts = [...products];
-        popularProducts.sort((a, b) => b.saleCount - a.saleCount);
-        setProducts(popularProducts);
-        break;
-      case 'price-lth':
-        var lthProducts = [...products];
-        lthProducts.sort(
-          (a, b) => a.price * (100 - a.discount) - b.price * (100 - b.discount),
-        );
-        setProducts(lthProducts);
-        break;
-      case 'price-htl':
-        var htlProducts = [...products];
-        htlProducts.sort(
-          (a, b) => b.price * (100 - b.discount) - a.price * (100 - a.discount),
-        );
-        setProducts(htlProducts);
-        break;
-      default:
-        setProducts(categoryProducts);
+    if (sortFilterOption) {
+      const result = sortFilterProducts(sortFilterOption, categoryProducts);
+      setProducts(result);
     }
+
     return () => {};
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sortOption, categoryProducts]);
+  }, [sortFilterOption, categoryProducts]);
 
   return (
     <div className="section category-single">
       <div className="wrapper container mt-5">
         <div className="row my-5">
-          <div className="col-lg-6 mb-5 result-numers">
+          <div className="col-lg-6 mb-4 result-numbers">
             {products && (
               <>
-                Showing 1–
-                {products.length < 12 ? products.length : products.length} of{' '}
-                {products.length} results{' '}
+                {products.length <= 1
+                  ? `Showing ${products.length} result`
+                  : `Showing ${products.length} results`}
               </>
             )}
           </div>
-          <div className="options col-lg-6 mb-5 d-flex">
-            <div className="filter-option mr-5">
+          <div className="options col-lg-6 mb-4 d-flex">
+            <div
+              className="filter-option mr-5"
+              onClick={() => setShowFilter(!showFilter)}
+            >
               <span className="icon-wrapper">
                 <i className="bi bi-funnel icon mr-2"></i>
                 Filter
               </span>
-              {/* <div className="dropdown row">
-                <div></div>
-              </div> */}
             </div>
-            <SortOption handleSortOption={handleSortOption} />
+            <SortOption setSortFilterOption={setSortFilterOption} />
             <DisplayOption handleSelectGrid={handleSelectGrid} />
           </div>
+          {sortFilterOption !== 'default' && (
+            <div className="mx-4 mb-5 d-flex justify-content-center">
+              {getSortFilterName(sortFilterOption)}
+              <i
+                className="bi bi-x-circle clear-filter-icon ml-4"
+                onClick={() => setSortFilterOption('default')}
+              />
+            </div>
+          )}
         </div>
+
+        {showFilter && (
+          <FilterOption
+            setSortFilterOption={setSortFilterOption}
+            setShowFilter={setShowFilter}
+          />
+        )}
 
         <div className={`row ${grid}`}>
           {products &&
@@ -94,5 +87,4 @@ const CategorySingle = ({ categoryProducts }) => {
   );
 };
 
-// export default connect()(CategorySingle);
 export default CategorySingle;

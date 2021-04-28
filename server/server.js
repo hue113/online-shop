@@ -13,7 +13,7 @@ dotenv.config({ path: "./config.env" });
 
 // 1. connect mongoose to Database
 mongoose
-  .connect(process.env.DATABASE_LOCAL, {
+  .connect(process.env.DATABASE_ATLAS, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
