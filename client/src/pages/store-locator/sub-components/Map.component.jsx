@@ -5,6 +5,8 @@ import { stores } from '../../../data/stores';
 import Finder from './Finder.component';
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY;
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 const Map = () => {
   const mapContainerRef = useRef(null);

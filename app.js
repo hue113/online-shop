@@ -14,7 +14,7 @@ const userRouter = require("./routes/userRoutes");
 const orderRouter = require("./routes/orderRoutes");
 
 const app = express();
-app.use(cors());
+// app.use(cors());
 // app.options("*", cors());
 // app.use(
 //   cors({
