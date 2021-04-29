@@ -14,20 +14,20 @@ const userRouter = require("./routes/userRoutes");
 const orderRouter = require("./routes/orderRoutes");
 
 const app = express();
-app.use(cors());
+// app.use(cors());
 // app.options("*", cors());
-// app.use(
-//   cors({
-//     origin: [
-//       `http://localhost:3000`,
-//       `https://localhost:3000`,
-//       `http://192.168.2.61:3000`,
-//       `https://192.168.2.61:3000`,
-//     ],
-//     credentials: "true",
-//     exposedHeaders: ["set-cookie"],
-//   })
-// );
+app.use(
+  cors({
+    origin: [
+      // `http://localhost:3000`,
+      // `https://localhost:3000`,
+      `http://192.168.2.61:5000`,
+      // `https://192.168.2.61:3000`,
+    ],
+    credentials: "true",
+    exposedHeaders: ["set-cookie"],
+  })
+);
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
