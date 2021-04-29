@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import ProductSlider from "../product-slider/ProductSlider.component";
+import ProductSlider from '../product-slider/ProductSlider.component';
 
 const ShopPreview = ({ data, title, link }) => {
   // console.log(data);
@@ -14,9 +14,7 @@ const ShopPreview = ({ data, title, link }) => {
             View all <i className="bi bi-arrow-right" />
           </Link>
         </div>
-        <div className="row">
-          <ProductSlider products={data} />
-        </div>
+        <div className="row">{data && <ProductSlider products={data} />}</div>
       </div>
     </div>
   );

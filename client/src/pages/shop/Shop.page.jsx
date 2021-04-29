@@ -8,6 +8,7 @@ import ShopPreview from '../../components/shop-preview/ShopPreview.component';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs.component';
 import { fetchProductsStartAsync } from '../../redux/product/product.actions';
 import {
+  selectProducts,
   selectWomenProducts,
   selectMenProducts,
   selectKidsProducts,
@@ -18,6 +19,7 @@ import {
 
 const Shop = ({
   fetchProductsStartAsync,
+  allProducts,
   womenProducts,
   menProducts,
   kidsProducts,
@@ -38,26 +40,39 @@ const Shop = ({
 
       <Layout>
         <Breadcrumbs path="home, shop" />
-        <ShopPreview title="Women Collections" link="/shop/women" data={womenProducts} />
-        <ShopPreview title="Men Collections" link="/shop/men" data={menProducts} />
-        <ShopPreview title="Kids Collections" link="/shop/kids" data={kidsProducts} />
-        <ShopPreview
-          title="Shoes & Accessories"
-          link="/shop/accessories"
-          data={accessoriesProducts}
-        />
-        <ShopPreview
-          title="New Arrivals"
-          link="/shop/new-arrivals"
-          data={newArrivalsProducts}
-        />
-        <ShopPreview title="All Sale Products" link="/shop/sale" data={saleProducts} />
+        {allProducts && (
+          <>
+            <ShopPreview
+              title="Women Collections"
+              link="/shop/women"
+              data={womenProducts}
+            />
+            <ShopPreview title="Men Collections" link="/shop/men" data={menProducts} />
+            <ShopPreview title="Kids Collections" link="/shop/kids" data={kidsProducts} />
+            <ShopPreview
+              title="Shoes & Accessories"
+              link="/shop/accessories"
+              data={accessoriesProducts}
+            />
+            <ShopPreview
+              title="New Arrivals"
+              link="/shop/new-arrivals"
+              data={newArrivalsProducts}
+            />
+            <ShopPreview
+              title="All Sale Products"
+              link="/shop/sale"
+              data={saleProducts}
+            />
+          </>
+        )}
       </Layout>
     </div>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
+  allProducts: selectProducts,
   womenProducts: selectWomenProducts,
   menProducts: selectMenProducts,
   kidsProducts: selectKidsProducts,
