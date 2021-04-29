@@ -24,7 +24,8 @@ const Account = lazy(() => import('./pages/account/Account.page'));
 
 toast.configure();
 const App = ({ getCurrentUser, currentUser }) => {
-  // console.log('App');
+  console.log(`public url: ${process.env.PUBLIC_URL}`);
+  console.log(`api url: ${process.env.REACT_APP_API_URL}`);
 
   useEffect(() => {
     getCurrentUser();

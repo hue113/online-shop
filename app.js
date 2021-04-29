@@ -19,26 +19,26 @@ app.use(cors());
 // app.use(
 //   cors({
 //     origin: [
-//       `http://localhost:5000`,
-//       `https://localhost:5000`,
-//       `http://192.168.2.61:5000`,
-//       `https://192.168.2.61:5000/`,
+//       `http://localhost:3000`,
+//       `https://localhost:3000`,
+//       `http://192.168.2.61:3000`,
+//       `https://192.168.2.61:3000`,
 //     ],
 //     credentials: "true",
 //     exposedHeaders: ["set-cookie"],
 //   })
 // );
 
-// app.use(function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-//   );
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
 
-//   next();
-// });
+  next();
+});
 
 // Parse Cookie header
 app.use(cookieParser());
