@@ -33,8 +33,7 @@
     "sass": "^1.32.8",
     "tiny-slider-react": "^0.5.3",
     "validator": "^13.5.2",
-    "web-vitals": "^1.1.1",
-    "worker-loader": "^3.0.8"
+    "web-vitals": "^1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
