@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import CategoryCard from "./sub-components/CategoryCard.component";
+import React, { useEffect } from 'react';
+import CategoryCard from './sub-components/CategoryCard.component';
 // import { categories } from "../../data/categories";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-import { selectCategories } from "../../redux/category/category.selectors";
-import { fetchCategoriesStartAsync } from "../../redux/category/category.actions";
+import { selectCategories } from '../../redux/category/category.selectors';
+import { fetchCategoriesStartAsync } from '../../redux/category/category.actions';
 
 const Category = ({ categories, fetchCategories }) => {
   useEffect(() => {
@@ -17,14 +17,20 @@ const Category = ({ categories, fetchCategories }) => {
     <div className="section category">
       <div className="container">
         <div className="row row-cols-1 row-cols-md-3 mb-4">
-          {categories.slice(0, 3).map((category, index) => (
-            <CategoryCard key={index} category={category} styleClass="small" />
-          ))}
+          {categories &&
+            categories
+              .slice(0, 3)
+              .map((category, index) => (
+                <CategoryCard key={index} category={category} styleClass="small" />
+              ))}
         </div>
         <div className="row row-cols-1 row-cols-md-2 mb-2">
-          {categories.slice(3, 5).map((category, index) => (
-            <CategoryCard key={index} category={category} styleClass="large" />
-          ))}
+          {categories &&
+            categories
+              .slice(3, 5)
+              .map((category, index) => (
+                <CategoryCard key={index} category={category} styleClass="large" />
+              ))}
         </div>
       </div>
     </div>
