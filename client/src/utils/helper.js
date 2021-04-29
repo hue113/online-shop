@@ -1,4 +1,4 @@
-import { toast } from 'react-toastify';
+var { toast } = require('react-toastify');
 
 export const shuffleArray = (array) => {
   var currentIndex = array.length,
