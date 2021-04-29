@@ -12,6 +12,7 @@
 # production
 /build
 /server
+config.env
 
 # misc
 /*/*.env
