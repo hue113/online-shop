@@ -8,8 +8,21 @@ const BillingDetails = () => {
     region: '',
   });
 
-  const [name, setName] = useState();
-  const [card, setCard] = useState();
+  const [card, setCard] = useState({
+    name: '',
+    cardNumber: '',
+    mmyy: '',
+    cvv: '',
+    addressLine: '',
+    postal: '',
+  });
+
+  const { name, cardNumber, mmyy, cvv, addressLine, postal } = card;
+
+  const handleCardChange = (e) => {
+    const { name, value } = e.target;
+    setCard({ ...card, [name]: value });
+  };
 
   const selectCountry = (val) => {
     setState({
@@ -45,40 +58,46 @@ const BillingDetails = () => {
       <div className="form p-5  my-5">
         <input
           className="input"
+          name="name"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={handleCardChange}
           placeholder="Name on Card"
         />
         <input
           className="input"
-          value={card}
-          onChange={(e) => setName(e.target.value)}
+          name="cardNumber"
+          value={cardNumber}
+          onChange={handleCardChange}
           placeholder="Card Number"
         />
         <div className="d-flex ">
           <input
             className="input mr-5"
-            value={card}
-            onChange={(e) => setName(e.target.value)}
+            name="mmyy"
+            value={mmyy}
+            onChange={handleCardChange}
             placeholder="MM / YY"
           />
           <input
             className="input w-50"
-            value={card}
-            onChange={(e) => setName(e.target.value)}
+            name="cvv"
+            value={cvv}
+            onChange={handleCardChange}
             placeholder="CVV"
           />
         </div>
         <input
           className="input"
-          value={card}
-          onChange={(e) => setName(e.target.value)}
+          name="addressLine"
+          value={addressLine}
+          onChange={handleCardChange}
           placeholder="Address Line"
         />
         <input
           className="input"
-          value={card}
-          onChange={(e) => setName(e.target.value)}
+          name="postal"
+          value={postal}
+          onChange={handleCardChange}
           placeholder="Zip / Postal Code"
         />
         <div className="mt-4">

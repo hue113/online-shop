@@ -22,7 +22,7 @@ const RelatedProducts = ({ product, allProducts }) => {
           setRelatedProducts(newProducts);
         });
     }
-  }, []);
+  }, [allProducts.length, product.category]);
 
   return (
     <div className="section related-product w-100">

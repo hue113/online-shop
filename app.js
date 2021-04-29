@@ -14,23 +14,23 @@ const userRouter = require("./routes/userRoutes");
 const orderRouter = require("./routes/orderRoutes");
 
 const app = express();
+const origin = [
+  `https://shine-shop-demo.netlify.app`,
+  `http://192.168.2.61:5000`,
+  `http://192.168.2.61:3000`,
+];
 // app.use(cors());
 // app.options("*", cors());
 app.use(
   cors({
-    origin: [
-      // `http://localhost:3000`,
-      `https://shine-shop-demo.netlify.app`,
-      `http://192.168.2.61:5000`,
-      `http://192.168.2.61:3000`,
-    ],
+    origin: origin,
     credentials: "true",
     exposedHeaders: ["set-cookie"],
   })
 );
 
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", origin);
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
   res.header(
     "Access-Control-Allow-Headers",
