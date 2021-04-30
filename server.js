@@ -13,15 +13,12 @@ dotenv.config({ path: "./config.env" });
 
 // 1. connect mongoose to Database
 mongoose
-  .connect(
-    "mongodb+srv://hue999:hue999@onlineshop.qbjrt.mongodb.net/OnlineShop?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.DATABASE_ATLAS, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
   .then(console.log("DB connection successful!"))
   .catch((err) => {
     console.error("Database connection error: ", err);
