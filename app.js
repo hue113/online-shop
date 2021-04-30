@@ -12,7 +12,7 @@ const productRouter = require("./routes/productRoutes");
 const shopRouter = require("./routes/shopRoutes");
 const userRouter = require("./routes/userRoutes");
 const orderRouter = require("./routes/orderRoutes");
-
+console.log("a");
 const app = express();
 
 // app.use(cors());
@@ -35,7 +35,6 @@ app.use(
 //   );
 
 //   next();
-// });
 
 // Parse Cookie header
 app.use(cookieParser());
