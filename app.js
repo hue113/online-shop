@@ -14,12 +14,14 @@ const userRouter = require("./routes/userRoutes");
 const orderRouter = require("./routes/orderRoutes");
 const app = express();
 
+// const env = "development";
+const env = "production";
+
 // app.use(cors());
 // app.options("*", cors());
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV == "development" ? "http://localhost:3000" : "*",
+    origin: env === "development" ? "http://localhost:3000" : "*",
     credentials: "true",
     exposedHeaders: ["set-cookie"],
   })
@@ -43,7 +45,7 @@ app.use(mongoSanitize());
 app.use(xss());
 
 // Development logging
-if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
+if (env === "development") app.use(morgan("dev"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -53,15 +55,15 @@ app.use("/api/v1/shops", shopRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/orders", orderRouter);
 
-if (process.env.NODE_ENV === "production") {
+if (env === "production") {
   app.use(enforce.HTTPS({ trustProtoHeader: true })); // PWA HTTPS
   app.use(express.static("client/build"));
 
-  app.get("*", function (req, res) {
+  app.get("/", function (req, res) {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-console.log("a");
+
 // // Development logging
 // if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 
