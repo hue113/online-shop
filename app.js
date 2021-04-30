@@ -12,7 +12,6 @@ const productRouter = require("./routes/productRoutes");
 const shopRouter = require("./routes/shopRoutes");
 const userRouter = require("./routes/userRoutes");
 const orderRouter = require("./routes/orderRoutes");
-console.log("a");
 const app = express();
 
 // app.use(cors());
@@ -43,6 +42,17 @@ app.use(mongoSanitize());
 // Data sanitization against XSS (prevent js code inside html)
 app.use(xss());
 
+// Development logging
+if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use("/api/v1/products", productRouter);
+app.use("/api/v1/shops", shopRouter);
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/orders", orderRouter);
+
 if (process.env.NODE_ENV === "production") {
   app.use(enforce.HTTPS({ trustProtoHeader: true })); // PWA HTTPS
   app.use(express.static("client/build"));
@@ -52,15 +62,15 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-// Development logging
-if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
+// // Development logging
+// if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 
-app.use(express.json({ limit: "10kb" }));
-app.use(express.urlencoded({ extended: true, limit: "10kb" }));
+// app.use(express.json({ limit: "10kb" }));
+// app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 
-app.use("/api/v1/products", productRouter);
-app.use("/api/v1/shops", shopRouter);
-app.use("/api/v1/users", userRouter);
-app.use("/api/v1/orders", orderRouter);
+// app.use("/api/v1/products", productRouter);
+// app.use("/api/v1/shops", shopRouter);
+// app.use("/api/v1/users", userRouter);
+// app.use("/api/v1/orders", orderRouter);
 
 module.exports = app;
