@@ -61,7 +61,7 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
-
+console.log("a");
 // // Development logging
 // if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 
