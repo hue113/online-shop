@@ -14,36 +14,18 @@ const userRouter = require("./routes/userRoutes");
 const orderRouter = require("./routes/orderRoutes");
 
 const app = express();
-const origin = [
-  `http://shine-shop-demo.netlify.app`,
-  `https://shine-shop-demo.netlify.app`,
-  `http://shine-shop-demo.herokuapp.com`,
-  `https://shine-shop-demo.herokuapp.com`,
-  `http://192.168.2.61:5000`,
-  `http://192.168.2.61:3000`,
-];
+
 // app.use(cors());
 // app.options("*", cors());
 app.use(
   cors({
-    origin: origin,
+    origin:
+      process.env.NODE_ENV == "development" ? "http://localhost:3000" : "*",
     credentials: "true",
     exposedHeaders: ["set-cookie"],
   })
 );
 
-app.use((req, res, next) => {
-  const allowedOrigins = origin;
-  const origin1 = req.headers.origin;
-  if (allowedOrigins.includes(origin1)) {
-    res.setHeader("Access-Control-Allow-Origin", origin1);
-  }
-  //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
-  res.header("Access-Control-Allow-Methods", "GET, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", true);
-  return next();
-});
 // app.use(function (req, res, next) {
 //   res.header("Access-Control-Allow-Origin", origin);
 //   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,PATCH,DELETE");
