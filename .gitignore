@@ -13,8 +13,10 @@
 /build
 /server
 config.env
+.env
 
 # misc
+.env
 /*/*.env
 /*/*/*.env
 .DS_Store
