@@ -1,45 +1,64 @@
 {
   "name": "online-shop",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "engines": {
-    "node": "14.16.0",
-    "npm": "6.14.11"
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "i": "^0.3.6",
+    "mapbox-gl": "^2.2.0",
+    "npm": "^7.10.0",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.5.2",
+    "react-countdown": "^2.3.1",
+    "react-country-region-selector": "^3.0.2",
+    "react-dom": "^17.0.2",
+    "react-image-gallery": "^1.0.9",
+    "react-meta-tags": "^1.0.1",
+    "react-qr-code": "^1.1.1",
+    "react-rating-stars-component": "^2.2.0",
+    "react-redux": "^7.2.3",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "react-toastify": "^7.0.3",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-multilanguage": "^0.1.2",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
+    "sass": "^1.32.8",
+    "tiny-slider-react": "^0.5.3",
+    "validator": "^13.5.2",
+    "web-vitals": "^1.1.1",
+    "worker-loader": "^3.0.8"
   },
   "scripts": {
-    "server": "nodemon server.js",
-    "start": "node server.js"
+    "start": "react-scripts start",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hue113/online-shop.git"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "author": "Hue Pham",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hue113/online-shop/issues"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
-  "homepage": "https://github.com/hue113/online-shop#readme",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "compression": "^1.7.4",
-    "concurrently": "^6.0.2",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "express-mongo-sanitize": "^2.0.2",
-    "express-sslify": "^1.2.0",
-    "jsonwebtoken": "^8.5.1",
-    "jwt-decode": "^3.1.2",
-    "mongoose": "^5.12.4",
-    "morgan": "^1.10.0",
-    "slugify": "^1.5.0",
-    "validator": "^13.5.2",
-    "xss-clean": "^0.1.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.7"
-  }
+  "devDependencies": {}
 }

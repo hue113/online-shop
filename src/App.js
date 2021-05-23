@@ -1,5 +1,11 @@
 import React, { useEffect, Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import {
+  // BrowserRouter as Router,
+  HashRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
